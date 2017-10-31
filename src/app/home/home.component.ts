@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/index';
 import { User } from '../_models/index';
+import { AuthService } from "app/AuthService/Auth.Service";
 
 @Component({
   moduleId: module.id,  
@@ -13,12 +14,12 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
 
-  constructor(private userService: UserService) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private userService: UserService , public AuthService : AuthService) {
   }
 
   ngOnInit() {
       this.loadAllUsers();
+      this.AuthService.RoleCheck();
   }
 
   deleteUser(id: number) {

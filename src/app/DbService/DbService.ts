@@ -10,8 +10,7 @@ import { User } from "app/ModelService/User";
 
 export class DbService {
 
-    Get1(ctrl: string, UserName: string) {
-        
+    Get1(ctrl: string, UserName: string) {        
         return this.http.get(this.url + ctrl + '?email=' + UserName , { headers: this.header } );
     }
     private url: string;
