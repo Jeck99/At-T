@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AuthService } from "app/AuthService/Auth.Service";
 
 declare const $: any;
 
@@ -7,11 +8,14 @@ declare const $: any;
   moduleId: module.id,  
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers : [AuthService]
 })
 export class AppComponent implements OnInit {
 
-  constructor(public location: Location) {}
+  constructor(public location: Location , public AuthService : AuthService) {
+          console.log("========> " + AuthService.Role);  
+  }
 
   ngOnInit() {
       $.material.options.autofill = true;

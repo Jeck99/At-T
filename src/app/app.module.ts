@@ -33,6 +33,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { DbService } from "app/DbService/DbService";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ RouterModule,
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService,
+    UserService,DbService,
 
     // providers used to create fake backend
     MockBackend,
