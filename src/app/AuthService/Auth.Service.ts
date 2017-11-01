@@ -12,10 +12,16 @@ export class AuthService {
     IsLogged = false;
     Role = false;
     
-
     AuthState() {
-        return localStorage.getItem('Session');
-    }
+
+        if (localStorage.getItem('Session'))
+        {
+          this.IsLogged = true;
+        }   
+        else{
+          this.IsLogged = false;         
+        }
+       }
 
     RoleCheck() {
     const req = this.Service.GetUserState('ManagerLogins');

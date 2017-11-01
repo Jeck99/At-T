@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   
     Login() {     
-        debugger;
+        // debugger;
             const req = this.Service.login("ManagerLogins",this.model);
             req.map(res => <any>res.json()).
             subscribe(res => {
