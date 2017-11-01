@@ -24,10 +24,11 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
+Currentuser = "";
   constructor() { }
 
   ngOnInit() {
+      this.Currentuser = localStorage.getItem("un");
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
   isMobileMenu() {

@@ -47,7 +47,7 @@ const routes: Routes =[
     { path: 'update-job',     component: UpdateJobComponent },
     { path: 'update-appliecants',component: UpdateAppliecantsComponent },
 
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+      { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

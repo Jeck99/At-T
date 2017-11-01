@@ -43,7 +43,12 @@ export class LoginComponent implements OnInit {
             req.map(res => <any>res.json()).
             subscribe(res => {
                 console.log(res.SessionId);
+                console.log(res);
+                
                  localStorage.setItem('Session',res.SessionId );
+                 localStorage.setItem('ue',res.ue );
+                 localStorage.setItem('un',res.un );
+                 localStorage.setItem('uid',res.uid );
                  const expiresAt = JSON.stringify(1000) + new Date().getTime();
                  localStorage.setItem('expires_at', expiresAt);
                  console.log("Succesfully Logged");
