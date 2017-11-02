@@ -13,19 +13,25 @@ export class JobsComponent{
 
   constructor(private http: Http,private Service: DbService) {this.GetJobs(); }
   Jobs: any[];
-  Skills:any [] ;
-   async GetJobs() {
-    let req = await this.Service.Get("Jobs")
+  AddJob= true;
+  Skills = ["","",""] ;
+
+    GetJobs() {
+      this.Skills =[];
+    let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
       this.Jobs = rsp.json();
       for(let i = 0;i<this.Jobs.length;i++)
-      {
-       
-       this.Skills = this.Jobs[i].Skillset.split(',')
+      {      
+       this.Skills.push(this.Jobs[i].Skillset.split(','));
       }
     });
   }
 
-
+  AddJobForm()
+  {
+   this.AddJob=!this.AddJob;
+   console.log(this.AddJob)
+  }
 }
 

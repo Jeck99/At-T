@@ -11,12 +11,14 @@ providers: [DbService],
 export class AppliecantsComponent{
 
   constructor(private http: Http,private Service: DbService) {this.GetApplicants(); }
-  Applicants: any[];
+  AllApplicants: any[];
   lock:boolean= false;
+  AddApplicant=true;
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
-      this.Applicants = rsp.json();
+      this.AllApplicants = rsp.json();
+
     });
   }
   Lock(){
@@ -24,5 +26,9 @@ export class AppliecantsComponent{
     if(this.lock)
     {
     }
+  }
+  AddApplicantForm()
+  {
+   this.AddApplicant=!this.AddApplicant;
   }
 }
