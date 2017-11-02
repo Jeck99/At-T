@@ -12,6 +12,10 @@ export class JobsComponent implements OnInit {
 
   arItems: any[];
 
+
+    ngOnInit() {
+  }
+
   clickHandlerGet() {
     let req = this.http.get("http://localhost:51210/api/jobs");
     req.subscribe(rsp => {
