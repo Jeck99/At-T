@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService, AuthenticationService } from '../_services/index';
-import { DbService } from "app/DbService/DbService";
-import { AuthService } from "app/AuthService/Auth.Service";
+import { DbService } from "../DbService/DbService";
+import { AuthService } from "../AuthService/Auth.Service";
+// import { DbService } from "app/DbService/DbService";
+// import { AuthService } from "app/AuthService/Auth.Service";
 
 @Component({
     moduleId: module.id,

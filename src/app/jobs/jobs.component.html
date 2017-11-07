@@ -1,20 +1,25 @@
-<div style="margin-top:20px;background-color:lightgray" class="container-fluid">
-  <h1 style="background-color:lightgray" >Jobs !</h1>
-  <button class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
-  <div class="row" *ngFor="let Job of Jobs ">
-<div class="col-md-3">
+<h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
+<button style="margin-left:10px" (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+
+<div *ngIf="AddJob" style="background-color:lightgray" class="container-fluid">
+  <div class="row" >
+<div *ngFor="let Job of Jobs ; let i = index " class="col-md-3">
   <div class="card">
           <div class="card-content">
             <div class="card-header-blue">
-                <i  class="fa fa-id-card" aria-hidden="true"></i>
-                 <h4 class="card-heading"><b>{{Job.Position}}</b><i (mouseover)="Big()" style="margin-left:25px" class="fa fa-pencil" aria-hidden="true"></i><i style="margin-left:30px" class="fa fa-trash-o" aria-hidden="true"></i></h4>
+                <div class="row">
+                    <div class="col-md-6"><i style="font-size:120%;"  class="fa fa-id-card" aria-hidden="true"></i></div>
+                    <div class="col-md-6"><i (mouseover)="Big()" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i><i style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                 <h4 class="card-heading"><b>{{Job.Title}}</b></h4>
                </div>
                <div class="card-body">
                   <h6 style="font-weight:500" >Recruiters:</h6>
                <p class="card-p">{{Job.Description}}</p>
              </div>
              <nav class="nav-tabs">
-               <ul class="nav nav-pills pull-left" *ngFor="let Skill of Skills">
+               <ul class="nav nav-pills pull-left" *ngFor="let Skill of Skills[i]">
                       <li class="card-action"><a href="#">{{Skill}}</a></li>
                   </ul>
                
@@ -23,4 +28,7 @@
           </div>
       </div>
    </div>  </div>
+
+   
 </div>
+

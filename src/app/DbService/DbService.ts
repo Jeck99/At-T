@@ -2,7 +2,9 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { Inject } from '@angular/core';
-import { User } from "app/ModelService/User";
+import { User } from "../ModelService/User";
+// import { User } from "../_models/user";
+// import { User } from "app/ModelService/User";
 
 
 
