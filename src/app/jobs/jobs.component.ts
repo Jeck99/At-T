@@ -1,28 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { DbService } from "app/DbService/DbService";
+
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.css']
+  styleUrls: ['./jobs.component.css'],
+  providers:[DbService]
 })
-export class JobsComponent implements OnInit {
-
-  constructor(private http: Http) { }
+export class JobsComponent{
 
   arItems: any[];
 
 
-    ngOnInit() {
-  }
+  //   ngOnInit() {
+  // }
 
-  clickHandlerGet() {
-    let req = this.http.get("http://localhost:51210/api/jobs");
-    req.subscribe(rsp => {
-      this.arItems = rsp.json();
-      console.log(this.arItems); ``
-    });
-  }
+  // clickHandlerGet() {
+  //   let req = this.http.get("http://localhost:51210/api/jobs");
+  //   req.subscribe(rsp => {
+  //     this.Jobs = rsp.json();
+  //     for(let i = 0;i<this.Jobs.length;i++)
+  //     {
+       
+  //      this.Skills = this.Jobs[i].Skillset.split(',')
+  //     }
+  //   });
+  // }
 
 
 }
+
