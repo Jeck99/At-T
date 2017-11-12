@@ -22,7 +22,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { UpdateApplicantsComponent } from './update-applicants/update-applicants.component';
 import { ApplicantsComponent } from "./applicants/applicants.component";
-import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
+// import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 
 
 const routes: Routes =[
@@ -39,7 +39,7 @@ const routes: Routes =[
     { path: 'login',        component: LoginComponent },
     
                                                              //מסכים נדרשים על פי איפיון
-    { path: 'add-applicants',component: AddApplicantComponent },
+    // { path: 'add-applicants',component: AddApplicantComponent },
     { path: 'add-job',        component: AddJobComponent },
     { path: 'applicants',    component: ApplicantsComponent },
     { path: 'home',           component: HomeComponent },

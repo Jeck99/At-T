@@ -20,7 +20,6 @@ export class ApplicantsComponent{
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
       console.log(this.AllApplicants);
-
     });
   }
 

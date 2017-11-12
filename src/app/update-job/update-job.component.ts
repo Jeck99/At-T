@@ -28,10 +28,9 @@ export class UpdateJobComponent implements OnInit {
   SkillPost() {
 
     this.JobToUpdate.Skills.forEach(element => {
-
       this.SkillSet.push(new JobSkillset(this.JobToUpdate.Id, element.Id));
-
     });
+    
     console.log(this.SkillSet);
     const req = this.Service.EditCollection("jobSkillsets", this.SkillSet, this.JobToUpdate.Id);
 

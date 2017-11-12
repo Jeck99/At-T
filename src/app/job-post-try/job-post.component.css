@@ -18,3 +18,8 @@ font-size: 15px;
 .panel-heading a.collapsed:after {
     content:"\e080";
 }
+
+.card{
+
+    z-index: 100000;
+}

@@ -18,7 +18,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
-import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
+// import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { AddJobComponent } from './add-job/add-job.component';
@@ -31,15 +31,10 @@ import { LoginComponent } from './login/login.component';
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-<<<<<<< HEAD
-import { DbService } from "app/DbService/DbService";
-import { EditAppliecantComponent } from './edit-appliecant/edit-appliecant.component';
-=======
 import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
->>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
 
 @NgModule({
   declarations: [
@@ -54,19 +49,15 @@ import { ApplicantsComponent } from "./applicants/applicants.component";
     UpgradeComponent,
     HomeComponent,
     ApplicantsComponent,
-    AddApplicantComponent,
+    // AddApplicantComponent,
     UpdateApplicantsComponent,
     UpdateJobComponent,
     AddJobComponent,
     JobsComponent,
     RegisterComponent,
     LoginComponent,
-<<<<<<< HEAD
-    AlertComponent,
-    EditAppliecantComponent,
-=======
-    JobPostComponent,
->>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
+    JobPostComponent
+    
 
   ],
   imports: [
