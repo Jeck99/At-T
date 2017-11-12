@@ -1,4 +1,4 @@
-﻿export class Job
+﻿export class Appliecants
 {
     Id :number;
     Name:string;

@@ -31,10 +31,15 @@ import { LoginComponent } from './login/login.component';
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+<<<<<<< HEAD
+import { DbService } from "app/DbService/DbService";
+import { EditAppliecantComponent } from './edit-appliecant/edit-appliecant.component';
+=======
 import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
+>>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
 
 @NgModule({
   declarations: [
@@ -56,7 +61,12 @@ import { ApplicantsComponent } from "./applicants/applicants.component";
     JobsComponent,
     RegisterComponent,
     LoginComponent,
+<<<<<<< HEAD
+    AlertComponent,
+    EditAppliecantComponent,
+=======
     JobPostComponent,
+>>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
 
   ],
   imports: [

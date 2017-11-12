@@ -1,0 +1,42 @@
+<p>
+  add-appliecants works!
+</p>
+<div class="col-sm-9">
+    <h3>Add Apliplicant</h3>
+    <form #formAddProduct="ngForm" (ngSubmit)="AddApliplicantHandler(event)">
+      <div class="form-group">
+        <label for="apliplicantName">Apliplicant Name</label>
+        <input type="text" class="form-control" name="apliplicantName" [(ngModel)]="appliecants.name" required #trvApliplicantName="ngModel">
+        <div *ngIf="trvApliplicantName.errors && (trvApliplicantName.dirty || trvApliplicantName.touched)" class="alert alert-danger">
+          <div [hidden]="!trvApliplicantName.errors.required"> Product Name is required </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exprience">Years of exprience</label>
+        <input type="number" class="form-control" name="exprience" [(ngModel)]="appliecants.Experience" required #trvExprience="ngModel">
+        <div *ngIf="trvExprience.errors && (trvExprience.dirty || trvExprience.touched)" class="alert alert-danger">
+          <div [hidden]="!trvExprience.errors.required"> Market Price is required </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="apliplicantEmail">Email</label>
+        <input type="email" class="form-control" name="apliplicantEmail" [(ngModel)]="appliecants.Email" required #trvaAliplicantEmail="ngModel">
+        <div *ngIf="trvaAliplicantEmail.errors && (trvaAliplicantEmail.dirty || trvaAliplicantEmail.touched)" class="alert alert-danger">
+          <div [hidden]="!trvaAliplicantEmail.errors.required">Customer Price is required </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Phone">Phone</label>
+        <input type="text" class="form-control" name="Phone" [(ngModel)]="appliecants.Phone" required #trvPhone="ngModel">
+        <div *ngIf="trvPhone.errors && (trvPhone.dirty || trvPhone.touched)" class="alert alert-danger">
+          <div [hidden]="!trvPhone.errors.required"> Product amount is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="resume">Resume</label>
+        <input type="file" (change)="changeFile($event)" 
+        class="form-control" name="resume" [(ngModel)]="product.resume" required #trvResume="ngModel">      
+        </div>  
+      <button type="submit" class="btn btn-primary" >Save</button>
+    </form>
+  </div>

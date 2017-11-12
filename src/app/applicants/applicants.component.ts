@@ -31,8 +31,14 @@ export class ApplicantsComponent{
     {
     }
   }
-  AddApplicantForm()
-  {
-   this.AddApplicant=!this.AddApplicant;
-  }
+
+
+
+
+
+  
+  // AddApplicantForm()
+  // {
+  //  this.AddApplicant=!this.AddApplicant;
+  // }
 }

@@ -1,7 +1,8 @@
 <h1 style="margin-top:40px;margin-left:10px" >Applicants !</h1>
-<button style="margin-left:10px" (click)="AddApplicantForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+<!-- <button style="margin-left:10px" (click)="AddApplicantForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button> -->
+<app-add-appliecants></app-add-appliecants>
 
-<div *ngIf="AddApplicant" style="background-color:lightgray;margin-left:-5px" class="container-fluid">
+<div  style="background-color:lightgray;margin-left:-5px" class="container-fluid">
     <div class="row" >
   <div *ngFor="let Applicant of AllApplicants;let i = index" class="col-md-3">
     <div class="card">
@@ -11,7 +12,9 @@
                   <div class="col-md-6"><i style="font-size:120%;" class="fa fa-id-card" aria-hidden="true"></i></div>
                   <div class="col-md-6"><i style="margin-left:80%;font-size:120%;" [title]="Applicant.LockedBy!=''?'Locked By :'+Applicant.LockedBy:'' "  [class]="Applicant.LockedBy!='' ?'fa fa-lock':'fa fa-unlock-alt'" aria-hidden="true" ></i></div>
                 </div>
-                   <h4 class="card-heading"><b>{{Applicant.Name}}<i style="margin-left:25px" class="fa fa-pencil" aria-hidden="true"></i><i style="margin-left:30px" class="fa fa-trash-o" aria-hidden="true"></i></b></h4>
+                   <h4 class="card-heading"><b>{{Applicant.Name}}</b></h4>
+                   <app-edit-appliecant></app-edit-appliecant>
+                   <i style="margin-left:30px" class="fa fa-trash-o" aria-hidden="true"></i>
                  </div>
                  <div class="card-body">
                  <!-- <p class="card-p">{{Job.Description}}</p> -->
