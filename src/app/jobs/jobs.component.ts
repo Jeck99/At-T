@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { DbService } from "../DbService/DbService";
+import { Job } from "../ModelService/Job";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -11,20 +13,24 @@ import { DbService } from "../DbService/DbService";
 })
 export class JobsComponent{
 
-  constructor(private http: Http,private Service: DbService) {this.GetJobs(); }
-  Jobs: any[];
+  constructor(private Service: DbService , private router : Router) {this.GetJobs(); }
+  Jobs: Job [] = [];
   AddJob= true;
   Skills = ["","",""] ;
+  EditMode : boolean = false;
+
+
 
     GetJobs() {
       this.Skills =[];
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
       this.Jobs = rsp.json();
-      for(let i = 0;i<this.Jobs.length;i++)
-      {      
-       this.Skills.push(this.Jobs[i].Skillset.split(','));
-      }
+      console.log(this.Jobs);
+      // for(let i = 0;i<this.Jobs.length;i++)
+      // {      
+      //  this.Skills.push(this.Jobs[i].Skillset.split(','));
+      // }
     });
   }
 
@@ -33,5 +39,15 @@ export class JobsComponent{
    this.AddJob=!this.AddJob;
    console.log(this.AddJob)
   }
+
+  JobToEdit : Job = new Job("","","");
+
+PrepareForEdit(job : Job)
+{
+    this.EditMode= true;
+    this.JobToEdit = job;
+}
+  
+
 }
 

@@ -13,7 +13,8 @@ import { User } from "../ModelService/User";
 export class DbService {
 
     Get1(ctrl: string, UserName: string) {        
-        return this.http.get(this.url + ctrl + '?email=' + UserName , { headers: this.header } );
+        return this.http.get(this.url + ctrl + '?email=' + UserName ,
+         { headers: this.header} );
     }
     private url: string;
     private header = new Headers();
@@ -52,6 +53,14 @@ export class DbService {
 
     Edit(ctrl: string, body: any) {
         return this.http.put(this.url + ctrl+"/"+body.Id , body, { headers: this.header });
+    }
+
+    EditCollection(ctrl: string, body: any ,id : number) {
+     return this.http.put(this.url + ctrl+"/"+id , body, { headers: this.header });
+    }
+
+   PostCollection(ctrl: string, body: any , id : number) {
+     return this.http.put(this.url + ctrl+"/"+id , body, { headers: this.header });
     }
 
 

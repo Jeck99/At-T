@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "app/AuthService/Auth.Service";
+import { AuthService } from "../../AuthService/Auth.Service";
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -9,10 +9,11 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: 'home', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: 'appliecants', title: 'appliecants',  icon:'content_paste', class: '' },
+    { path: 'applicants', title: 'applicants',  icon:'content_paste', class: '' },
     { path: 'jobs', title: 'jobs',  icon:'library_books', class: '' },
     { path: 'notifications', title: 'Notifications',  icon:'notifications', class: '' },
     { path: 'user-profile', title: 'User Profile',  icon:'person', class: '' },
+    { path: 'update-job', title: 'Testing(Update-Job)',  icon:'person', class: '' },
     
     // { path: 'upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];

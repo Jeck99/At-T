@@ -16,13 +16,13 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
                                                                        //מסכים נדרשים על פי איפיון
-import { AddAppliecantsComponent } from './add-appliecants/add-appliecants.component';
 import { AddJobComponent } from './add-job/add-job.component';
-import { AppliecantsComponent } from './appliecants/appliecants.component';
 import { HomeComponent } from './home/home.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { UpdateJobComponent } from './update-job/update-job.component';
-import { UpdateAppliecantsComponent } from './update-appliecants/update-appliecants.component';
+import { UpdateApplicantsComponent } from './update-applicants/update-applicants.component';
+import { ApplicantsComponent } from "./applicants/applicants.component";
+import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 
 
 const routes: Routes =[
@@ -39,13 +39,13 @@ const routes: Routes =[
     { path: 'login',        component: LoginComponent },
     
                                                              //מסכים נדרשים על פי איפיון
-    { path: 'add-appliecants',component: AddAppliecantsComponent },
+    { path: 'add-applicants',component: AddApplicantComponent },
     { path: 'add-job',        component: AddJobComponent },
-    { path: 'appliecants',    component: AppliecantsComponent },
+    { path: 'applicants',    component: ApplicantsComponent },
     { path: 'home',           component: HomeComponent },
     { path: 'jobs',           component: JobsComponent },
     { path: 'update-job',     component: UpdateJobComponent },
-    { path: 'update-appliecants',component: UpdateAppliecantsComponent },
+    { path: 'update-applicants',component: UpdateApplicantsComponent },
 
       { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Job } from "app/ModelService/Job";
-import { DbService } from "app/DbService/DbService";
-import { JobSkillset } from "app/ModelService/JobSkillset";
-import { JobRecruiter } from "app/ModelService/JobRecruiter";
+import { DbService } from "../DbService/DbService";
+import { JobSkillset } from "../ModelService/JobSkillset";
+import { JobRecruiter } from "../ModelService/JobRecruiter";
+import { Job } from "../ModelService/Job";
+import { Skill } from "../ModelService/Skill";
+import { Manager } from "../ModelService/Manager";
 
 @Component({
   selector: 'app-job-post',
@@ -16,26 +18,32 @@ export class JobPostComponent implements OnInit {
 
   ngOnInit() {
 console.log("Start job post component");
+this.GetSkills();
+this.GetRecruiters()
   }
 
-Recruiuter : number [] = [3];
-SkillsetId : number [] = [1,2,3];
+
 SkillSet : JobSkillset[] = [];
 JobRecruiter : JobRecruiter [] = [];
 
+saving : boolean = false;
+
+ NewJob : Job = new Job ("","","");
 
 
-job : Job = new Job (5, "Angular Expert","Good Job","Fronted Developer");
-
-
- PostJob() {     
-        // debugger;
-            const req = this.Service.post("Jobs",this.job);
+ PostNewJob() {   
+   console.log(this.NewJob);  
+   this.saving = true;
+            let req = this.Service.post("Jobs",this.NewJob);
             req.map(res => <any>res.json()).
             subscribe(res => {
                 console.log("Post Job Succesfully");
+                if(this.NewJob.Skills!=[])
                 this.SkillPost(res);
+                if(this.NewJob.Recruiters!=[])
                 this.SkillRecruiterId(res);
+                   this.saving = false;
+
                 },
             (err : any) => {
             console.log("error : " + err);
@@ -51,9 +59,9 @@ job : Job = new Job (5, "Angular Expert","Good Job","Fronted Developer");
 SkillPost( jobId : number)
 {
 
-   this.SkillsetId.forEach(element => {
+   this.NewJob.Skills.forEach(element => {
      
-this.SkillSet.push(new JobSkillset( jobId , element));
+this.SkillSet.push(new JobSkillset( jobId , element.Id));
 
    });
            const req = this.Service.post("jobSkillsets",this.SkillSet);
@@ -73,9 +81,9 @@ this.SkillSet.push(new JobSkillset( jobId , element));
 
 SkillRecruiterId( jobId : number)
 {
-   this.Recruiuter.forEach(element => {
+   this.NewJob.Recruiters.forEach(element => {
      
-this.JobRecruiter.push(new JobRecruiter( jobId , element));
+this.JobRecruiter.push(new JobRecruiter( jobId , element.Id));
 
    });
            const req = this.Service.post("JobRecruiters",this.JobRecruiter);
@@ -90,34 +98,55 @@ this.JobRecruiter.push(new JobRecruiter( jobId , element));
             });
 }
 
+Skills : Skill [];
+Recruiters : Manager [];
+  GetSkills(){
+    let req = this.Service.Get("JobSkillsets")
+    req.subscribe(rsp => {
+      this.Skills = rsp.json();
+      console.log(this.Skills);
 
-
-  AddRecruiter(recId : number)
-  {
-    this.Recruiuter.push(recId);
+    });
   }
 
-  //   AddSkill(skillId : number)
-  // {
-  //   this.Skillset.push(skillId);
-  // }
+    GetRecruiters(){
+    let req = this.Service.Get("Managers")
+    req.subscribe(rsp => {
+      this.Recruiters = rsp.json();
+      console.log(this.Recruiters);
 
-
-
-
-  postRecruiter()
-  {
-
+    });
   }
 
-  postSkillset()
-  {
 
-  }
-
-  GetSkills()
+  AddRecruiter(recruiter : Manager)
   {
-    return [1,2,3];
+    if(this.NewJob.Recruiters.indexOf(recruiter)==-1)
+      {
+       this.NewJob.Recruiters.push(recruiter);
+       console.log(this.NewJob.Recruiters);
+      }
+
+    else
+      {
+        let RecruiterIndex = this.NewJob.Recruiters.indexOf(recruiter)
+        this.NewJob.Recruiters.splice(RecruiterIndex,1);
+        console.log(this.NewJob.Recruiters);     
+      } 
+     }
+
+  AddSkill(Skil : Skill)
+  {
+    if(this.NewJob.Skills.indexOf(Skil)==-1)
+      {
+    this.NewJob.Skills.push(Skil);
+      }
+
+    else
+      {
+        let SkilIndex = this.NewJob.Skills.indexOf(Skil)
+        this.NewJob.Skills.splice(SkilIndex,1);
+      }
   }
 
 }

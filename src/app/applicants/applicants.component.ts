@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { DbService } from ".././DbService/DbService";
 
 @Component({
-  selector: 'app-appliecants',
-  templateUrl: './appliecants.component.html',
-  styleUrls: ['./appliecants.component.css'],
+  selector: 'app-applicants',
+  templateUrl: './applicants.component.html',
+  styleUrls: ['./applicants.component.css'],
 providers: [DbService],
 })
-export class AppliecantsComponent{
+export class ApplicantsComponent{
 
-  constructor(private http: Http,private Service: DbService) {this.GetApplicants(); }
+  constructor(private Service: DbService) {this.GetApplicants(); }
   AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=true;
+
+
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
+      console.log(this.AllApplicants);
 
     });
   }
+
+  
   Lock(){
     this.lock=!this.lock;
     if(this.lock)

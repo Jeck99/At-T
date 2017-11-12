@@ -18,23 +18,23 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
-import { AppliecantsComponent } from './appliecants/appliecants.component';
-import { AddAppliecantsComponent } from './add-appliecants/add-appliecants.component';
-import { UpdateAppliecantsComponent } from './update-appliecants/update-appliecants.component';
+import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
+import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { JobsComponent } from './jobs/jobs.component';
 
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { AlertComponent } from './_directives/index';
-import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-import { DbService } from "app/DbService/DbService";
-import { JobPostComponent } from "app/job-post-try/job-post.component";
+import { JobPostComponent } from "./job-post-try/job-post.component";
+import { AuthGuard } from "./_guards/auth.guard";
+import { DbService } from "./DbService/DbService";
+import { ApplicantsComponent } from "./applicants/applicants.component";
 
 @NgModule({
   declarations: [
@@ -48,15 +48,14 @@ import { JobPostComponent } from "app/job-post-try/job-post.component";
     NotificationsComponent,
     UpgradeComponent,
     HomeComponent,
-    AppliecantsComponent,
-    AddAppliecantsComponent,
-    UpdateAppliecantsComponent,
+    ApplicantsComponent,
+    AddApplicantComponent,
+    UpdateApplicantsComponent,
     UpdateJobComponent,
     AddJobComponent,
     JobsComponent,
     RegisterComponent,
     LoginComponent,
-    AlertComponent,
     JobPostComponent,
 
   ],
@@ -70,9 +69,7 @@ RouterModule,
   ],
   providers: [
     AuthGuard,
-    AlertService,
-    AuthenticationService,
-    UserService,DbService,
+    DbService,
 
     // providers used to create fake backend
     MockBackend,
