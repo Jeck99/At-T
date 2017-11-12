@@ -1,0 +1,49 @@
+<span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#edit"></span>
+<div id="edit" class="modal fade bd-example-modal-lg" role="dialog">
+  <br><br>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Edit Product</h3>
+        <form #formEditAppliecant="ngForm" (ngSubmit)="onSubmit(param)">
+          <div class="form-group">
+            <label for="appliecantName">Appliecant Name</label>
+            <input type="text" class="form-control" name="appliecantName" [(ngModel)]="appliecantsEdit.Name" required #trvappliecantName="ngModel">
+            <div *ngIf="trvappliecantName.errors && (trvappliecantName.dirty || trvappliecantName.touched)" class="alert alert-danger">
+              <div [hidden]="!trvappliecantName.errors.required">Product Name is required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="number" class="form-control" name="experience" [(ngModel)]="appliecantsEdit.Experience" required #trvExperience="ngModel">
+            <div *ngIf="trvExperience.errors && (trvExperience.dirty || trvExperience.touched)" class="alert alert-danger">
+              <div [hidden]="!trvExperience.errors.required"> Market Price is required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" name="Email" [(ngModel)]="appliecantsEdit.Email" required #trvEmail="ngModel">
+            <div *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)" class="alert alert-danger">
+              <div [hidden]="!trvEmail.errors.required"> Product Name is required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input type="text" class="form-control" name="Phone" [(ngModel)]="appliecantsEdit.Phone" required #trvPhone="ngModel">
+            <div *ngIf="Phone.errors && (Phone.dirty || Phone.touched)" class="alert alert-danger">
+              <div [hidden]="!Phone.errors.required"> Picture is required (Insert picture as url)</div>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label for="amount">Product Amount</label>
+            <input type="number" class="form-control" name="amount" [(ngModel)]="productToEdit.amount" required #trvAmount="ngModel">
+            <div *ngIf="trvAmount.errors && (trvAmount.dirty || trvAmount.touched)" class="alert alert-danger">
+              <div [hidden]="!trvAmount.errors.required"> Product amount is required</div>
+            </div>
+          </div> -->
+          <button type="submit" class="btn btn-primary" [disabled]="!formEditAppliecant.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

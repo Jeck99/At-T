@@ -14,6 +14,8 @@ export class AppliecantsComponent{
   AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=true;
+
+
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
@@ -27,8 +29,14 @@ export class AppliecantsComponent{
     {
     }
   }
-  AddApplicantForm()
-  {
-   this.AddApplicant=!this.AddApplicant;
-  }
+
+
+
+
+
+  
+  // AddApplicantForm()
+  // {
+  //  this.AddApplicant=!this.AddApplicant;
+  // }
 }

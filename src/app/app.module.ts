@@ -34,6 +34,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { DbService } from "app/DbService/DbService";
+import { EditAppliecantComponent } from './edit-appliecant/edit-appliecant.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DbService } from "app/DbService/DbService";
     RegisterComponent,
     LoginComponent,
     AlertComponent,
+    EditAppliecantComponent,
 
   ],
   imports: [
