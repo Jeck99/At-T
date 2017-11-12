@@ -147,6 +147,7 @@ Recruiters : Manager [];
         let SkilIndex = this.NewJob.Skills.indexOf(Skil)
         this.NewJob.Skills.splice(SkilIndex,1);
       }
+      console.log(this.NewJob.Skills);
   }
 
 }

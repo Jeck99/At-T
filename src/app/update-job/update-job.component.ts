@@ -32,6 +32,7 @@ export class UpdateJobComponent implements OnInit {
       this.SkillSet.push(new JobSkillset(this.JobToUpdate.Id, element.Id));
 
     });
+    console.log(this.SkillSet);
     const req = this.Service.EditCollection("jobSkillsets", this.SkillSet, this.JobToUpdate.Id);
 
     req.subscribe(res => {
@@ -46,6 +47,7 @@ export class UpdateJobComponent implements OnInit {
 
 
   JobRecruiter: JobRecruiter[] = [];
+
   SkillRecruiterId(jobId: number) {
     this.JobToUpdate.Recruiters.forEach(element => {
       this.JobRecruiter.push(new JobRecruiter(jobId, element.Id));
@@ -69,14 +71,16 @@ export class UpdateJobComponent implements OnInit {
 
 
   PostJobToUpdate() {
+    console.log(this.JobToUpdate);
+
     let req = this.Service.Edit("Jobs", this.JobToUpdate);
     req.subscribe(res => {
       console.log("My Update Job Action");
-      console.log(this.JobToUpdate);
       this.SkillPost(); 
     }, (err) => {
         console.log("Editing Problem");
       });
+    
   }
 
 
@@ -103,7 +107,6 @@ export class UpdateJobComponent implements OnInit {
     req.subscribe(rsp => {
       this.Recruiters = rsp.json();
       console.log(this.Recruiters);
-
     });
   }
 
@@ -117,40 +120,32 @@ export class UpdateJobComponent implements OnInit {
 
   CheckRecruiter(Manager: Manager) {
     if (this.JobToUpdate.Recruiters.find(Jrec => Jrec.Id == Manager.Id))
-      return true;
+    return true;
     else
-      return false;
+    return false;
   }
 
 
 
    AddRecruiter(recruiter : Manager)
   {
-
-    //Error in 
-    if(!this.JobToUpdate.Recruiters.find(rec => rec.Id == recruiter.Id))
+    if(this.JobToUpdate.Recruiters.find(rec => rec.Id == recruiter.Id))
       {
-       this.JobToUpdate.Recruiters.push(recruiter);
-       console.log(this.JobToUpdate.Recruiters);
+      let RecruiterIndex = this.JobToUpdate.Recruiters.findIndex(rec => rec.Id == recruiter.Id)
+      this.JobToUpdate.Recruiters.splice(RecruiterIndex,1);
       }
-
     else
       {
-        let RecruiterIndex = this.JobToUpdate.Recruiters.indexOf(recruiter)
-        this.JobToUpdate.Recruiters.splice(RecruiterIndex,1);
-        console.log(this.JobToUpdate.Recruiters);     
+               this.JobToUpdate.Recruiters.push(recruiter);
       } 
             console.log(this.JobToUpdate.Recruiters);
-
      }
 
   AddSkill(Skil : Skill)
   {
-
-    //Error in 
-    if(this.JobToUpdate.Skills.find(sk=> sk.Name == Skil.Name))
+    if(this.JobToUpdate.Skills.find(Sk => Sk.Id == Skil.Id))
       {
-         let SkilIndex = this.JobToUpdate.Skills.indexOf(Skil)
+        let SkilIndex =  this.JobToUpdate.Skills.findIndex(Sk => Sk.Id ==Skil.Id);
         this.JobToUpdate.Skills.splice(SkilIndex,1);
       }
     else
