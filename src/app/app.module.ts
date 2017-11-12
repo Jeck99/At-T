@@ -18,23 +18,28 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
-import { AppliecantsComponent } from './appliecants/appliecants.component';
-import { AddAppliecantsComponent } from './add-appliecants/add-appliecants.component';
-import { UpdateAppliecantsComponent } from './update-appliecants/update-appliecants.component';
+import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
+import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { JobsComponent } from './jobs/jobs.component';
 
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { AlertComponent } from './_directives/index';
-import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+<<<<<<< HEAD
 import { DbService } from "app/DbService/DbService";
 import { EditAppliecantComponent } from './edit-appliecant/edit-appliecant.component';
+=======
+import { JobPostComponent } from "./job-post-try/job-post.component";
+import { AuthGuard } from "./_guards/auth.guard";
+import { DbService } from "./DbService/DbService";
+import { ApplicantsComponent } from "./applicants/applicants.component";
+>>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
 
 @NgModule({
   declarations: [
@@ -48,16 +53,20 @@ import { EditAppliecantComponent } from './edit-appliecant/edit-appliecant.compo
     NotificationsComponent,
     UpgradeComponent,
     HomeComponent,
-    AppliecantsComponent,
-    AddAppliecantsComponent,
-    UpdateAppliecantsComponent,
+    ApplicantsComponent,
+    AddApplicantComponent,
+    UpdateApplicantsComponent,
     UpdateJobComponent,
     AddJobComponent,
     JobsComponent,
     RegisterComponent,
     LoginComponent,
+<<<<<<< HEAD
     AlertComponent,
     EditAppliecantComponent,
+=======
+    JobPostComponent,
+>>>>>>> 5dbb4a0be7079a53cd0b29183780c455d8a7cbf9
 
   ],
   imports: [
@@ -70,9 +79,7 @@ RouterModule,
   ],
   providers: [
     AuthGuard,
-    AlertService,
-    AuthenticationService,
-    UserService,DbService,
+    DbService,
 
     // providers used to create fake backend
     MockBackend,
