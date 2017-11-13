@@ -14,6 +14,8 @@ export const ROUTES: RouteInfo[] = [
     { path: 'notifications', title: 'Notifications',  icon:'notifications', class: '' },
     { path: 'user-profile', title: 'User Profile',  icon:'person', class: '' },
     { path: 'update-job', title: 'Testing(Update-Job)',  icon:'person', class: '' },
+    { path: 'app-update-applicants', title: 'Testing(Update-Applicants)',  icon:'person', class: '' },
+    { path: 'add-applicant', title: 'Testing(Add-Applicant)',  icon:'person', class: '' },
     
     // { path: 'upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];

@@ -48,6 +48,10 @@ PrepareForEdit(job : Job)
     this.JobToEdit = job;
 }
   
+OnAppearance(CloseForm:boolean)
+{
+  this.EditMode=CloseForm;
+}
 
 }
 

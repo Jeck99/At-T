@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { Job } from "../ModelService/Job";
 import { DbService } from "../DbService/DbService";
 import { Manager } from "../ModelService/Manager";
 import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
-
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-update-job',
   templateUrl: './update-job.component.html',
@@ -13,14 +13,13 @@ import { JobRecruiter } from "../ModelService/JobRecruiter";
 })
 export class UpdateJobComponent implements OnInit {
 
-  constructor(private Service: DbService) { }
+  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.GetSkills();
     this.GetRecruiters();
   }
-
-
+  @Output() Appearance = new EventEmitter<boolean>();
   @Input() JobToUpdate: Job;
 
 
@@ -28,10 +27,9 @@ export class UpdateJobComponent implements OnInit {
   SkillPost() {
 
     this.JobToUpdate.Skills.forEach(element => {
-
       this.SkillSet.push(new JobSkillset(this.JobToUpdate.Id, element.Id));
-
     });
+    
     console.log(this.SkillSet);
     const req = this.Service.EditCollection("jobSkillsets", this.SkillSet, this.JobToUpdate.Id);
 
@@ -77,7 +75,8 @@ export class UpdateJobComponent implements OnInit {
     req.subscribe(res => {
       console.log("My Update Job Action");
       this.SkillPost(); 
-    }, (err) => {
+      this.Appearance.emit(false);
+         }, (err) => {
         console.log("Editing Problem");
       });
     

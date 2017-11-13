@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AuthService } from "../../AuthService/Auth.Service";
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +14,9 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location,  private element: ElementRef) {
+    constructor(location: Location,  private element: ElementRef , public AuthService : AuthService) {
       this.location = location;
-          this.sidebarVisible = false;
+           this.sidebarVisible = false;
     }
 
     ngOnInit(){

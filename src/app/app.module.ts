@@ -18,7 +18,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
-import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
+// import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { AddJobComponent } from './add-job/add-job.component';
@@ -35,6 +35,7 @@ import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
+import { AddApplicantComponent } from './add-applicant/add-applicant.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ApplicantsComponent } from "./applicants/applicants.component";
     UpgradeComponent,
     HomeComponent,
     ApplicantsComponent,
-    AddApplicantComponent,
+    // AddApplicantComponent,
     UpdateApplicantsComponent,
     UpdateJobComponent,
     AddJobComponent,
@@ -57,6 +58,7 @@ import { ApplicantsComponent } from "./applicants/applicants.component";
     RegisterComponent,
     LoginComponent,
     JobPostComponent,
+    AddApplicantComponent,
 
   ],
   imports: [

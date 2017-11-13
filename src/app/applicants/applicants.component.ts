@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from ".././DbService/DbService";
+import {Applicant} from "../ModelService/Applicant"
 
 @Component({
   selector: 'app-applicants',
@@ -12,18 +13,22 @@ export class ApplicantsComponent{
   constructor(private Service: DbService) {this.GetApplicants(); }
   AllApplicants: any[];
   lock:boolean= false;
-  AddApplicant=true;
-
+  AddApplicant=false;
+  EditMode : boolean = false;
+  
 
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
       console.log(this.AllApplicants);
-
     });
   }
-
+  OnAppearance(CloseForm:boolean)
+  {
+    this.EditMode=CloseForm;
+  }
+  
   
   Lock(){
     this.lock=!this.lock;
@@ -31,14 +36,23 @@ export class ApplicantsComponent{
     {
     }
   }
-
-
+  ApplicantToEdit : Applicant = new Applicant("","",0,"","");
+  
+  PrepareForEdit(Applicant : Applicant)
+  {
+      this.EditMode= true;
+      this.ApplicantToEdit = Applicant;
+  }
 
 
 
   
-  // AddApplicantForm()
-  // {
-  //  this.AddApplicant=!this.AddApplicant;
-  // }
+  AddApplicantForm()
+  {
+    this.AddApplicant=!this.AddApplicant;
+    this.EditMode= !this.EditMode;
+    
+   }
+
+   
 }

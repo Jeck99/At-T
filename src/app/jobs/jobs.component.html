@@ -33,5 +33,5 @@
 </div>
 
 
-<app-update-job *ngIf="EditMode" [JobToUpdate]="JobToEdit">  </app-update-job>
+<app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode" [JobToUpdate]="JobToEdit">  </app-update-job>
 

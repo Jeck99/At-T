@@ -126,7 +126,6 @@ Recruiters : Manager [];
        this.NewJob.Recruiters.push(recruiter);
        console.log(this.NewJob.Recruiters);
       }
-
     else
       {
         let RecruiterIndex = this.NewJob.Recruiters.indexOf(recruiter)
