@@ -61,7 +61,11 @@ export class UpdateJobComponent implements OnInit {
       });
   }
 
-
+CloseForm()
+{
+  this.Appearance.emit(false);
+  
+}
 
 
 

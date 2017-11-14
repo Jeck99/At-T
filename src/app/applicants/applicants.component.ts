@@ -8,9 +8,13 @@ import {Applicant} from "../ModelService/Applicant"
   styleUrls: ['./applicants.component.css'],
 providers: [DbService],
 })
-export class ApplicantsComponent{
+export class ApplicantsComponent implements OnInit {
 
-  constructor(private Service: DbService) {this.GetApplicants(); }
+  ngOnInit() {
+    this.GetApplicants();
+      }
+
+  constructor(private Service: DbService) { }
   AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=false;
@@ -44,6 +48,15 @@ export class ApplicantsComponent{
       this.ApplicantToEdit = Applicant;
   }
 
+  DeleteApplicant(id:number)
+  {
+    console.log("x");
+    let req = this.Service.delete("Applicants",id)
+    req.subscribe(rsp => {
+      alert("Deleted");
+      this.ngOnInit();
+    });
+  }
 
 
   

@@ -11,14 +11,26 @@ import { Router } from "@angular/router";
   styleUrls: ['./jobs.component.css'],
   providers:[DbService]
 })
-export class JobsComponent{
+export class JobsComponent implements OnInit {
 
-  constructor(private Service: DbService , private router : Router) {this.GetJobs(); }
+  ngOnInit() {
+    this.GetJobs();
+          }
+
+  constructor(private Service: DbService , private router : Router) { }
   Jobs: Job [] = [];
-  AddJob= true;
+  AddJob= false;
   Skills = ["","",""] ;
   EditMode : boolean = false;
-
+  
+  DeleteJob(id:number)
+  {
+    let req = this.Service.delete("Jobs",id)
+    req.subscribe(rsp => {
+      alert("Deleted");
+      this.ngOnInit();
+    });
+  }
 
 
     GetJobs() {
@@ -37,7 +49,6 @@ export class JobsComponent{
   AddJobForm()
   {
    this.AddJob=!this.AddJob;
-   console.log(this.AddJob)
   }
 
   JobToEdit : Job = new Job("","","");

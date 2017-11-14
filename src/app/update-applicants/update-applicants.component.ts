@@ -49,6 +49,11 @@ export class UpdateApplicantsComponent implements OnInit {
     });
   }
 
+  CloseForm()
+  {
+    this.Appearance.emit(false);
+    
+  }
   
 
   AppRecruiter: ApplicantRecruiter[] = [];

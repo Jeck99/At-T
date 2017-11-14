@@ -1,37 +1,37 @@
-<h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
+<h1 id="Headline" >Jobs !</h1>
 <button style="margin-left:10px" (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
-
-<div *ngIf="!EditMode" style="background-color:lightgray" class="container-fluid">
-  <div class="row" >
-<div *ngFor="let Job of Jobs ; let i = index" class="col-md-3">
-  <div class="card">
-          <div class="card-content">
-            <div class="card-header-blue">
-                <div class="row">
-                    <div class="col-md-6"><i style="font-size:120%;"  class="fa fa-id-card" aria-hidden="true"></i></div>
-                    <div class="col-md-6"><i  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i><i style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i>
+<app-job-post *ngIf="AddJob" ></app-job-post>
+  <div *ngIf=" !EditMode && !AddJob"  class="container-fluid">
+    <div class="row" >
+  <div *ngFor="let Job of Jobs ; let i = index" class="col-sm-3">
+    <div class="card">
+            <div class="card-content">
+              <div class="card-header-blue">
+                  <div class="row">
+                    <div class="col-sm-5" ></div>
+                    <div class="col-xs-2"><i  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i></div>
+                    <div class="col-xs-2" ></div>
+                    <div class="col-xs-2"><i (click)="DeleteJob(Job.Id)" style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i></div>      
                     </div>
-                  </div>
-                 <h4 class="card-heading"><b>{{Job.Title}}</b></h4>
+                   <div><h4  class="card-heading"><span><i style="display:absolute" class="fa fa-id-card" aria-hidden="true"></i></span> <b>{{Job.Title}}</b></h4></div>
+                 </div>
+                 <div class="card-body">
+                    <h6  style="font-weight:500" >Recruiters:</h6>
+                 <p  class="card-p">{{Job.Description}}</p>
                </div>
-               <div class="card-body">
-                  <h6 style="font-weight:500" >Recruiters:</h6>
-               <p class="card-p">{{Job.Description}}</p>
-             </div>
-             <nav class="nav-tabs">
-               <ul class="nav nav-pills pull-left" *ngFor="let Skill of Job.Skills">
-                      <li class="card-action"><a  [title]= "Skill.Description"  href="#">{{Skill.Name}}</a></li>
-                  </ul>
-               
-             </nav>
-               
-          </div>
-      </div>
-   </div>  </div>
+               <nav class="nav-tabs">
+                 <ul class="nav nav-pills pull-left" *ngFor="let Skill of Job.Skills">
+                        <li class="card-action"><a  [title]= "Skill.Description"  href="#">{{Skill.Name}}</a></li>
+                    </ul>
+                 
+               </nav>
+                 
+            </div>
+        </div>
+     </div>  </div>
+  
+     
+  </div>
 
-   
-</div>
-
-
-<app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode" [JobToUpdate]="JobToEdit">  </app-update-job>
+<app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode && !AddJob" [JobToUpdate]="JobToEdit">  </app-update-job>
 
