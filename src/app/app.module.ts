@@ -43,6 +43,8 @@ import { FileDropDirective } from './file-drop.directive';
 import { TabsModule } from 'ngx-tabs';
 import { Ng2TableModule } from 'ngx-datatable';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { Ng2CompleterModule } from "ng2-completer";
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ RouterModule,
     AppRoutingModule    ,  
     TabsModule,
     NgxPaginationModule,
-    Ng2TableModule
+    Ng2TableModule,
+    Ng2CompleterModule,
+    Ng2SmartTableModule
   ],
   providers: [
     AuthGuard,

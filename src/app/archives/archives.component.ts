@@ -11,17 +11,48 @@ import { Job } from "../ModelService/Job";
   styleUrls: ['./archives.component.css']
 })
 export class ArchivesComponent implements OnInit {
-
-  Jobs: Job [] = [];
-  AddJob= false;
-  Skills = ["","",""] ;
-  EditMode : boolean = false;
+  p: number;
+  Jobs: Job[] = [];
+  AddJob = false;
+  Skills = ["", "", ""];
+  EditMode: boolean = false;
   ngOnInit() {
     this.GetApplicants();
     this.GetJobs();
-    
+
   }
-  constructor(private Service: DbService, private Notify : NotificationsService,public AuthService: AuthService) { }
+  settings = {
+    actions: {
+      delete: false,
+      add: false,
+      edit: false,
+    },
+    columns: {
+      Id: {
+        title: 'ID',
+      },
+      Name: {
+        title: 'Name',
+      },
+      Email: {
+        title: 'Email',
+      },
+      Phone: {
+        title: 'Phone',
+      },
+      Title: {
+        title: 'Title',
+      },
+      Experience: {
+        title: 'Experience',
+      },
+      Active: {
+        title: 'Active',
+      },
+    },
+  };
+
+  constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
   AllApplicants: any[];
   GetApplicants() {
     let req = this.Service.Get("Applicants")
@@ -30,18 +61,17 @@ export class ArchivesComponent implements OnInit {
       console.log(this.AllApplicants);
     });
   }
-  OnAppearance(CloseForm:string)
-  {
+  OnAppearance(CloseForm: string) {
     this.EditMode = false;
-    if(CloseForm == 'success')
-    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
+    if (CloseForm == 'success')
+      this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
   }
   GetJobs() {
-    this.Skills =[];
-  let req = this.Service.Get("Jobs")
-  req.subscribe(rsp => {
-    this.Jobs = rsp.json();
-    console.log(this.Jobs);
-  });
-}
+    this.Skills = [];
+    let req = this.Service.Get("Jobs")
+    req.subscribe(rsp => {
+      this.Jobs = rsp.json();
+      console.log(this.Jobs);
+    });
+  }
 }
