@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
     constructor(location: Location,  private element: ElementRef , public AuthService : AuthService) {
       this.location = location;
            this.sidebarVisible = false;
+           AuthService.Role
     }
 
     ngOnInit(){
@@ -32,7 +33,6 @@ export class NavbarComponent implements OnInit {
             toggleButton.classList.add('toggled');
         }, 500);
         body.classList.add('nav-open');
-
         this.sidebarVisible = true;
     };
     sidebarClose() {

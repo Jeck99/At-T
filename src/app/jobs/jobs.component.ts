@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { DbService } from "../DbService/DbService";
 import { Job } from "../ModelService/Job";
 import { Router } from "@angular/router";
+import { AuthService } from "app/AuthService/Auth.Service";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class JobsComponent implements OnInit {
     this.GetJobs();
           }
 
-  constructor(private Service: DbService , private router : Router) { }
+  constructor(private Service: DbService , private router : Router, public AuthService : AuthService) { }
   Jobs: Job [] = [];
   AddJob= false;
   Skills = ["","",""] ;

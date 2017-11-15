@@ -22,22 +22,19 @@
                   <button *ngFor="let rec of Job.Recruiters" type="button" class="btn btn-default btn-sm">
                       <span class="glyphicon glyphicon-thumbs-up"></span> {{rec.UserName}}
                     </button>
-               </div>
-               <h6>       Skills : </h6 >          
-               <nav >
-                 <ul  *ngFor="let Skill of Job.Skills | slice : 0 : 3">
-                        <li class="card-action"><a  [title]= "Skill.Description"  >{{Skill.Name}}</a></li>
-                    </ul>          
-               </nav>
-              <span>Description : {{Job.Description}}</span> 
-               
-                 
-            </div>
+          </div>
+          <h6> Skills : </h6>
+          <nav>
+            <ul *ngFor="let Skill of Job.Skills | slice : 0 : 3">
+              <li class="card-action"><a [title]="Skill.Description">{{Skill.Name}}</a></li>
+            </ul>
+          </nav>
+          <span>Description : {{Job.Description}}</span>
         </div>
-     </div>  </div>
-  
-     
+      </div>
+    </div>
   </div>
+</div>
 
-<app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode && !AddJob" [JobToUpdate]="JobToEdit">  </app-update-job>
-
+<pagination-controls (pageChange)="p = $event"></pagination-controls>       
+<app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode && !AddJob" [JobToUpdate]="JobToEdit"> </app-update-job>
