@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from ".././DbService/DbService";
 import {Applicant} from "../ModelService/Applicant"
+import { NotificationsService } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-applicants',
@@ -14,7 +15,7 @@ export class ApplicantsComponent implements OnInit {
     this.GetApplicants();
       }
 
-  constructor(private Service: DbService) { }
+  constructor(private Service: DbService , private Notify : NotificationsService) { }
   AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=false;
@@ -28,9 +29,13 @@ export class ApplicantsComponent implements OnInit {
       console.log(this.AllApplicants);
     });
   }
-  OnAppearance(CloseForm:boolean)
+  OnAppearance(CloseForm:string)
   {
-    this.EditMode=CloseForm;
+    this.EditMode = false;
+    if(CloseForm == 'success')
+    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);
+    
+
   }
   
   

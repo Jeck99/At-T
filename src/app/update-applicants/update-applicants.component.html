@@ -15,14 +15,14 @@
             <form>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group form-black label-floating is-empty">
+                  <div class="form-group form-black   ">
                     <label class="control-label">Title </label>
                     <input type="text" name="ApplicantToUpdate.Title" [(ngModel)]="ApplicantToUpdate.Title" class="form-control">
                   </div>
                 </div>
 
                 <div class="col-md-6">
-                  <div class="form-group form-black label-floating is-empty">
+                  <div class="form-group form-black   ">
                     <label class="control-label">Experience Needed</label>
                     <input type="number" name="ApplicantToUpdate.Experience" min="0" [(ngModel)]="ApplicantToUpdate.Experience" class="form-control">
                   </div>
@@ -31,13 +31,13 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group form-black label-floating is-empty">
+                  <div class="form-group form-black   ">
                     <label class="control-label">Email</label>
                     <input type="text" name="ApplicantToUpdate.Email" [(ngModel)]="ApplicantToUpdate.Email" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group form-black label-floating is-empty">
+                  <div class="form-group form-black   ">
                     <label class="control-label">Name</label>
                     <input type="text" name="ApplicantToUpdate.Name" [(ngModel)]="ApplicantToUpdate.Name" class="form-control">
                   </div>
@@ -45,28 +45,28 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group form-black label-floating is-empty">
+                  <div class="form-group form-black   ">
                     <label class="control-label">Phone</label>
                     <input type="text" name="ApplicantToUpdate.Phone" [(ngModel)]="ApplicantToUpdate.Phone" class="form-control">
                   </div>
                 </div>
               </div>
 
-              <div class="box">
-                <h2>Drop File</h2>
-                <div class="k-dropzone"
+      
+            <div class="box">
+                <h2>Attache Resume</h2>
+                <div class="dropzone"
                      fileDrop
                      (filesDropped)="handleDrop($event)"
                      (filesHovered)="dropzoneState($event)"
                      [ngClass]="{'active': dropzoneActive}">
-                 <span  style="align-content:center;" ><i class="fa fa-cloud-upload fa-2x"></i></span>    
+                     <i id="uploadcloud"  class="fa fa-cloud-upload fa-2x"></i>
                 </div>
-                <div *ngIf="currentUpload">
-                  <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-                  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-                </div>
-              </div>
-
+            </div>
+            <div  *ngIf="currentUpload">
+              <progress style="width:100%;color:#70d2ce;background-color:#70d2ce" class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+              Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+          </div>
 
               <div class="row">
                 <div class="col-md-12">

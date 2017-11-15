@@ -3,7 +3,14 @@
 margin-right: 20px;
 height: 50%;
 }
-.k-dropzone{
-    border: 2px dashed black;
+.dropzone{
     height: 50px;
+}
+.active{
+    border : 2px solid #70d2ce;
+}
+#uploadcloud{
+    padding-left: 45%;
+    font-size:300%;
+    
 }

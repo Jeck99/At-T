@@ -3,6 +3,8 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
   selector: '[fileDrop]'
 })
 export class FileDropDirective {
+
+  
   @Output() filesDropped =  new EventEmitter<FileList>();
   @Output() filesHovered =  new EventEmitter<boolean>();
   constructor() { }

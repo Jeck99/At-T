@@ -79,9 +79,8 @@ export class AddApplicantComponent implements OnInit {
             this.SkillSet.push(new ApplicantSkillset(appId, element.Id));
         });
         const req = this.Service.post("ApplicantSkillsets", this.SkillSet);
-
         req.subscribe(res => {
-            console.log("applicant SkillSet Added Succesfully     ApplicantSkillsets Controller");
+            console.log("applicant SkillSet Added Succesfully  ApplicantSkillsets Controller");
             console.log(res);
         },
             (err: any) => {

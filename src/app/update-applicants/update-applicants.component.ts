@@ -2,8 +2,8 @@ import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { Job } from "../ModelService/Job";
 import { Applicant } from "../ModelService/Applicant";
 import { ApplicantSkillset } from "../ModelService/‏‏ApplicantSkillset";
-import { Upload } from '../Upload'
-
+import { UploadService } from '../upload.service';
+import { Upload } from '../Upload';
 
 import { DbService } from "../DbService/DbService";
 import { Manager } from "../ModelService/Manager";
@@ -11,61 +11,63 @@ import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { ApplicantRecruiter } from '../ModelService/\u200F\u200FApplicantRecruiter';
-import { UploadService } from '../upload.service';
 import * as _ from "lodash";
 import { AngularFireDatabase } from 'angularfire2/database';
+import { NotificationsService } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-update-applicants',
   templateUrl: './update-applicants.component.html',
   styleUrls: ['./update-applicants.component.css'],
-  providers : [AngularFireDatabase]
+  providers : [AngularFireDatabase,UploadService]
 
 })
 export class UpdateApplicantsComponent implements OnInit {
 
   constructor(private Service: DbService,private upSvc: UploadService) { }
+  currentUpload: Upload;
+  dropzoneActive:boolean = false;
+  x:any;
 
   ngOnInit() {
     this.GetSkills();
     this.GetRecruiters();
   }
  Color=false;
+ dropzoneState($event: boolean) {
+  this.dropzoneActive = $event;
+  this.Color=!this.Color;
+}
+handleDrop(fileList: FileList) {
+  let filesIndex = _.range(fileList.length)
+  _.each(filesIndex, (idx) => {
+    console.log("idx",idx);
+    this.currentUpload = new Upload(fileList[idx]);
+    console.log("currentUpload",this.currentUpload);
+   
+ this.x =  this.upSvc.pushUpload(this.currentUpload)
+}   
+  )
+}
+
 
   @Input() ApplicantToUpdate:Applicant;
-  @Output() Appearance = new EventEmitter<boolean>();
+  @Output() Appearance = new EventEmitter<string>();
   
   Skills: Skill[];
   Recruiters: Manager[];
-  currentUpload: Upload;
-  dropzoneActive:boolean = false;
-
-  dropzoneState($event: boolean) {
-    console.log("Hover");
-    this.dropzoneActive = $event;
-    console.log($event);
-  }
-
-
-  handleDrop(fileList: FileList) {
-    let filesIndex = _.range(fileList.length)
-    _.each(filesIndex, (idx) => {
-      this.currentUpload = new Upload(fileList[idx]);
-      this.upSvc.pushUpload(this.currentUpload)}
-    )
-  }
+  
 
   GetSkills() {
     let req = this.Service.Get("JobSkillsets")
     req.subscribe(rsp => {
       this.Skills = rsp.json();
       console.log(this.Skills);
-
     });
   }
+
   upload()
   {
-// this.Color=!this.Color;
 console.log("x");
   }
   GetRecruiters() {
@@ -78,7 +80,7 @@ console.log("x");
 
   CloseForm()
   {
-    this.Appearance.emit(false);   
+    this.Appearance.emit("");   
   }
 
 
@@ -93,7 +95,6 @@ console.log("x");
         console.log("Job Recruiter Id's Edit Succesfully");
         console.log(res);
         this.AppRecruiter =[];
-        this.Appearance.emit(false);
         
       },
         (err: any) => {
@@ -118,7 +119,7 @@ console.log("x");
       this.SkillSet = [];
     },
       (err: any) => {
-        console.log("error in skillset Edit : " + err);
+        console.log("error in Applicant skillset Edit : " + err);
         console.log(err.json());
         this.SkillSet = [];    
       });
@@ -127,12 +128,13 @@ console.log("x");
 
   PostApplicantToUpdate() {
     console.log(this.ApplicantToUpdate);
-
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {
-      console.log("My Update Job Action");
+      console.log("My Update Applicant Action");
       this.ApplicantSkillPost(); 
       this.PostApplicantRecruiters();
+      this.Appearance.emit("success");
+      
     }, (err) => {
         console.log("Editing Problem");
       });

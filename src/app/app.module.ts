@@ -38,6 +38,8 @@ import { UploadService } from './upload.service';
 import { AngularFireAuth } from "angularfire2/auth";
 import { NotificationsService } from 'app/notifications/notifications.component';
 import { ArchivesComponent } from './archives/archives.component';
+import { UploadFormComponent } from './upload-form/upload-form.component';
+import { FileDropDirective } from './file-drop.directive';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { ArchivesComponent } from './archives/archives.component';
     LoginComponent,
     JobPostComponent,
     AddApplicantComponent,
-    ArchivesComponent
+    ArchivesComponent,
+    UploadFormComponent,
+    FileDropDirective
 
   ],
   imports: [
