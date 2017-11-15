@@ -1,13 +1,13 @@
 <div class="logo">
     <a href="https://www.corp.att.com/worldwide/att-you-israel.html" class="simple-text">
         <div class="logo-img">
-            <img src="/assets/img/at&t_logo2.png"/>
+            <img src="/assets/img/at&t_logo2.png" />
         </div>
         AT&T Israel
         <h6>AT&T Recruiting Tool</h6>
         <span> {{Currentuser}} possibilities </span>
     </a>
-    
+
 </div>
 <div class="sidebar-wrapper">
     <ul class="nav nav-mobile-menu" *ngIf="isMobileMenu()">
@@ -38,17 +38,16 @@
             </a>
         </li>
     </ul>
-
     <div class="nav-container">
         <ul class="nav">
-            <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
-                <a  [routerLink]="[menuItem.path]">
-                    <i class="material-icons">{{menuItem.icon}}</i>
-                    <p>{{menuItem.title}}</p>
+            <ng-container *ngFor="let menuItem of menuItems">
+                <li *ngIf="menuItem.Role" routerLinkActive="active" class="{{menuItem.class}}">
+                    <a [routerLink]="[menuItem.path]">
+                    <i  class="material-icons">{{menuItem.icon}}</i>
+                    <p >{{menuItem.title}}</p>
                 </a>
-            </li>
-
-
+                </li>
+            </ng-container>
         </ul>
     </div>
 </div>

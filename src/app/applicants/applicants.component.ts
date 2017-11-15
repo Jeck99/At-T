@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DbService } from ".././DbService/DbService";
 import {Applicant} from "../ModelService/Applicant"
 import { NotificationsService } from '../notifications/notifications.component';
+import { AuthService } from "app/AuthService/Auth.Service";
 
 @Component({
   selector: 'app-applicants',
@@ -15,7 +16,7 @@ export class ApplicantsComponent implements OnInit {
     this.GetApplicants();
       }
 
-  constructor(private Service: DbService , private Notify : NotificationsService) { }
+  constructor(private Service: DbService , private Notify : NotificationsService, public AuthService : AuthService) { }
   AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=false;

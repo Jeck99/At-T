@@ -8,10 +8,11 @@ export class AuthService {
 
     constructor(private Service : DbService,  private router: Router,) {
         this.AuthState();
+        this.RoleCheck();
     }
 
     IsLogged = false;
-    Role = false;
+    Role : boolean =false;
     
     AuthState() {
 

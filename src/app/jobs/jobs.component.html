@@ -8,9 +8,9 @@
               <div class="card-header-blue">
                   <div class="row">
                     <div class="col-sm-5" ></div>
-                    <div class="col-xs-2"><i  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i></div>
+                    <div class="col-xs-2"><i *ngIf="AuthService.Role"  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i></div>
                     <div class="col-xs-2" ></div>
-                    <div class="col-xs-2"><i (click)="DeleteJob(Job.Id)" style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i></div>      
+                    <div class="col-xs-2"><i *ngIf="AuthService.Role" (click)="DeleteJob(Job.Id)" style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i></div>      
                     </div>
                    <div><h4  class="card-heading"><span><i style="display:absolute" class="fa fa-id-card" aria-hidden="true"></i></span> <b>{{Job.Title}}</b></h4></div>
                  </div>
