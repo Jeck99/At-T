@@ -1,7 +1,9 @@
+<i data-toggle="modal" data-target="#myModal" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true" (click)="show()"></i>
 
-<i style="margin-left:45px" class="fa fa-pencil" aria-hidden="true" (click)="show()"></i>                  
-<div *ngIf="IsVisible" class="modal fade login-register-form" id="myModal" role="dialog">        
-  <div class="modal-dialog">
+<!-- <i style="margin-left:45px" class="fa fa-pencil" aria-hidden="true" (click)="show()"></i> -->
+<!-- <div *ngIf="IsVisible" class="modal fade login-register-form" id="myModal" role="dialog">         -->
+<div  id="myModal" class="modal-fade login-register-form" role="dialog">
+  <div class="modal-dialog modal-lg">
     <div class="main-content">
       <div class="container-fluid">
         <div class="col-md-8">
@@ -67,12 +69,10 @@
                           <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters">
 
                             <input type="checkbox" (click)="AddRecruiter(recruiter)" *ngIf="!CheckRecruiter(recruiter)">
-                            <span
-                              id="chbox" *ngIf="!CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
+                            <span id="chbox" *ngIf="!CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
 
-                              <input type="checkbox" (click)="AddRecruiter(recruiter)" checked *ngIf="CheckRecruiter(recruiter)">
-                              <span
-                                id="chbox" *ngIf="CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
+                            <input type="checkbox" (click)="AddRecruiter(recruiter)" checked *ngIf="CheckRecruiter(recruiter)">
+                            <span id="chbox" *ngIf="CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
                           </div>
                         </div>
                       </div>
