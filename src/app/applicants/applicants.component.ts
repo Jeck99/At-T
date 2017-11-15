@@ -22,7 +22,6 @@ export class ApplicantsComponent implements OnInit {
   AddApplicant=false;
   EditMode : boolean = false;
   
-
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
@@ -34,11 +33,8 @@ export class ApplicantsComponent implements OnInit {
   {
     this.EditMode = false;
     if(CloseForm == 'success')
-    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);
-    
-
+    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
   }
-  
   
   Lock(){
     this.lock=!this.lock;
@@ -64,14 +60,10 @@ export class ApplicantsComponent implements OnInit {
     });
   }
 
-
-  
   AddApplicantForm()
   {
     this.AddApplicant=!this.AddApplicant;
     this.EditMode= !this.EditMode;
-    
-   }
-
-   
+  
+   } 
 }

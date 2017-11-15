@@ -41,7 +41,7 @@
     <div class="nav-container">
         <ul class="nav">
             <ng-container *ngFor="let menuItem of menuItems">
-                <li *ngIf="menuItem.Role" routerLinkActive="active" class="{{menuItem.class}}">
+                <li  routerLinkActive="active" class="{{menuItem.class}}">
                     <a [routerLink]="[menuItem.path]">
                     <i  class="material-icons">{{menuItem.icon}}</i>
                     <p >{{menuItem.title}}</p>

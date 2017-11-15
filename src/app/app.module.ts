@@ -40,7 +40,9 @@ import { NotificationsService } from 'app/notifications/notifications.component'
 import { ArchivesComponent } from './archives/archives.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { FileDropDirective } from './file-drop.directive';
-
+import { TabsModule } from 'ngx-tabs';
+import { Ng2TableModule } from 'ngx-datatable';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -75,7 +77,10 @@ import { FileDropDirective } from './file-drop.directive';
     HttpModule,
     ComponentsModule,
 RouterModule,
-    AppRoutingModule    ,   
+    AppRoutingModule    ,  
+    TabsModule,
+    NgxPaginationModule,
+    Ng2TableModule
   ],
   providers: [
     AuthGuard,
