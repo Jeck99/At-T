@@ -1,4 +1,9 @@
 #UploadCv
 {
 margin-right: 20px;
+height: 50%;
+}
+.k-dropzone{
+    border: 2px dashed black;
+    height: 50px;
 }

@@ -3,22 +3,12 @@ import { Skill } from "./Skill";
 
 export class Applicant
 {
-
-
-
-
-
-
-
-/**
- *
- */
 constructor(email : string , title : string , experience :number,name : string , phone : string) 
 {
         this.Experience = experience;
         this.Title = title;     
-           this.Name = name;
-           this.Active = true;
+        this.Name = name;
+        this.Active = true;
         this.Email = email;
         this.LockedBy = "";
         this.Phone = phone;

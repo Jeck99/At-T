@@ -5,6 +5,7 @@ import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { Job } from "../ModelService/Job";
 import { Skill } from "../ModelService/Skill";
 import { Manager } from "../ModelService/Manager";
+import { NotificationsService } from 'app/notifications/notifications.component';
 
 @Component({
   selector: 'app-job-post',
@@ -14,7 +15,7 @@ import { Manager } from "../ModelService/Manager";
 })
 export class JobPostComponent implements OnInit {
 
-  constructor(private Service : DbService) { }
+  constructor(private Service : DbService , private Notify : NotificationsService) { }
 
   ngOnInit() {
 console.log("Start job post component");
@@ -38,6 +39,7 @@ saving : boolean = false;
             req.map(res => <any>res.json()).
             subscribe(res => {
                 console.log("Post Job Succesfully");
+                this.Notify.showNotification('top','right','Post Job Succesfully', 2);         
                 if(this.NewJob.Skills!=[])
                 this.SkillPost(res);
                 if(this.NewJob.Recruiters!=[])
@@ -47,6 +49,8 @@ saving : boolean = false;
                 },
             (err : any) => {
             console.log("error : " + err);
+            this.Notify.showNotification('bottom','right','Error in posting the job', 4);      
+            
 
             console.log(err.json());
 

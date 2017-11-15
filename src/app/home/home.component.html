@@ -5,9 +5,12 @@
     <h1>Hi {{ AuthService.Role ?  'Manager' : currentUser }}!</h1>
     <p>You're logged in with Angular 2!!</p>
     <h3>Important messege for the User/Manager Here(statistic , Successful placement or Job To publish) 
-      <app-job-post>  </app-job-post> 
-      <!-- <add-applicant> </add-applicant> -->
     </h3>
     <ul>
     </ul>
+    <div (click)="UseNotifyService()">???????</div> 
+    
 </div>
+
+
+

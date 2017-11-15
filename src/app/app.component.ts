@@ -14,12 +14,14 @@ declare const $: any;
 export class AppComponent implements OnInit {
 
   constructor(public location: Location , public AuthService : AuthService) {
-          console.log("========> " + AuthService.Role);  
+          console.log("========> " + AuthService.Role); 
+          this.AuthService.IsLogged; 
   }
 
   ngOnInit() {
       $.material.options.autofill = true;
       $.material.init();
+      this.AuthService.AuthState();
   }
 
     isMaps(path){

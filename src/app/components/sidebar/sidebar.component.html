@@ -10,7 +10,7 @@
     
 </div>
 <div class="sidebar-wrapper">
-    <!-- <ul class="nav nav-mobile-menu" *ngIf="isMobileMenu()">
+    <ul class="nav nav-mobile-menu" *ngIf="isMobileMenu()">
         <li>
             <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="material-icons">dashboard</i>
@@ -37,7 +37,7 @@
                <p class="hidden-lg hidden-md">Profile</p>
             </a>
         </li>
-    </ul> -->
+    </ul>
 
     <div class="nav-container">
         <ul class="nav">
@@ -45,26 +45,10 @@
                 <a  [routerLink]="[menuItem.path]">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>
-                    <!-- <form  role="search" *ngIf="menuItem.title=='applicants'">
-                            <div class="form-group form-black is-empty">
-                                <input type="text" class="form-control" placeholder="Search applicants">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i><div class="ripple-container"></div>
-                            </button>
-                        </form>
-                        <form  role="search" *ngIf="menuItem.title=='jobs'">
-                                <div class="form-group form-black is-empty">
-                                    <input type="text" class="form-control" placeholder="Search jobs">
-                                    <span class="material-input"></span>
-                                </div>
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i><div class="ripple-container"></div>
-                                </button>
-                            </form> -->
                 </a>
             </li>
+
+
         </ul>
     </div>
 </div>

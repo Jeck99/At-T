@@ -2,6 +2,7 @@ import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { Job } from "../ModelService/Job";
 import { Applicant } from "../ModelService/Applicant";
 import { ApplicantSkillset } from "../ModelService/‏‏ApplicantSkillset";
+import { Upload } from '../Upload'
 
 
 import { DbService } from "../DbService/DbService";
@@ -10,27 +11,49 @@ import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { ApplicantRecruiter } from '../ModelService/\u200F\u200FApplicantRecruiter';
+import { UploadService } from '../upload.service';
+import * as _ from "lodash";
+import { AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   selector: 'app-update-applicants',
   templateUrl: './update-applicants.component.html',
-  styleUrls: ['./update-applicants.component.css']
+  styleUrls: ['./update-applicants.component.css'],
+  providers : [AngularFireDatabase]
+
 })
 export class UpdateApplicantsComponent implements OnInit {
 
-  constructor(private Service: DbService) { }
+  constructor(private Service: DbService,private upSvc: UploadService) { }
 
   ngOnInit() {
-
-        this.GetSkills();
+    this.GetSkills();
     this.GetRecruiters();
   }
-  
+ Color=false;
 
   @Input() ApplicantToUpdate:Applicant;
   @Output() Appearance = new EventEmitter<boolean>();
   
   Skills: Skill[];
   Recruiters: Manager[];
+  currentUpload: Upload;
+  dropzoneActive:boolean = false;
+
+  dropzoneState($event: boolean) {
+    console.log("Hover");
+    this.dropzoneActive = $event;
+    console.log($event);
+  }
+
+
+  handleDrop(fileList: FileList) {
+    let filesIndex = _.range(fileList.length)
+    _.each(filesIndex, (idx) => {
+      this.currentUpload = new Upload(fileList[idx]);
+      this.upSvc.pushUpload(this.currentUpload)}
+    )
+  }
 
   GetSkills() {
     let req = this.Service.Get("JobSkillsets")
@@ -40,7 +63,11 @@ export class UpdateApplicantsComponent implements OnInit {
 
     });
   }
-
+  upload()
+  {
+// this.Color=!this.Color;
+console.log("x");
+  }
   GetRecruiters() {
     let req = this.Service.Get("Managers")
     req.subscribe(rsp => {
@@ -51,10 +78,9 @@ export class UpdateApplicantsComponent implements OnInit {
 
   CloseForm()
   {
-    this.Appearance.emit(false);
-    
+    this.Appearance.emit(false);   
   }
-  
+
 
   AppRecruiter: ApplicantRecruiter[] = [];
   
@@ -80,11 +106,9 @@ export class UpdateApplicantsComponent implements OnInit {
 
   SkillSet: ApplicantSkillset [] = [];
   ApplicantSkillPost() {
-
     this.ApplicantToUpdate.Skills.forEach(element => {
       this.SkillSet.push(new ApplicantSkillset(this.ApplicantToUpdate.Id, element.Id));
-    });
-    
+    });  
     console.log(this.SkillSet);
     const req = this.Service.EditCollection("ApplicantSkillsets", this.SkillSet, this.ApplicantToUpdate.Id);
 

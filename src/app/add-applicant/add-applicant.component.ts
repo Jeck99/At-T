@@ -47,7 +47,6 @@ export class AddApplicantComponent implements OnInit {
         req.subscribe(rsp => {
             this.Recruiters = rsp.json();
             console.log(this.Recruiters);
-
         });
     }
 
@@ -58,14 +57,12 @@ export class AddApplicantComponent implements OnInit {
     PostApplicant() {
         this.Applicant.LockedBy = "Almog";
         console.log(this.Applicant);
-
         const req = this.Service.post("Applicants", this.Applicant);
         req.map(res => <any>res.json()).
             subscribe(res => {
                 console.log("Post Job Succesfully");
                 this.SkillPost(res);
-                this.SkillRecruiterId(res);
-            },
+                this.SkillRecruiterId(res);},
             (err: any) => {
                 console.log("error : " + err);
 
@@ -78,11 +75,8 @@ export class AddApplicantComponent implements OnInit {
 
 
     SkillPost(appId: number) {
-
         this.Applicant.Skills.forEach(element => {
-
             this.SkillSet.push(new ApplicantSkillset(appId, element.Id));
-
         });
         const req = this.Service.post("ApplicantSkillsets", this.SkillSet);
 

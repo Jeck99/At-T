@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../AuthService/Auth.Service";
+import { NotificationsService } from 'app/notifications/notifications.component';
+import { Router, ActivatedRoute } from '@angular/router';
+
 // import { AuthService } from "app/AuthService/Auth.Service";
 // import { User } from "app/ModelService/User";
 
@@ -13,13 +16,26 @@ export class HomeComponent implements OnInit {
 
   currentUser  :  string = "";
 
-  constructor(public AuthService : AuthService) {
+  constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute) {
+    if(localStorage.getItem('AfterLogin'))
+    {
+      this.Notify.showNotification('top','right','You have logged successfully', 2);
+    }
+    
   }
 
   ngOnInit() {
       console.log(localStorage.getItem("un"));
       this.currentUser = localStorage.getItem("un");
       this.AuthService.RoleCheck();
+  }
+
+  UseNotifyService()
+  {
+    console.log("Fuck");
+    
+    this.Notify.showNotification('bottom','left','Notify Control',2);
+
   }
 
 

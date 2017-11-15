@@ -52,6 +52,21 @@
                 </div>
               </div>
 
+              <div class="box">
+                <h2>Drop File</h2>
+                <div class="k-dropzone"
+                     fileDrop
+                     (filesDropped)="handleDrop($event)"
+                     (filesHovered)="dropzoneState($event)"
+                     [ngClass]="{'active': dropzoneActive}">
+                 <span  style="align-content:center;" ><i class="fa fa-cloud-upload fa-2x"></i></span>    
+                </div>
+                <div *ngIf="currentUpload">
+                  <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+                  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+                </div>
+              </div>
+
 
               <div class="row">
                 <div class="col-md-12">
@@ -63,7 +78,7 @@
                     <div id="skil" class="collapse" class="panel-body">
                       <div class="row" style="margin:1px;">
 
-                        <div id="chinput" class="col-md-3" *ngFor="let item of Skills">
+                        <div id="chinput" class="col-md-3" *ngFor="let item of Skills ">
                             <input *ngIf="!CheckSkill(item)"(click)="AddSkill(item)"     type="checkbox" ><span *ngIf="!CheckSkill(item)" id="chbox">{{ ' '+item.Name}}</span>
 
                             <input  *ngIf="CheckSkill(item)" checked  (click)="AddSkill(item)"   type="checkbox"  ><span *ngIf="CheckSkill(item)" id="chbox">{{ ' '+item.Name}}</span>
@@ -86,7 +101,7 @@
                       <div class="row">
 
 
-                        <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters">
+                        <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters ">
 
                           <input type="checkbox" (click)="AddRecruiter(recruiter)"  *ngIf="!CheckRecruiter(recruiter)"><span id="chbox" *ngIf="!CheckRecruiter(recruiter)" >{{ ' '+recruiter.UserName}}</span>
 

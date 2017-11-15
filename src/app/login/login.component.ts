@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { DbService } from "../DbService/DbService";
 import { AuthService } from "../AuthService/Auth.Service";
+import { AppComponent } from 'app/app.component';
 // import { DbService } from "app/DbService/DbService";
 // import { AuthService } from "app/AuthService/Auth.Service";
 
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
+      private Check : AppComponent ,
     //   private authenticationService: AuthenticationService,
     //   private alertService: AlertService ,
       private Service : DbService
@@ -44,6 +46,9 @@ export class LoginComponent implements OnInit {
             subscribe(res => {
                 console.log(res.SessionId);
                 console.log(res);
+                console.log("App Restart");
+                this.Check.ngOnInit();
+                window.location.replace('/home');
                 
                  localStorage.setItem('Session',res.SessionId );
                  localStorage.setItem('ue',res.ue );
@@ -53,9 +58,10 @@ export class LoginComponent implements OnInit {
                  localStorage.setItem('expires_at', expiresAt);
                  console.log("Succesfully Logged");
                  this.AuthService.RoleCheck();
+                 localStorage.setItem('AfterLogin'," ");
+                 
                 this.router.navigate(['./home']); 
-
-
+                
                 },
             (err : any) => {
             console.log("error : " + err);
