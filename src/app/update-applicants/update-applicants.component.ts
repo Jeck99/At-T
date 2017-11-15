@@ -4,6 +4,7 @@ import { Applicant } from "../ModelService/Applicant";
 import { ApplicantSkillset } from "../ModelService/‏‏ApplicantSkillset";
 import { UploadService } from '../upload.service';
 import { Upload } from '../Upload';
+import * as _ from "lodash";
 
 import { DbService } from "../DbService/DbService";
 import { Manager } from "../ModelService/Manager";
@@ -11,7 +12,6 @@ import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { ApplicantRecruiter } from '../ModelService/\u200F\u200FApplicantRecruiter';
-import * as _ from "lodash";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NotificationsService } from '../notifications/notifications.component';
 
@@ -27,11 +27,15 @@ export class UpdateApplicantsComponent implements OnInit {
   constructor(private Service: DbService,private upSvc: UploadService) { }
   currentUpload: Upload;
   dropzoneActive:boolean = false;
-  x:any;
-
+UpdateUrl = false;
+OnOver=false;
   ngOnInit() {
     this.GetSkills();
     this.GetRecruiters();
+  }
+  FileOver()
+  {
+this.OnOver=!this.OnOver;
   }
  Color=false;
  dropzoneState($event: boolean) {
@@ -45,13 +49,13 @@ handleDrop(fileList: FileList) {
     this.currentUpload = new Upload(fileList[idx]);
     console.log("currentUpload",this.currentUpload);
    
- this.x =  this.upSvc.pushUpload(this.currentUpload)
+   this.upSvc.pushUpload(this.currentUpload);
 }   
   )
 }
 
-
-  @Input() ApplicantToUpdate:Applicant;
+ 
+  @Input() ApplicantToUpdate : Applicant;
   @Output() Appearance = new EventEmitter<string>();
   
   Skills: Skill[];
@@ -66,10 +70,7 @@ handleDrop(fileList: FileList) {
     });
   }
 
-  upload()
-  {
-console.log("x");
-  }
+
   GetRecruiters() {
     let req = this.Service.Get("Managers")
     req.subscribe(rsp => {
@@ -127,13 +128,17 @@ console.log("x");
 
 
   PostApplicantToUpdate() {
+    this.ApplicantToUpdate.Url = localStorage.getItem('DURL');
+    
     console.log(this.ApplicantToUpdate);
+
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {
       console.log("My Update Applicant Action");
       this.ApplicantSkillPost(); 
       this.PostApplicantRecruiters();
       this.Appearance.emit("success");
+      localStorage.removeItem('DURL');
       
     }, (err) => {
         console.log("Editing Problem");

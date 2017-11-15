@@ -58,6 +58,21 @@
                           </div>
                       </div>
 
+                                <div class="box">
+                <h2>Attache Resume</h2>
+                <div class="dropzone"
+                     fileDrop
+                     (filesDropped)="handleDrop($event)"
+                     (filesHovered)="dropzoneState($event)"
+                     [ngClass]="{'active': dropzoneActive}">
+                     <i id="uploadcloud"  class="fa fa-cloud-upload fa-2x"></i>
+                </div>
+            </div>
+            <div  *ngIf="currentUpload">
+              <progress style="width:100%;color:#70d2ce;background-color:#70d2ce" class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+              Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+          </div>
+
 
 
                         <div class="row">

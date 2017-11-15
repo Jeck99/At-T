@@ -8,23 +8,27 @@ import { ApplicantSkillset } from "../ModelService/\u200F\u200FApplicantSkillset
 import { Applicant } from "../ModelService/Applicant";
 import { Skill } from '../ModelService/Skill';
 import { Manager } from '../ModelService/Manager';
+import { UploadService } from '../upload.service';
+import { Upload } from '../Upload';
+import * as _ from "lodash";
 
 @Component({
     selector: 'add-applicant',
     templateUrl: './add-applicant.component.html',
     styleUrls: ['./add-applicant.component.css'],
-    providers: [DbService]
+    providers: [DbService,UploadService]
 })
 export class AddApplicantComponent implements OnInit {
 
-    constructor(private Service: DbService) { }
+    constructor(private Service: DbService,private upSvc:UploadService) { }
 
     ngOnInit() {
         console.log("Start Applicant post component");
         this.GetSkills();
         this.GetRecruiters();
     }
-
+    currentUpload: Upload;
+    dropzoneActive:boolean = false;
     Recruiuter: number[];
     SkillsetId: number[];
     SkillSet: ApplicantSkillset[] = [];
@@ -32,6 +36,21 @@ export class AddApplicantComponent implements OnInit {
 
     Skills: Skill[];
     Recruiters: Manager[];
+
+    dropzoneState($event: boolean) {
+        this.dropzoneActive = $event;
+      }
+      handleDrop(fileList: FileList) {
+        let filesIndex = _.range(fileList.length)
+        _.each(filesIndex, (idx) => {
+          console.log("idx",idx);
+          this.currentUpload = new Upload(fileList[idx]);
+          console.log("currentUpload",this.currentUpload);
+         
+         this.upSvc.pushUpload(this.currentUpload);
+      }   
+        )
+      }
 
     GetSkills() {
         let req = this.Service.Get("JobSkillsets")

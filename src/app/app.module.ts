@@ -36,7 +36,7 @@ import { AddApplicantComponent } from './add-applicant/add-applicant.component';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { UploadService } from './upload.service';
 import { AngularFireAuth } from "angularfire2/auth";
-import { NotificationsService } from 'app/notifications/notifications.component';
+import { NotificationsService } from '../app/notifications/notifications.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { FileDropDirective } from './file-drop.directive';

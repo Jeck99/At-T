@@ -1,4 +1,6 @@
-<button  id="Headline" style="margin-top:50px" (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+<h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
+
+<button  id="Headline"  (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
 <app-job-post *ngIf="AddJob" ></app-job-post>
   <div *ngIf=" !EditMode && !AddJob"  class="container-fluid">
     <div class="row" >

@@ -6,32 +6,31 @@ import * as firebase from 'firebase';
 export class UploadService {
   constructor(private db: AngularFireDatabase) { }
   pushUpload(upload: Upload) {
+    let url;
     let storageRef = firebase.storage().ref();
     let uploadTask = storageRef.child(`uploads/${upload.file.name}`).put(upload.file);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot:any) =>  {
-        // upload in progress
+        // uthpload in progres
         upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       },
       (error) => {
         // upload failed
-        console.log(error)
+        
       },
       () => {
         // upload success
         upload.url = uploadTask.snapshot.downloadURL
         upload.name = upload.file.name
         this.saveFileData(upload);
-          return this.newFunction(upload);
-      }
-    );
+      }     
+    );       
+    
   }
-    private newFunction(upload: Upload) {
-        return upload.url;
-    }
-
   // Writes the file details to the realtime db
   private saveFileData(upload: Upload) {
     this.db.list(`uploads`).push(upload);
+    localStorage.setItem('DURL',upload.url) ;
+    
   }
 }

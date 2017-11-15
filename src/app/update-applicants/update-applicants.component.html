@@ -4,7 +4,7 @@
   <div class="container-fluid">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header" data-background-color="red">
+          <div class="card-header" data-background-color="blue">
             <button (click)="CloseForm()" type="button" class="close" data-dismiss="modal">&times;</button>
             <span id="UploadCv" type="button" class="close" style="align-content:center;" ><i class="fa fa-cloud-upload fa-2x"></i></span>
             
@@ -54,20 +54,27 @@
 
       
             <div class="box">
-                <h2>Attache Resume</h2>
-                <div class="dropzone"
-                     fileDrop
-                     (filesDropped)="handleDrop($event)"
-                     (filesHovered)="dropzoneState($event)"
-                     [ngClass]="{'active': dropzoneActive}">
-                     <i id="uploadcloud"  class="fa fa-cloud-upload fa-2x"></i>
-                </div>
-            </div>
-            <div  *ngIf="currentUpload">
-              <progress style="width:100%;color:#70d2ce;background-color:#70d2ce" class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-              Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-          </div>
+                <h2>Resume </h2>
+<div class="row">
+<div class="col-md-3"><button  class="btn btn-info pull-left" (click)="UpdateUrl=!UpdateUrl" >Update</button>
+</div>
+<div class="col-md-9">               <div>
+  <div  *ngIf="UpdateUrl" class="dropzone"
+       fileDrop
+       (filesDropped)="handleDrop($event)"
+       (filesHovered)="dropzoneState($event)"
+       [ngClass]="{'active': dropzoneActive,'notactive':!dropzoneActive}">
+       <i class="fa fa-cloud-upload fa-2x"></i>
+  </div>
+</div>
+<div  *ngIf="currentUpload">
+<progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+</div></div>
 
+</div>
+
+        </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-danger">
@@ -150,8 +157,8 @@
     </div>
 </div> -->
 
-              <i *ngIf="saving" class="fa fa-spinner fa-pulse fa-fw" style="color:#E8423F"></i>
-              <button (click)="PostApplicantToUpdate()"   class="btn btn-danger pull-right">Update Applicant</button>
+              <i *ngIf="saving" class="fa fa-spinner fa-pulse fa-fw" style="color:#00d3ee"></i>
+              <button (click)="PostApplicantToUpdate()"   class="btn btn-info pull-right">Update Applicant</button>
               <div class="clearfix"></div>
             </form>
           </div>

@@ -8,9 +8,18 @@ height: 50%;
 }
 .active{
     border : 2px solid #70d2ce;
+    color :#70d2ce;
 }
-#uploadcloud{
+.notactive{
+    border : 2px dashed black;
+}
+#notactivecloud{
     padding-left: 45%;
-    font-size:300%;
-    
+    font-size:350%;
 }
+#activecloud{
+    padding-left: 45%;
+    font-size:350%;
+    color:#70d2ce;
+}
+

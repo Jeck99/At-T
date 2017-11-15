@@ -1,7 +1,8 @@
 <h1 style="margin-top:40px;margin-left:10px" >Applicants !</h1>
- <button style="margin-left:10px" (click)="AddApplicantForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+ <button id="Headline" (click)="AddApplicantForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+
  <add-applicant *ngIf="AddApplicant" ></add-applicant>
- <div class="card-block" >
+
 <div *ngIf="!AddApplicant && !EditMode"   class="container-fluid">
     <div class="row" >
   <div *ngFor="let Applicant of AllApplicants;let i = index" class="col-md-4">
@@ -23,11 +24,11 @@
       </div>  
   </div>
 </div>
-</div>
 
 
 
-  <app-update-applicants (Appearance)="OnAppearance($event)" *ngIf=" EditMode && !AddApplicant " [ApplicantToUpdate]="ApplicantToEdit">  </app-update-applicants>
+
+  <app-update-applicants  (Appearance)="OnAppearance($event)" *ngIf=" EditMode && !AddApplicant " [ApplicantToUpdate]="ApplicantToEdit">  </app-update-applicants>
   
     
   
