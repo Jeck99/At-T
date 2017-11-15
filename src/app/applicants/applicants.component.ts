@@ -9,11 +9,11 @@ providers: [DbService],
 })
 export class ApplicantsComponent{
 
-  constructor(private Service: DbService) {this.GetApplicants(); }
+  constructor(private Service: DbService) {this.GetApplicants();
+  }
   AllApplicants: any[];
   lock:boolean= false;
-  AddApplicant=true;
-
+  AddApplicant=true;  
 
   GetApplicants(){
     let req = this.Service.Get("Applicants")
@@ -31,11 +31,6 @@ export class ApplicantsComponent{
     }
   }
 
-
-
-
-
-  
   // AddApplicantForm()
   // {
   //  this.AddApplicant=!this.AddApplicant;

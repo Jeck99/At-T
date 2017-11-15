@@ -35,7 +35,7 @@ import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +66,8 @@ import { ApplicantsComponent } from "./applicants/applicants.component";
     HttpModule,
     ComponentsModule,
 RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthGuard,

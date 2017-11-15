@@ -1,32 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare var $: any;
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+    selector: 'app-notifications',
+    templateUrl: './notifications.component.html',
+    styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
-
-  constructor() { }
-  showNotification(from, align){
-      const type = ['','info','success','warning','danger'];
-
-      const color = Math.floor((Math.random() * 4) + 1);
-
-      $.notify({
-          icon: "notifications",
-          message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
-
-      },{
-          type: type[color],
-          timer: 4000,
-          placement: {
-              from: from,
-              align: align
-          }
-      });
-  }
-  ngOnInit() {
-  }
-
+    @Input() typeColor;
+    possX: string;
+    possY: string;
+    color: string;
+    _massage: string;
+    ngOnInit() {
+        if (!this.typeColor) {
+            this.possX = "bottom";
+            this.possY = "right";
+            this.color = 'warning';
+            this._massage = "There is seem to be <br/> a problom pleas try again ."
+        }
+        else {
+            this.possX = "top";
+            this.possY = "center";
+            this.color = 'success';
+            this._massage = "Request recived and done ."
+        }
+        $.notify({
+            
+            icon: "notifications",
+            message: this._massage
+        }, {
+                type: this.color,
+                timer: 2000,
+                placement: {
+                    from: this.possX,
+                    align: this.possY
+                }
+                            
+            });  console.log(this.typeColor); 
+    }
+    constructor() { }
+    // showNotification(from, align) {
+    //     //    const type = ['success','warning']; 
+    //     // this.possX=from;
+    //     // this.possY=align;
+    //     $.notify({
+    //         icon: "notifications",
+    //         message: "There is seem to be <b> a problom pleas try again ."
+    //     }, {
+    //             type: this.color,
+    //             timer: 4000,
+    //             placement: {
+    //                 from: this.possX,
+    //                 align: this.possY
+    //             }
+    //         });
+    // }
 }

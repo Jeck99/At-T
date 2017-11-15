@@ -4,7 +4,7 @@
 
 <div  style="background-color:lightgray;margin-left:-5px" class="container-fluid">
     <div class="row" >
-  <div *ngFor="let Applicant of AllApplicants;let i = index" class="col-md-3">
+  <div *ngFor="let Applicant of AllApplicants | paginate: { itemsPerPage: 9, currentPage: p };let i = index " class="col-md-3">
     <div class="card">
             <div class="card-content">
               <div class="card-header-blue">
@@ -22,6 +22,8 @@
             </div>
         </div>
       </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      
       </div>  
   </div>
 

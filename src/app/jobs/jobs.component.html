@@ -1,37 +1,40 @@
-<h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
-<button style="margin-left:10px" (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+<h1 style="margin-top:40px;margin-left:10px">Jobs !</h1>
+<button style="margin-left:10px" (click)="AddJobForm()" class="alert alert-info"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
 
+<!-- <div *ngIf="!EditMode" style="background-color:lightgray" class="container-fluid"> -->
 <div *ngIf="!EditMode" style="background-color:lightgray" class="container-fluid">
-  <div class="row" >
-<div *ngFor="let Job of Jobs ; let i = index" class="col-md-3">
-  <div class="card">
-          <div class="card-content">
-            <div class="card-header-blue">
-                <div class="row">
-                    <div class="col-md-6"><i style="font-size:120%;"  class="fa fa-id-card" aria-hidden="true"></i></div>
-                    <div class="col-md-6"><i  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i><i style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                 <h4 class="card-heading"><b>{{Job.Title}}</b></h4>
-               </div>
-               <div class="card-body">
-                  <h6 style="font-weight:500" >Recruiters:</h6>
-               <p class="card-p">{{Job.Description}}</p>
-             </div>
-             <nav class="nav-tabs">
-               <ul class="nav nav-pills pull-left" *ngFor="let Skill of Job.Skills">
-                      <li class="card-action"><a  [title]= "Skill.Description"  href="#">{{Skill.Name}}</a></li>
-                  </ul>
-               
-             </nav>
-               
+  <div class="row">
+    <div *ngFor="let Job of Jobs | paginate: { itemsPerPage: 6, currentPage: p } ; let i = index" class="col-md-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-header-blue">
+            <div class="row">
+              <div class="card-block">
+                <div class="col-md-6"><i style="font-size:120%;" class="fa fa-id-card" aria-hidden="true"></i></div>
+                <div class="col-md-6">
+                  <app-update-job [JobToUpdate]="JobToEdit"(click)="PrepareForEdit(Job)"></app-update-job>
+                  <i style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+              </div>
+              <h4 class="card-heading"><b>_{{Job.Title}}</b></h4>
+            </div>
+            <div class="card-body">
+              <h6 style="font-weight:500">Recruiters:</h6>
+              <h6 *ngFor="let Recruiter of Job.Recruiters">-{{Recruiter.UserName}}</h6>
+              <p class="card-p">_{{Job.Description}}</p>
+            </div>
+            <nav class="jobCard" class="card-body">
+              <h6 (mouseenter)="hiddenJobTru(Job.Id)" (mouseleave)="hiddenJobfals()">Skills
+                <div *ngIf="idCompare==Job.Id">
+                  <h6 *ngFor="let Skill of Job.Skills">{{Skill.Name}}</h6>
+                </div>
+              </h6>
+            </nav>
           </div>
+        </div>
       </div>
-   </div>  </div>
-
-   
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>   
+  </div>
 </div>
-
-
-<app-update-job *ngIf="EditMode" [JobToUpdate]="JobToEdit">  </app-update-job>
-
+<!-- <app-notifications></app-notifications> -->
