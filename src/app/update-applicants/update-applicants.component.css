@@ -9,17 +9,17 @@ height: 50%;
 .active{
     border : 2px solid #70d2ce;
     color :#70d2ce;
+    
 }
 .notactive{
     border : 2px dashed black;
+    color: black;
 }
-#notactivecloud{
-    padding-left: 45%;
-    font-size:350%;
+#cloud{
+    margin-left: 45%;
+    font-size: 350%;
 }
-#activecloud{
-    padding-left: 45%;
-    font-size:350%;
-    color:#70d2ce;
+a{
+    color:white;
 }
 
