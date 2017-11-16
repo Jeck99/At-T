@@ -4,6 +4,7 @@ import { Applicant } from "../ModelService/Applicant"
 import { NotificationsService } from '../notifications/notifications.component';
 import { AuthService } from "app/AuthService/Auth.Service";
 import { Job } from "../ModelService/Job";
+import { LocalDataSource } from "ng2-smart-table";
 
 @Component({
   selector: 'app-archives',
@@ -19,39 +20,80 @@ export class ArchivesComponent implements OnInit {
   ngOnInit() {
     this.GetApplicants();
     this.GetJobs();
-
   }
   settings = {
+    mode: 'inline', // inline|external|click-to-edit
+    selectMode: 'single', // single|multi
+    hideHeader: false,
+    hideSubHeader: false,
+
     actions: {
       delete: false,
       add: false,
-      edit: false,
+      edit: {
+        confirmSave: true
+      },
+      custom: [
+        {
+          name: 'view',
+          title: 'ReActive ',
+        },
+      ]
+
+    },
+    pager: {
+      display: true,
+      perPage: 3,
     },
     columns: {
-      Id: {
-        title: 'ID',
-      },
+      // Id: {
+      //   title: 'ID',
+      // },
       Name: {
         title: 'Name',
+        filter: true
       },
       Email: {
         title: 'Email',
+        filter: true
       },
       Phone: {
         title: 'Phone',
+        filter: true
       },
       Title: {
         title: 'Title',
+        filter: true
       },
       Experience: {
         title: 'Experience',
+        filter: true
       },
       Active: {
         title: 'Active',
+        filter: true
+      },
+      Position: {
+        title: 'Position',
+        filter: true
+      },
+      Published: {
+        title: 'Published',
+        filter: true,
       },
     },
   };
 
+  onCustom(event) {
+    console.log(event.data)
+event.data.Active=false;
+console.log(event.data.Active)
+
+  }
+
+
+
+  ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
   AllApplicants: any[];
   GetApplicants() {
@@ -62,7 +104,6 @@ export class ArchivesComponent implements OnInit {
     });
   }
   OnAppearance(CloseForm: string) {
-    this.EditMode = false;
     if (CloseForm == 'success')
       this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
   }
