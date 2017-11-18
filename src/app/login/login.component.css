@@ -1,0 +1,88 @@
+#mainCtrl {
+    background-color: rgba(152, 162, 172, 0.32);
+  color: #DC0F0F
+  }
+ .btn 
+  {
+   box-shadow:inset 2px -3px rgba(0,0,0,0.15);
+   background-color: rgba(11, 38, 230, 0.27);
+   position: center;
+   border-radius: 10% ;
+   align-items: center;
+   
+  }
+  .btn:hover
+  {
+   box-shadow:inset 2px -3px rgba(0, 0, 0, 0.93);
+   background-color: rgba(0, 17, 144, 0.58);
+   position: center;
+   border-radius: 1% ; 
+  }
+   /* .btn:focus
+  {
+   outline:0;
+   -webkit-outline:0;
+   -moz-outline:0;
+  }
+  .form-signin {
+    max-width: 280px;
+    padding: 15px;
+    margin: 0 auto;
+      margin-top:50px;
+  }
+  .form-signin .form-signin-heading, .form-signin {
+    margin-bottom: 10px;
+  }
+  .form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+   .form-signin .form-control:focus {
+    z-index: 2;
+  } 
+   .form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: none;
+    border-left-style: solid;
+    border-color: #000;
+  } 
+   .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: rgb(0,0,0);
+    border-top:1px solid rgba(0,0,0,0.08);
+  } */ 
+  .form-signin-heading {
+    color: #fff;
+    text-align: center;
+    text-shadow: 3 2px 2px rgb(0, 0, 0);
+    font-weight: bold;
+    font-stretch: ultra-expanded;
+    font-family: 'Archivo Black', sans-serif;
+    
+  }
+  @font-face {
+    font-family: myFirstFont;
+    src: url(http://www.font-face.com/fonts/delicious/Delicious-Roman.otf);
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(http://www.font-face.com/fonts/delicious/Delicious-Roman.otf);
+    font-weight: bold;
+}
+

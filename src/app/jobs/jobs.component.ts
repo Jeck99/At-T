@@ -13,7 +13,8 @@ import { AuthService } from "app/AuthService/Auth.Service";
   providers:[DbService]
 })
 export class JobsComponent implements OnInit {
-
+  p: number = 1;
+  
   ngOnInit() {
     this.GetJobs();
           }

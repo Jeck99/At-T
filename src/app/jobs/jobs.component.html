@@ -1,10 +1,10 @@
 <h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
 
-<button  id="Headline"  (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+<button  id="Headline" title="Add new job"   (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
 <app-job-post *ngIf="AddJob" ></app-job-post>
   <div *ngIf=" !EditMode && !AddJob"  class="container-fluid">
     <div class="row" >
-  <div *ngFor="let Job of Jobs ; let i = index" class="col-sm-4">
+  <div class="div2" *ngFor="let Job of Jobs| paginate: { itemsPerPage: 6, currentPage: p } ; let i = index" class="col-sm-4">
     <div class="card">
             <div class="card-content">
               <div class="card-header-blue">

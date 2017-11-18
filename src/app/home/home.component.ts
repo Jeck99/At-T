@@ -17,10 +17,12 @@ export class HomeComponent implements OnInit {
   currentUser  :  string = "";
 
   constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute) {
+  // debugger;
     if(localStorage.getItem('AfterLogin'))
     {
-      this.Notify.showNotification('top','right','You have logged successfully', 2);
+      this.Notify.showNotification('top','right','You have logged successfully', 2);      
     }
+    localStorage.removeItem('AfterLogin')
     
   }
 
@@ -33,9 +35,7 @@ export class HomeComponent implements OnInit {
   UseNotifyService()
   {
     console.log("Fuck");
-    
     this.Notify.showNotification('bottom','left','Notify Control',2);
-
   }
 
 

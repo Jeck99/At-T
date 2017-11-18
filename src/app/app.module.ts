@@ -45,6 +45,8 @@ import { Ng2TableModule } from 'ngx-datatable';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NewComponent } from './new/new.component';
+import { RecruiterComponent } from './recruiter/recruiter.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     AddApplicantComponent,
     ArchivesComponent,
     UploadFormComponent,
-    FileDropDirective
+    FileDropDirective,
+    NewComponent,
+    RecruiterComponent
 
   ],
   imports: [
