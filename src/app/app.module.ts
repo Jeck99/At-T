@@ -48,6 +48,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +89,7 @@ RouterModule,
     NgxPaginationModule,
     Ng2TableModule,
     Ng2CompleterModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
   ],
   providers: [
     AuthGuard,

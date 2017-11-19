@@ -13,7 +13,8 @@ import { LocalDataSource } from "ng2-smart-table";
 })
 export class ArchivesComponent implements OnInit {
   p: number;
-  Jobs: Job[] = [];
+  AllApplicants: Applicant = <Applicant>{};  
+  Jobs: Job = <Job>{};
   AddJob = false;
   Skills = ["", "", ""];
   EditMode: boolean = false;
@@ -21,7 +22,7 @@ export class ArchivesComponent implements OnInit {
     this.GetApplicants();
     this.GetJobs();
   }
-  settings = {
+  settingsApp = {
     mode: 'inline', // inline|external|click-to-edit
     selectMode: 'single', // single|multi
     hideHeader: false,
@@ -73,6 +74,48 @@ export class ArchivesComponent implements OnInit {
         title: 'Active',
         filter: true
       },
+    },
+  };
+  settingsJob = {
+    mode: 'inline', // inline|external|click-to-edit
+    selectMode: 'single', // single|multi
+    hideHeader: false,
+    hideSubHeader: false,
+
+    actions: {
+      delete: false,
+      add: false,
+      edit: {
+        confirmSave: true
+      },
+      custom: [
+        {
+          name: 'view',
+          title: 'ReActive ',
+        },
+      ]
+
+    },
+    pager: {
+      display: true,
+      perPage: 3,
+    },
+    columns: {
+      // Id: {
+      //   title: 'ID',
+      // },
+      Title: {
+        title: 'Title',
+        filter: true
+      },
+      Experience: {
+        title: 'Experience',
+        filter: true
+      },
+      Active: {
+        title: 'Active',
+        filter: true
+      },
       Position: {
         title: 'Position',
         filter: true
@@ -83,22 +126,42 @@ export class ArchivesComponent implements OnInit {
       },
     },
   };
-
-  onCustom(event) {
+  onCustomApp(event) {
     console.log(event.data)
-    event.data.Active = false;
+    event.data.Active = true;
     this.AllApplicants.Active = event.data.Active;
     console.log(this.AllApplicants.Active)
     let req = this.Service.Edit("Applicants", event.data)
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
     });
-
+    window.location.reload();
+  }
+  
+  onCustomJob(event) {
+    console.log(event.data)
+    event.data.Active = true;
+    this.AllApplicants.Active = event.data.Active;
+    console.log(this.AllApplicants.Active)
+    let req = this.Service.Edit("Applicants", event.data)
+    req.subscribe(rsp => {
+      this.AllApplicants = rsp.json();
+    });
+    window.location.reload();
   }
 
+  onEdit(event) {
+    console.log(event.data)
+    this.Jobs.Published = event.data.Published;
+    console.log(this.Jobs)
+    let req = this.Service.Edit("Jobs", event.data)
+    req.subscribe(rsp => {
+      this.Jobs = rsp.json();
+    });
+window.location.reload();
+  }
   ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
-  AllApplicants: Applicant = <Applicant>{};
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
