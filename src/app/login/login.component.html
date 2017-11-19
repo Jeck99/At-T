@@ -1,7 +1,8 @@
 <p>
     login works!
 </p>
-<div id="mainCtrl" class="col-md-6 col-md-offset-3">
+<div id="mainCtrl" class="">
+        <h2>Welcome <br/>To get started login credentials need to be verified</h2>        
         <h1 class="form-signin-heading text-muted"> Log in </h1>
         <form name="form" (ngSubmit)="f.form.valid && Login()" #f="ngForm" >
         <div class="form-signin" [ngClass]="{ 'has-error': f.submitted && !username.valid }">

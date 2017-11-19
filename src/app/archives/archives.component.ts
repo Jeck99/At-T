@@ -139,10 +139,10 @@ export class ArchivesComponent implements OnInit {
   }
   
   onCustomJob(event) {
-    console.log(event.data)
-    event.data.Active = true;
-    this.AllApplicants.Active = event.data.Active;
-    console.log(this.AllApplicants.Active)
+    console.log("event.data:",event.data)
+    event.data;
+    this.Jobs = event.data;
+    console.log("this.Jobs:",this.Jobs)
     let req = this.Service.Edit("Applicants", event.data)
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
@@ -152,7 +152,7 @@ export class ArchivesComponent implements OnInit {
 
   onEdit(event) {
     console.log(event.data)
-    this.Jobs.Published = event.data.Published;
+    this.Jobs = event.data;
     console.log(this.Jobs)
     let req = this.Service.Edit("Jobs", event.data)
     req.subscribe(rsp => {

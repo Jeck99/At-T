@@ -34,11 +34,7 @@ export class HomeComponent implements OnInit {
 
   UseNotifyService()
   {
-    console.log("Fuck");
     this.Notify.showNotification('bottom','left','Notify Control',2);
   }
-
-
-
 
 }

@@ -12,8 +12,13 @@
 <div class="sidebar-wrapper">
     <div class="nav-container">
         <ul class="nav">
+            <li>
+                <h5 id="logOut" *ngIf="AuthService.IsLogged" (click)="AuthService.LogOff()" [routerLink]="['/login']">
+                           Log out
+               </h5>
+            </li>
             <ng-container *ngFor="let menuItem of menuItems">
-                <li  routerLinkActive="active" class="{{menuItem.class}}">
+                <li routerLinkActive="active" class="{{menuItem.class}}">
                     <a [routerLink]="[menuItem.path]">
                     <i  class="material-icons">{{menuItem.icon}}</i>
                     <h5>{{menuItem.title}}</h5>

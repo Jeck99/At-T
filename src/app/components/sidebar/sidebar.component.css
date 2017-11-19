@@ -1,5 +1,15 @@
 h5{
     color: floralwhite;
     font-weight: bold;
-
+    user-select: none; /* Standard syntax */
+    
+}
+li:active{
+    background-color: #000000
+}
+#logOut:hover{
+    user-select: none; /* Standard syntax */
+    font-weight: bolder;
+    cursor:pointer;
+    
 }
