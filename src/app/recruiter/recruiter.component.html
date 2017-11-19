@@ -1,3 +1,7 @@
 <p>
   recruiter works!
 </p>
+<div class="container">
+    <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
+    <ng2-smart-table [settings]="settings" [source]="Recruiters" ></ng2-smart-table>
+</div>

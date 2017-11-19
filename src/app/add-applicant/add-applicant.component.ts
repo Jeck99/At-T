@@ -79,7 +79,7 @@ export class AddApplicantComponent implements OnInit {
         const req = this.Service.post("Applicants", this.Applicant);
         req.map(res => <any>res.json()).
             subscribe(res => {
-                console.log("Post Job Succesfully");
+                console.log("Post Applicant Succesfully");
                 this.SkillPost(res);
                 this.SkillRecruiterId(res);},
             (err: any) => {

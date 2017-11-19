@@ -86,16 +86,19 @@ export class ArchivesComponent implements OnInit {
 
   onCustom(event) {
     console.log(event.data)
-event.data.Active=false;
-console.log(event.data.Active)
+    event.data.Active = false;
+    this.AllApplicants.Active = event.data.Active;
+    console.log(this.AllApplicants.Active)
+    let req = this.Service.Edit("Applicants", event.data)
+    req.subscribe(rsp => {
+      this.AllApplicants = rsp.json();
+    });
 
   }
 
-
-
   ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
-  AllApplicants: any[];
+  AllApplicants: Applicant = <Applicant>{};
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
