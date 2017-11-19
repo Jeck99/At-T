@@ -22,6 +22,7 @@ export class ApplicantsComponent implements OnInit {
   lock:boolean= false;
   AddApplicant=false;
   EditMode : boolean = false;
+  Filter="";
   
   GetApplicants(){
     let req = this.Service.Get("Applicants")

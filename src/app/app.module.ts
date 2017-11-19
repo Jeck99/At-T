@@ -47,6 +47,7 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
+import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,7 @@ RouterModule,
     UploadService,
     AngularFireAuth,
     AngularFireDatabase,
-    NotificationsService,
+    NotificationsService,SearchFilterPipe,
     // providers used to create fake backend
     MockBackend,
     BaseRequestOptions

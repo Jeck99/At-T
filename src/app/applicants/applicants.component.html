@@ -1,4 +1,9 @@
 <h1 style="margin-top:40px;margin-left:10px" >Applicants !</h1>
+
+<form>
+  <h4 style="margin-left:30px;">  </h4> <input type="text"[(ngModel)]="Filter" name="Filter" placeholder="Search ..">
+</form>
+
  <button title="Add new Applicant" id="Headline" (click)="AddApplicantForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
 
  <add-applicant   *ngIf="AddApplicant" ></add-applicant>
