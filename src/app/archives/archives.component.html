@@ -8,10 +8,9 @@
       <tab >
         <span *tabHeading>
                        <b >Applicants list</b> 
-                       
                     </span>
         <div class="container">
-            <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
+          <br/>
             <ng2-smart-table [settings]="settingsApp" [source]="AllApplicants"  (custom)="onCustomApp($event)"></ng2-smart-table>
         </div>
       </tab>
@@ -19,14 +18,10 @@
         <span *tabHeading>
                       <b >Jobs list</b>
                   </span>
-        <div class="container">
-        </div>
-        <div >
             <div class="container">
-                <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
+                <br/>                
                 <ng2-smart-table [settings]="settingsJob" (edit)="onEdit()" [source]="Jobs" (custom)="onCustomJob($event)"> ></ng2-smart-table>
             </div>
-        </div>
       </tab>
     </tabset>
   </div>
