@@ -1,7 +1,15 @@
-:host /deep/ ng2-smart-table {
-    font-size: 18px;
-    color: rgba(4, 61, 237, 0.91)
+ ng2-smart-table {
+    color: rgb(1, 62, 255);
+    text-shadow: 3px 3px 6px #FFFFFF;
+    font-size: 20px;
+    background-color: #000000
 }
+/* :host /deep/ ng2-smart-table {
+    font-size: 18px;
+    color: rgba(4, 61, 237, 0.91);
+    font-size: xx-large;
+    background-color: #000000
+} */
 :host /deep/ ng2-smart-table tbody  { 
 	text-align: left; 
     background-color:rgba(21, 0, 250, 0.17);  
