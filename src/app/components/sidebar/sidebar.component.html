@@ -3,19 +3,18 @@
         <div class="logo-img">
             <img src="/assets/img/at&t_logo2.png" />
         </div>
-        AT&T Israel
-        <h6>AT&T Recruiting Tool</h6>
-        <span> {{Currentuser}} possibilities </span>
     </a>
-
+    AT&T Israel
+    <h6>AT&T Recruiting Tool</h6>
+    <span> {{Currentuser}}</span>
 </div>
 <div class="sidebar-wrapper">
     <div class="nav-container">
         <ul class="nav">
             <li>
                 <h5 id="logOut" *ngIf="AuthService.IsLogged" (click)="AuthService.LogOff()" [routerLink]="['/login']">
-                           Log out
-               </h5>
+                    Log out
+                </h5>
             </li>
             <ng-container *ngFor="let menuItem of menuItems">
                 <li routerLinkActive="active" class="{{menuItem.class}}">

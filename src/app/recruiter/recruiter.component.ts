@@ -22,15 +22,12 @@ Recruiters: Manager[];
     });
 }
 settings = {
-  mode: 'inline', // inline|external|click-to-edit
-  selectMode: 'single', // single|multi
   hideHeader: false,
-  hideSubHeader: false,
-
+  hideSubHeader: true,
   actions: {
-    edit: {
-      confirmSave: true
-    },
+    edit:false,
+    delete:false,
+    add:false
   },
   pager: {
     display: true,
