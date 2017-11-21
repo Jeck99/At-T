@@ -28,11 +28,20 @@ export class ArchivesComponent implements OnInit {
     actions: {
       delete: false,
       add: false,
-      edit: false
+      edit: {
+        confirmSave: true
+      },
+      custom: [
+        {
+          name: 'view',
+          title: 'Edit ',
+        },
+      ]
+
     },
     pager: {
       display: true,
-      perPage: 3,
+      perPage: 4,
     },
     columns: {
       // Id: {
@@ -70,7 +79,17 @@ export class ArchivesComponent implements OnInit {
     actions: {
       delete: false,
       add: false,
-      edit: false
+      edit: {
+        confirmSave: true
+      },
+      custom: [
+        {
+          name: 'view',
+          title: 'Sava Changes',
+          confirmSave: true
+        },
+      ]
+
     },
     pager: {
       display: true,

@@ -22,6 +22,8 @@ Recruiters: Manager[];
     });
 }
 settings = {
+  mode: 'inline', // inline|external|click-to-edit
+  selectMode: 'single', // single|multi
   hideHeader: false,
   hideSubHeader: true,
   actions: {

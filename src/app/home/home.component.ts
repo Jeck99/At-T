@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../AuthService/Auth.Service";
-import { NotificationsService } from 'app/notifications/notifications.component';
+// import { NotificationsService } from 'app/notifications/notifications.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DbService } from "../DbService/DbService";
+import { NotificationsService } from "../notifications/notifications.component";
+
 // import { AuthService } from "app/AuthService/Auth.Service";
 // import { User } from "app/ModelService/User";
 import { Job } from "../ModelService/Job";
@@ -27,8 +28,12 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('AfterLogin')) {
       this.Notify.showNotification('top', 'right', 'You have logged successfully', 2);
     }
+<<<<<<< HEAD
     localStorage.removeItem('AfterLogin')
 
+=======
+    
+>>>>>>> 4633b4885c9d0ba38af3f05d37d93a16ab520bc6
     this.GetAttachedApplicant();
     this.GetJobRecruiters();
   }

@@ -47,6 +47,8 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
+import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
+import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { RecruiterComponent } from './recruiter/recruiter.component';
     UploadFormComponent,
     FileDropDirective,
     NewComponent,
-    RecruiterComponent
+    RecruiterComponent,
+    ApplicantDetailsComponent,
+    JobDetailsComponent
 
   ],
   imports: [

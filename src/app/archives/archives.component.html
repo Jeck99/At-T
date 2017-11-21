@@ -15,12 +15,17 @@
         </div>
       </tab>
       <tab>
-        <span *tabHeading>
+                  <span *tabHeading>
                       <b >Jobs list</b>
                   </span>
             <div class="container">
+<<<<<<< HEAD
+                <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
+                <ng2-smart-table [settings]="settingsJob" [source]="Jobs" (edit)="onEditJobs()"  (update)="onCustomJob($event)"> ></ng2-smart-table>
+=======
                 <br/>                
                 <ng2-smart-table [settings]="settingsJob" (edit)="onEdit()" [source]="Jobs" (custom)="onCustomJob($event)"> ></ng2-smart-table>
+>>>>>>> 0ed51f4e69f64aef8b41729fd9e49d509761bc62
             </div>
       </tab>
     </tabset>

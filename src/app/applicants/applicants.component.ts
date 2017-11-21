@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DbService } from ".././DbService/DbService";
 import {Applicant} from "../ModelService/Applicant"
 import { NotificationsService } from '../notifications/notifications.component';
-import { AuthService } from "app/AuthService/Auth.Service";
+import { AuthService } from "../AuthService/Auth.Service";
 
 @Component({
   selector: 'app-applicants',
@@ -22,19 +22,35 @@ export class ApplicantsComponent implements OnInit {
   lock:boolean= false;
   AddApplicant=false;
   EditMode : boolean = false;
+  ApplicantDetailsMode : boolean = false;
+  ApplicantToView : Applicant = new Applicant("","",0,"","");
+
+
+  ViewUserDetails(Applicant : Applicant)
+  {   
+   this.ApplicantToView = Applicant;
+   this.ApplicantDetailsMode = true;
+  }
   
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
-      console.log(this.AllApplicants);
+      console.log("Applicants : ",this.AllApplicants);
     });
   }
   OnAppearance(CloseForm:string)
   {
     this.EditMode = false;
     if(CloseForm == 'success')
-    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
+    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);
+  }
+
+    OnAppearanceDetails(CloseForm:boolean)
+  {
+    this.ApplicantDetailsMode = CloseForm;
+  //  If Interview we Set Up interview
+  //    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
   }
   
   Lock(){
@@ -64,7 +80,6 @@ export class ApplicantsComponent implements OnInit {
   AddApplicantForm()
   {
     this.AddApplicant=!this.AddApplicant;
-    this.EditMode= !this.EditMode;
-  
+    this.EditMode= !this.EditMode;  
    } 
 }

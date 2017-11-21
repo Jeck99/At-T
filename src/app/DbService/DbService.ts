@@ -6,10 +6,6 @@ import { User } from "../ModelService/User";
 // import { User } from "../_models/user";
 // import { User } from "app/ModelService/User";
 
-
-
-
-
 export class DbService {
 
     Get1(ctrl: string, UserName: string) {        
