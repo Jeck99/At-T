@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../AuthService/Auth.Service";
-import { NotificationsService } from 'app/notifications/notifications.component';
+// import { NotificationsService } from 'app/notifications/notifications.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationsService } from "../notifications/notifications.component";
 
 // import { AuthService } from "app/AuthService/Auth.Service";
 // import { User } from "app/ModelService/User";
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit {
     {
       this.Notify.showNotification('top','right','You have logged successfully', 2);      
     }
-    localStorage.removeItem('AfterLogin')
     
   }
 
@@ -34,11 +34,6 @@ export class HomeComponent implements OnInit {
 
   UseNotifyService()
   {
-    console.log("Fuck");
     this.Notify.showNotification('bottom','left','Notify Control',2);
   }
-
-
-
-
 }

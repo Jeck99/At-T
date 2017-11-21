@@ -37,14 +37,14 @@ export class ArchivesComponent implements OnInit {
       custom: [
         {
           name: 'view',
-          title: 'ReActive ',
+          title: 'Edit ',
         },
       ]
 
     },
     pager: {
       display: true,
-      perPage: 3,
+      perPage: 4,
     },
     columns: {
       // Id: {
@@ -91,7 +91,8 @@ export class ArchivesComponent implements OnInit {
       custom: [
         {
           name: 'view',
-          title: 'ReActive ',
+          title: 'Sava Changes',
+          confirmSave: true
         },
       ]
 
@@ -139,27 +140,30 @@ export class ArchivesComponent implements OnInit {
   }
   
   onCustomJob(event) {
-    console.log(event.data)
-    event.data.Active = true;
-    this.AllApplicants.Active = event.data.Active;
-    console.log(this.AllApplicants.Active)
-    let req = this.Service.Edit("Applicants", event.data)
-    req.subscribe(rsp => {
-      this.AllApplicants = rsp.json();
-    });
-    window.location.reload();
-  }
-
-  onEdit(event) {
-    console.log(event.data)
+    console.log(event.data);
+    // event.data.Active = true;
+    // this.AllApplicants.Active = event.data.Active;
+    // console.log(this.AllApplicants.Active)
+    // let req = this.Service.Edit("Applicants", event.data)
+    // req.subscribe(rsp => {
+    //   this.AllApplicants = rsp.json();
+    // });
+    // window.location.reload();
     this.Jobs.Published = event.data.Published;
     console.log(this.Jobs)
     let req = this.Service.Edit("Jobs", event.data)
     req.subscribe(rsp => {
       this.Jobs = rsp.json();
     });
-window.location.reload();
+  this.ngOnInit();
   }
+
+  onEditJobs(event) {
+    console.log("On edit",event.data);
+
+  }
+
+
   ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
   GetApplicants() {

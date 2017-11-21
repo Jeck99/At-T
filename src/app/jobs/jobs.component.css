@@ -17,7 +17,12 @@
        font-family: 'Roboto', sans-serif;
        -webkit-transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
              transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+             
    }
+            .card:hover{
+                cursor: pointer;
+                background-color: #E6EBF1; 
+            }
    pre.prettyprint{
     background-color: #eee;
     border: 0px;

@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
     menuItems: any[];
     Currentuser = "";
     bool;
-    constructor(private AuthService: AuthService) {
+    constructor(private AuthService: AuthService ) {
         this.ngOnInit();
     }
     ngOnInit() {

@@ -2,3 +2,10 @@
     margin-top:40px;
     margin-left:10px
 }
+
+ .card:hover{
+   cursor:  pointer;
+   background-color: #EFF0F1;
+   
+     
+ }
