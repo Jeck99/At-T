@@ -3,11 +3,54 @@
 </p>
 <!-- <img src="/./assets/img/Att_2016.gif"/> -->
 <div id="homeDiv" class="col-md-6 col-md-offset-3">
-    <h3>Hello {{ AuthService.Role ?  'Manager' : currentUser }}!</h3>
-    <h3>Important messege for the User/Manager Here(statistic ,
-       Successful placement or Job To publish)</h3>    
-        <div class="pageGrid" >A
-<div  class="col-sm-12">1</div>       <div  class="col-sm-6">2</div>
-<div class="col-sm-6">3</div>   <div  class="col-sm-12">4</div>      
-</div>
-</div>
+  <h3>Hello {{currentUser }}!</h3>
+  <h3>here some of the information of your latest actvity</h3>
+    <div class="col-sm-12"></div>
+    <div>
+      <table>
+        <tr>
+          <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Title</th>
+            <th>Experience</th>
+            <th>Active</th>
+          </thead>
+        </tr>
+        <tr>
+          <tbody *ngFor="let app of attachedApplicant">
+            <td>{{app.Name}}</td>
+            <td>{{app.Email}}</td>
+            <td>{{app.Phone}}</td>
+            <td>{{app.Title}}</td>
+            <td>{{app.Experience}}</td>
+            <td>{{app.Active}}</td>
+          </tbody>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-sm-6">3</div>
+    <div>
+        <table>
+          <tr>
+            <thead>
+              <th>Position</th>
+              <th>Published</th>
+              <th>Title</th>
+              <th>Experience</th>
+            </thead>
+          </tr>
+          <tr>
+            <tbody *ngFor="let job of JobsByRecruiter">
+              <td>{{job.Position}}</td>
+              <td>{{job.Published}}</td>
+              <td>{{job.Title}}</td>
+              <td>{{job.Experience}}</td>
+            </tbody>
+          </tr>
+        </table>
+      </div>
+    <div class="col-sm-12">4</div>
+  </div>

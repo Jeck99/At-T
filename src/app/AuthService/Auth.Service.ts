@@ -40,7 +40,7 @@ export class AuthService {
   }
 
    LogOff() {
-     debugger;
+    //  debugger;
       let SessionToServer = localStorage.getItem('Session');
       const Req = this.Service.LogOut("ManagerLogins", SessionToServer);
       Req.subscribe(res => {
