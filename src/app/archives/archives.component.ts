@@ -107,9 +107,7 @@ export class ArchivesComponent implements OnInit {
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
-      this.AllApplicants = rsp.json().filter(x => {
-        if(x.Active){return x}      
-      });
+      this.AllApplicants = rsp.json().filter(x => x.Active)
       console.log(this.AllApplicants);
     });
   }
@@ -117,9 +115,7 @@ export class ArchivesComponent implements OnInit {
     this.Skills = [];
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
-      this.Jobs = rsp.json().filter(x => {
-        if(x.Published){return x}
-      });
+      this.Jobs = rsp.json().filter(x => x.Published)
       console.log(this.Jobs);
     });
   }
