@@ -36,4 +36,5 @@ export class HomeComponent implements OnInit {
   {
     this.Notify.showNotification('bottom','left','Notify Control',2);
   }
+
 }

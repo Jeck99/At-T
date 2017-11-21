@@ -1,0 +1,15 @@
+#homeDiv{
+    font-family: 'Archivo Black', sans-serif;
+    color: #FAFAFA;
+    text-shadow: 2px 2px 5px rgb(48, 10, 238);
+    font-weight: bold;
+    font-stretch: ultra-expanded;
+}
+.pageGrid{
+    text-align: center;
+    align-items: center;
+     width: 100%;
+   /* height: 100%; */
+    border: 1px solid blue;
+    box-sizing: border-box;
+}
