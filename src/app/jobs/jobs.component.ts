@@ -14,16 +14,27 @@ import { AuthService } from "app/AuthService/Auth.Service";
 })
 export class JobsComponent implements OnInit {
   p: number = 1;
-  
+  UserOn  : string = "";
   ngOnInit() {
     this.GetJobs();
-          }
+    this.UserOn = localStorage.getItem("un");
+}
 
   constructor(private Service: DbService , private router : Router, public AuthService : AuthService) { }
   Jobs: Job [] = [];
   AddJob= false;
   Skills = ["","",""] ;
   EditMode : boolean = false;
+  JobDetailsMode : boolean = false;
+
+  JobToView : Job;
+
+   ViewJobDetails(Jobview : Job)
+  {   
+    console.log(Jobview);
+   this.JobToView = Jobview;
+   this.JobDetailsMode = true;
+  }
   
   DeleteJob(id:number)
   {
@@ -65,6 +76,11 @@ OnAppearance(CloseForm:boolean)
 {
   this.EditMode=CloseForm;
 }
+
+OnAppearanceDetails(event){
+  this.JobDetailsMode = false;
+}
+
 
 }
 

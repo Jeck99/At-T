@@ -47,6 +47,7 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
+<<<<<<< HEAD
 import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
 import { SkillPipe } from './skill.pipe';
 
@@ -55,6 +56,11 @@ import { NavbarComponent } from 'app/components/navbar/navbar.component';
 import { SidebarComponent } from 'app/components/sidebar/sidebar.component';
 import { SearchService } from 'app/search.service';
 // import { SidebarComponent } from './sidebar/sidebar.component';
+=======
+import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
+import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
+
+>>>>>>> 47c63a31ef1caccb2d0f8e470fbff44201987b88
 
 @NgModule({
   declarations: [
@@ -102,7 +108,7 @@ import { SearchService } from 'app/search.service';
     NgxPaginationModule,
     Ng2TableModule,
     Ng2CompleterModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
   ],
   providers: [
     AuthGuard,

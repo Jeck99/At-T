@@ -1,40 +1,48 @@
 <h1 style="margin-top:40px;margin-left:10px" >Jobs !</h1>
 
-<button  id="Headline" title="Add new job"   (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
-<app-job-post *ngIf="AddJob" ></app-job-post>
-  <div *ngIf=" !EditMode && !AddJob"  class="container-fluid">
-    <div class="row" >
+<button  id="Headline" title="Add new job" *ngIf="AuthService.Role"  (click)="AddJobForm()" class="alert alert-info" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+  <div *ngIf="!EditMode && !AddJob && !JobDetailsMode"  class="container-fluid">
+    <div class="row"  >
   <div class="div2" *ngFor="let Job of Jobs| paginate: { itemsPerPage: 6, currentPage: p } ; let i = index" class="col-sm-4">
-    <div class="card">
-            <div class="card-content">
+    <div class="card row"  (click)="ViewJobDetails(Job)">
+            <div class="card-content col-sm-10">
               <div class="card-header-blue">
                   <div class="row">
-                    <div class="col-sm-5" ></div>
-                    <div class="col-xs-2"><i  (click)="PrepareForEdit(Job)" style="margin-left:45px" class="fa fa-pencil" aria-hidden="true"></i></div>
-                    <div class="col-xs-2" ></div>
-                    <div class="col-xs-2"><i (click)="DeleteJob(Job.Id)" style="margin-left:20px" class="fa fa-trash-o" aria-hidden="true"></i></div>      
+                <div><h4  class="card-heading "><span><i  class="fa fa-id-card" aria-hidden="true"></i></span> <b>{{Job.Title}}</b></h4></div>    
+                    <div class="col-sm-1" ></div>
                     </div>
-                   <div><h4  class="card-heading"><span><i style="display:absolute" class="fa fa-id-card" aria-hidden="true"></i></span> <b>{{Job.Title}}</b></h4></div>
+   
                  </div>
                  <div class="card-body">
-                  <span *ngIf="Job.Recruiters.length != 0"  style="font-weight:500" >Recruiters:</span>
-                  <span  *ngIf="Job.Recruiters.length == 0"  style="font-weight:600;color:red" >Hr Posted this Job <br>  <br> </span>
+                  <span *ngIf="Job.Recruiters.length != 0"   >Recruiters:</span>
+                  <span  *ngIf="Job.Recruiters.length == 0"  style="font-weight:600;color:red" >Non <br>  <br> </span>
                   <button *ngFor="let rec of Job.Recruiters" type="button" class="btn btn-default btn-sm">
                       <span class="glyphicon glyphicon-thumbs-up"></span> {{rec.UserName}}
                     </button>
           </div>
-          <h6> Skills : </h6>
-          <nav>
-            <ul *ngFor="let Skill of Job.Skills | slice : 0 : 3">
-              <li class="card-action"><a [title]="Skill.Description">{{Skill.Name}}</a></li>
-            </ul>
-          </nav>
-          <span>Description : {{Job.Description}}</span>
+         
+          <span style="margin: 1em;"><b> Description  :</b>{{Job.Description}}</span>
+        </div>
+        <div class="col-sm-2" style="margin-top:7%">
+                     <i  (click)="PrepareForEdit(Job)"  style="margin-right:15%" class="fa fa-pencil" aria-hidden="true"></i>
+                    <i (click)="DeleteJob(Job.Id)"  class="fa fa-trash" aria-hidden="true"></i>     
         </div>
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>       
 </div>
 
-<pagination-controls (pageChange)="p = $event"></pagination-controls>       
+ 
+<div class="row" *ngIf="(!EditMode && !AddJob && !JobDetailsMode)==false">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+
+<app-job-post *ngIf="AddJob"></app-job-post>
 <app-update-job (Appearance)="OnAppearance($event)" *ngIf="EditMode && !AddJob" [JobToUpdate]="JobToEdit"> </app-update-job>
+<Job-details class="center-block" (JobDetailsAppearance)="OnAppearanceDetails($event)" [ChosenJob]="JobToView" *ngIf=" !EditMode && !AddJob && JobDetailsMode" >  </Job-details>
+
+
+</div>
+<div class="col-sm-1"></div>
+</div>

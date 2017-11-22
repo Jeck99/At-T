@@ -59,7 +59,14 @@ export class ApplicantsComponent implements OnInit {
   {
     this.EditMode = false;
     if(CloseForm == 'success')
-    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
+    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);
+  }
+
+    OnAppearanceDetails(CloseForm:boolean)
+  {
+    this.ApplicantDetailsMode = CloseForm;
+  //  If Interview we Set Up interview
+  //    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
   }
   
   Lock(){
@@ -89,7 +96,6 @@ export class ApplicantsComponent implements OnInit {
   AddApplicantForm()
   {
     this.AddApplicant=!this.AddApplicant;
-    this.EditMode= !this.EditMode;
-  
+    this.EditMode= !this.EditMode;  
    } 
 }

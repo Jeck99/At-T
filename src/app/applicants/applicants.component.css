@@ -2,8 +2,18 @@
     margin-top:40px;
     margin-left:10px
 }
+<<<<<<< HEAD
 .search {
     
    margin-left:30px;
     
 }
+=======
+
+ .card:hover{
+   cursor:  pointer;
+   background-color: #EFF0F1;
+   
+     
+ }
+>>>>>>> 47c63a31ef1caccb2d0f8e470fbff44201987b88

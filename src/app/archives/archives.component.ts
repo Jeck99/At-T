@@ -13,7 +13,8 @@ import { LocalDataSource } from "ng2-smart-table";
 })
 export class ArchivesComponent implements OnInit {
   p: number;
-  Jobs: Job[] = [];
+  AllApplicants: Applicant = <Applicant>{};
+  Jobs: Job = <Job>{};
   AddJob = false;
   Skills = ["", "", ""];
   EditMode: boolean = false;
@@ -21,12 +22,9 @@ export class ArchivesComponent implements OnInit {
     this.GetApplicants();
     this.GetJobs();
   }
-  settings = {
-    mode: 'inline', // inline|external|click-to-edit
-    selectMode: 'single', // single|multi
+  settingsApp = {
     hideHeader: false,
-    hideSubHeader: false,
-
+    hideSubHeader: true,
     actions: {
       delete: false,
       add: false,
@@ -36,14 +34,14 @@ export class ArchivesComponent implements OnInit {
       custom: [
         {
           name: 'view',
-          title: 'ReActive ',
+          title: 'Edit ',
         },
       ]
 
     },
     pager: {
       display: true,
-      perPage: 3,
+      perPage: 4,
     },
     columns: {
       // Id: {
@@ -73,6 +71,46 @@ export class ArchivesComponent implements OnInit {
         title: 'Active',
         filter: true
       },
+    },
+  };
+  settingsJob = {
+    hideHeader: false,
+    hideSubHeader: true,
+    actions: {
+      delete: false,
+      add: false,
+      edit: {
+        confirmSave: true
+      },
+      custom: [
+        {
+          name: 'view',
+          title: 'Sava Changes',
+          confirmSave: true
+        },
+      ]
+
+    },
+    pager: {
+      display: true,
+      perPage: 3,
+    },
+    columns: {
+      // Id: {
+      //   title: 'ID',
+      // },
+      Title: {
+        title: 'Title',
+        filter: true
+      },
+      Experience: {
+        title: 'Experience',
+        filter: true
+      },
+      Active: {
+        title: 'Active',
+        filter: true
+      },
       Position: {
         title: 'Position',
         filter: true
@@ -83,38 +121,20 @@ export class ArchivesComponent implements OnInit {
       },
     },
   };
-
-  onCustom(event) {
-    console.log(event.data)
-    event.data.Active = false;
-    this.AllApplicants.Active = event.data.Active;
-    console.log(this.AllApplicants.Active)
-    let req = this.Service.Edit("Applicants", event.data)
-    req.subscribe(rsp => {
-      this.AllApplicants = rsp.json();
-    });
-
-  }
-
   ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
-  AllApplicants: Applicant = <Applicant>{};
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
-      this.AllApplicants = rsp.json();
+      this.AllApplicants = rsp.json().filter(x => x.Active)
       console.log(this.AllApplicants);
     });
-  }
-  OnAppearance(CloseForm: string) {
-    if (CloseForm == 'success')
-      this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
   }
   GetJobs() {
     this.Skills = [];
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
-      this.Jobs = rsp.json();
+      this.Jobs = rsp.json().filter(x => x.Published)
       console.log(this.Jobs);
     });
   }

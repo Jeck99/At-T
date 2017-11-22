@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
                 console.log("App Restart");
                 window.location.replace('/home');
                 
-                 localStorage.setItem('Session',res.SessionId );
+                 localStorage.setItem('Session',res.SessionId);
                  localStorage.setItem('ue',res.ue );
                  localStorage.setItem('un',res.un );
                  localStorage.setItem('uid',res.uid );

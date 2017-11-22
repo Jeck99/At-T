@@ -6,32 +6,32 @@ import { Router } from "@angular/router";
 @Injectable()
 export class AuthService {
 
-    constructor(private Service : DbService,  private router: Router,) {
-        this.AuthState();
-        this.RoleCheck();
+  constructor(private Service: DbService, private router: Router, ) {
+    this.AuthState();
+    this.RoleCheck();
+  }
+
+  IsLogged = false;
+  Role: boolean = false;
+
+  AuthState() {
+
+    if (localStorage.getItem('Session')) {
+      this.IsLogged = true;
     }
+    else {
+      this.IsLogged = false;
+    }
+  }
 
-    IsLogged = false;
-    Role : boolean =false;
-    
-    AuthState() {
-
-        if (localStorage.getItem('Session'))
-        {
-          this.IsLogged = true;
-        }   
-        else{
-          this.IsLogged = false;         
-        }
-       }
-
-     RoleCheck() {
+  RoleCheck() {
     const req = this.Service.GetUserState('ManagerLogins');
-     req.map(res => <any>res.json()).
+    req.map(res => <any>res.json()).
       subscribe(res => {
         console.log("Is Manager Loged ?");
         console.log(res);
-        this.Role =  res;  },
+        this.Role = res;
+      },
       (err: any) => {
         console.log("Error !");
         console.log(err.json());
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
    LogOff() {
-     debugger;
+    //  debugger;
       let SessionToServer = localStorage.getItem('Session');
       const Req = this.Service.LogOut("ManagerLogins", SessionToServer);
       Req.subscribe(res => {
