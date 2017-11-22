@@ -7,116 +7,112 @@
 
 
 <div class="main-content">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12" >
-            <div class="card">
-                <div class="card-header" data-background-color="blue">
-                   <button type="button" class="close"  data-dismiss="modal">&times;</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="blue">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    <h4 class="title">Add Applicant Position</h4>
-                    <p class="category">Manager Component</p>
-                </div>
-                <div class="card-content">
-                    <form  >
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-black   ">
-                                    <label class="control-label">Title </label>
-                                    <input type="text" name="Applicant.Title" [(ngModel)]="Applicant.Title"  class="form-control" >
+                        <h4 class="title">Add Applicant Position</h4>
+                        <p class="category">Manager Component</p>
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black   ">
+                                        <label class="control-label">Title </label>
+                                        <input type="text" name="Applicant.Title" [(ngModel)]="Applicant.Title" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group form-black   ">
+                                        <label class="control-label">Experience Needed</label>
+                                        <input type="number" name="Applicant.Experience" min="0" [(ngModel)]="Applicant.Experience" class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group form-black   ">
-                                    <label class="control-label">Experience Needed</label>
-                                    <input type="number" name="Applicant.Experience" min="0" [(ngModel)]="Applicant.Experience" class="form-control" >
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black   ">
+                                        <label class="control-label">Email</label>
+                                        <input type="text" name="Applicant.Email" [(ngModel)]="Applicant.Email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black   ">
+                                        <label class="control-label">Name</label>
+                                        <input type="text" name="Applicant.Name" [(ngModel)]="Applicant.Name" class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-black   ">
-                                    <label class="control-label">Email</label>
-                                    <input type="text" name="Applicant.Email" [(ngModel)]="Applicant.Email" class="form-control" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black   ">
+                                        <label class="control-label">Phone </label>
+                                        <input type="text" name="Applicant.Phone" [(ngModel)]="Applicant.Phone" class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-black   ">
-                                    <label class="control-label">Name</label>
-                                    <input type="text" name="Applicant.Name" [(ngModel)]="Applicant.Name" class="form-control" >
+
+                            <div class="box">
+                                <h2>Attache Resume</h2>
+                                <div class="dropzone" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" [ngClass]="{'active': dropzoneActive}">
+                                    <i id="uploadcloud" class="fa fa-cloud-upload fa-2x"></i>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group form-black   ">
-                                  <label class="control-label">Phone </label>
-                                  <input type="text" name="Applicant.Phone" [(ngModel)]="Applicant.Phone" class="form-control" >
-                              </div>
-                          </div>
-                      </div>
-
-                                <div class="box">
-                <h2>Attache Resume</h2>
-                <div class="dropzone"
-                     fileDrop
-                     (filesDropped)="handleDrop($event)"
-                     (filesHovered)="dropzoneState($event)"
-                     [ngClass]="{'active': dropzoneActive}">
-                     <i id="uploadcloud"  class="fa fa-cloud-upload fa-2x"></i>
-                </div>
-            </div>
-            <div  *ngIf="currentUpload">
-              <progress style="width:100%;color:#70d2ce;background-color:#70d2ce" class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-              Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-          </div>
+                            <div *ngIf="currentUpload">
+                                <progress style="width:100%;color:#70d2ce;background-color:#70d2ce" class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+                                Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+                            </div>
 
 
 
-                        <div class="row">
-                            	<div class="col-md-12" >
-			<div class="panel panel-danger">
-				<div class="panel-heading" data-toggle="collapse" data-target="#skil">
-					<h3 class="panel-title"> Applicant Skills </h3>
-					<!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> -->
-				</div>
-				<div id="skil" class="collapse" class="panel-body">
-                    <div class="row" style="margin:1px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading" data-toggle="collapse" data-target="#skil">
+                                            <h3 class="panel-title"> Applicant Skills </h3>
+                                            <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> -->
+                                        </div>
+                                        <div id="skil" class="collapse" class="panel-body">
+                                            <div class="row" style="margin:1px;">
 
-                                  <div id="chinput"  class="col-md-3" *ngFor="let item of Skills"> 
-                                     <input (click)="AddSkill(item)"  type="checkbox" ><span id="chbox" >{{ ' '+item.Name}}</span> 
-                                    </div>  
-        
-        
-        </div>
-        </div>
-			</div>
-		</div>
-                          
-                        </div>
+                                                <div id="chinput" class="col-md-3" *ngFor="let item of Skills">
+                                                    <input (click)="AddSkill(item)" type="checkbox"><span id="chbox">{{ ' '+item.Name}}</span>
+                                                </div>
 
-                        <div class="row">
 
-                            	<div class="col-md-12" >
-			<div class="panel panel-primary">
-				<div class="panel-heading" data-toggle="collapse" data-target="#rec">
-					<h3 class="panel-title"> Matching Recruiters </h3>
-				</div>
-				<div id="rec" class="collapse" class="panel-body">
-          <div class="row">
-    <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters" > 
-      <input  type="checkbox" (click)="AddRecruiter(recruiter)" ><span id="chbox" >{{ ' '+recruiter.UserName}}</span> 
-    </div>    
-    
-  </div>      
-        </div>
-			</div>
-		</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        </div>
-<!-- 
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" data-toggle="collapse" data-target="#rec">
+                                            <h3 class="panel-title"> Matching Recruiters </h3>
+                                        </div>
+                                        <div id="rec" class="collapse" class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters">
+                                                    <input type="checkbox" (click)="AddRecruiter(recruiter)"><span id="chbox">{{ ' '+recruiter.UserName}}</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- 
     <div class="panel-group" id="accordion">
 
     <div class="panel panel-default" id="panel2">
@@ -149,18 +145,15 @@
     </div>
 </div> -->
 
-    
-                        <i *ngIf="saving" class="fa fa-spinner fa-pulse fa-fw" style="color:#E8423F"></i>
-                        <button  (click)="PostApplicant()" class="btn btn-danger pull-right">Add Applicant</button>
-                        <div class="clearfix"></div>
-                    </form>
+
+                            <i *ngIf="saving" class="fa fa-spinner fa-pulse fa-fw" style="color:#E8423F"></i>
+                            <button (click)="PostApplicant()" class="btn btn-danger pull-right">Add Applicant</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
-</div>
-
-
-

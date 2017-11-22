@@ -27,6 +27,7 @@ export class ApplicantsComponent implements OnInit {
   EditMode : boolean = false;
   Filter  : any;
   skillfilter : Skill[] = [];  
+  ApplicantDetailsMode:any;
 
   ngOnInit() {
     this.GetApplicants();

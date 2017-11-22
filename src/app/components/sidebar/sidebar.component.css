@@ -1,24 +1,11 @@
 h5{
     color: floralwhite;
     font-weight: bold;
-<<<<<<< HEAD
 
 }
 .search {
     
    margin-left:3%;
    
-=======
-    user-select: none; /* Standard syntax */
-    
-}
-li:active{
-    background-color: #000000
-}
-#logOut:hover{
-    user-select: none; /* Standard syntax */
-    font-weight: bolder;
-    cursor:pointer;
->>>>>>> 47c63a31ef1caccb2d0f8e470fbff44201987b88
     
 }
