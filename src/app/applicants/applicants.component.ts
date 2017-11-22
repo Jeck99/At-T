@@ -19,12 +19,11 @@ export class ApplicantsComponent implements OnInit {
 
   constructor(private Service: DbService , private Notify : NotificationsService, public AuthService : AuthService) { }
   AllApplicants: any[];
-  lock:boolean= false;
-  AddApplicant=false;
+  lock : boolean= false;
+  AddApplicant=false ;
   EditMode : boolean = false;
   ApplicantDetailsMode : boolean = false;
   ApplicantToView : Applicant = new Applicant("","",0,"","");
-
 
   ViewUserDetails(Applicant : Applicant)
   {   
@@ -46,11 +45,11 @@ export class ApplicantsComponent implements OnInit {
     this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);
   }
 
-    OnAppearanceDetails(CloseForm:boolean)
+  OnAppearanceDetails(CloseForm:boolean)
   {
     this.ApplicantDetailsMode = CloseForm;
   //  If Interview we Set Up interview
-  //    this.Notify.showNotification('top','right','Aplicant Update Succesfully', 2);    
+  //    this.Notify.showNotification('top','right','Set Interview Succesfully', 2);    
   }
   
   Lock(){
@@ -69,12 +68,7 @@ export class ApplicantsComponent implements OnInit {
 
   DeleteApplicant(id:number)
   {
-    console.log("x");
-    let req = this.Service.delete("Applicants",id)
-    req.subscribe(rsp => {
-      alert("Deleted");
-      this.ngOnInit();
-    });
+    // Should Be Update
   }
 
   AddApplicantForm()

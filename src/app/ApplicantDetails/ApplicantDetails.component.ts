@@ -50,7 +50,7 @@ Resume : boolean = false;
   @Input() ChosenApplicant : Applicant;
   @Output() ApplicantDetailsAppearance = new EventEmitter<boolean>();
 
-SetInterView()
+closeCard()
 {
     this.ApplicantDetailsAppearance.emit(false);   
 }
@@ -59,6 +59,8 @@ resume()
 {
 this.Resume = !this.Resume;
 }
+
+
 
 
 }

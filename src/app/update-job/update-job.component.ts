@@ -115,6 +115,7 @@ CloseForm()
 
 
   CheckSkill(skil: Skill) {
+    
     if (this.JobToUpdate.Skills.find(Jskil => Jskil.Id == skil.Id))
       return true;
     else

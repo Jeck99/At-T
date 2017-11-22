@@ -27,11 +27,12 @@ export class UpdateApplicantsComponent implements OnInit {
   constructor(private Service: DbService,private upSvc: UploadService) { }
   currentUpload: Upload;
   dropzoneActive:boolean = false;
-UpdateUrl = false;
-OnOver=false;
+  UpdateUrl = false;
+  OnOver=false;
   ngOnInit() {
     this.GetSkills();
     this.GetRecruiters();
+    console.log("Applicant To Update",this.ApplicantToUpdate)
   }
   FileOver()
   {
@@ -47,7 +48,7 @@ handleDrop(fileList: FileList) {
   _.each(filesIndex, (idx) => {
     console.log("idx",idx);
     this.currentUpload = new Upload(fileList[idx]);
-    console.log("currentUpload",this.currentUpload);
+    console.log("current Upload :",this.currentUpload);
    
    this.upSvc.pushUpload(this.currentUpload);
 }   
@@ -128,10 +129,8 @@ handleDrop(fileList: FileList) {
 
 
   PostApplicantToUpdate() {
-    this.ApplicantToUpdate.Url = localStorage.getItem('DURL');
-    
+    this.ApplicantToUpdate.Url = localStorage.getItem('DURL');   
     console.log(this.ApplicantToUpdate);
-
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {
       console.log("My Update Applicant Action");
@@ -146,7 +145,7 @@ handleDrop(fileList: FileList) {
     
   }
 
-  CheckSkill(skil: Skill) {
+  CheckSkill(skil: Skill) {  
     if (this.ApplicantToUpdate.Skills.find(Jskil => Jskil.Id == skil.Id))
       return true;
     else
@@ -162,7 +161,7 @@ handleDrop(fileList: FileList) {
 
 
 
-   AddRecruiter(recruiter : Manager)
+   ChangeRecruiter(recruiter : Manager)
   {
     if(this.ApplicantToUpdate.Recruiters.find(rec => rec.Id == recruiter.Id))
       {
@@ -176,7 +175,7 @@ handleDrop(fileList: FileList) {
             console.log(this.ApplicantToUpdate.Recruiters);
      }
 
-  AddSkill(Skil : Skill)
+  ChangeSkill(Skil : Skill)
   {
     if(this.ApplicantToUpdate.Skills.find(Sk => Sk.Id == Skil.Id))
       {

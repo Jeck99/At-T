@@ -4,20 +4,17 @@
 
 <div *ngIf="!AddApplicant && !EditMode && !ApplicantDetailsMode" class="container-fluid">
     <div class="row" >
-  <div *ngFor="let Applicant of AllApplicants | paginate: { itemsPerPage: 5, currentPage: page };let i = index" class="col-md-4">
+  <div *ngFor="let Applicant of AllApplicants | paginate: { itemsPerPage: 6, currentPage: page };let i = index" class="col-md-4">
     <div class="card"  (click)="ViewUserDetails(Applicant)">
             <div class="card-content">
               <div class="card-header-blue">
                 <div class="row">
-<<<<<<< HEAD
-                    <div class="col-sm-2"><i style="font-size:120%;" (click)="ApplicantDetailsMode==true" [title]="Applicant.LockedBy!=''?'Locked By :'+Applicant.LockedBy:'' " (click)="ViewUserDetails(Applicant)"  [class]="Applicant.LockedBy!='' ?'fa fa-lock':'fa fa-unlock-alt'" aria-hidden="true" ></i></div>
-=======
                   
                     <div class="col-sm-2"><i style="font-size:120%;" [title]="Applicant.LockedBy!=''?'Locked By :'+Applicant.LockedBy:'' "  [class]="Applicant.LockedBy!='' ?'fa fa-lock':'fa fa-unlock-alt'" aria-hidden="true" ></i></div>
->>>>>>> 0ed51f4e69f64aef8b41729fd9e49d509761bc62
                     <div class="col-sm-6" ></div>
-                  <div  class="col-sm-2"><i *ngIf="AuthService.Role" (click)="PrepareForEdit(Applicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true"></i></div>
-                  <div class="col-sm-2"><i *ngIf="AuthService.Role" (click)="DeleteApplicant(Applicant.Id)" style="font-size:120%;" class="fa fa-trash-o" aria-hidden="true"></i></div>      
+                  <div  class="col-sm-1"><i *ngIf="AuthService.Role" (click)="PrepareForEdit(Applicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true"></i></div>
+                  <div class="col-sm-1"><i *ngIf="AuthService.Role" (click)="DeleteApplicant(Applicant.Id)" style="font-size:120%;" class="fa fa-trash-o" aria-hidden="true"></i></div>   
+                                    <div  class="col-sm-1"><span *ngIf="!AuthService.Role" [class]="Applicant.MatchPrecentage >=0.9 ?'skiltags' :'rectags'  "  style="font-size:120%;text-align:center">{{Applicant.MatchPrecentage*100 + '%'}}</span></div>
                 </div>
                   <div class="card-body">
  <div><h4  class="card-heading"><span><i style="display:absolute" class="fa fa-id-card" aria-hidden="true"></i></span> <b>{{Applicant.Name}}</b></h4></div>

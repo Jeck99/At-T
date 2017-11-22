@@ -17,7 +17,7 @@
                   <span *ngIf="Job.Recruiters.length != 0"   >Recruiters:</span>
                   <span  *ngIf="Job.Recruiters.length == 0"  style="font-weight:600;color:red" >Non <br>  <br> </span>
                   <button *ngFor="let rec of Job.Recruiters" type="button" class="btn btn-default btn-sm">
-                      <span class="glyphicon glyphicon-thumbs-up"></span> {{rec.UserName}}
+                      <span class="fa fa-user"></span> {{rec.UserName}}
                     </button>
           </div>
          
