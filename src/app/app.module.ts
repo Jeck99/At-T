@@ -88,6 +88,8 @@ import { InterviewSummeryComponent } from "app/interview-summery/interview-summe
     RecruiterComponent,
     ApplicantDetailsComponent,
     JobDetailsComponent,
+    SidebarComponent,
+    NavbarComponent,
     InterviewSummeryComponent
 
   ],
