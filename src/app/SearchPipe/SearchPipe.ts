@@ -1,20 +1,15 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
-import { isUndefined } from 'util';
-
 
 @Pipe({
- name: 'SearchFilterPipe'
+ name: 'searchfilter'
 })
 
 @Injectable()
 export class SearchFilterPipe implements PipeTransform {
- transform(items: any[],value: string): any[] {
-
-  console.log("searchpipe",value);
-  
-  if (!items) return items;
-  if (isUndefined(value)) return items;
-  if(value=='') return items;
-   return items.filter(item => item.Name.toLowerCase().indexOf(value.toLowerCase()) > -1);
+ transform(items: any[], field: string, value: string): any[] {
+   debugger;
+   if (!items) return items;
+   if(value=='') return items;
+   return items.filter(item => item.Applicant.Name.toLowerCase().indexOf(value.toLowerCase()) > -1);
  }
 }

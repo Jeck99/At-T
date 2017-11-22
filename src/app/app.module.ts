@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { FireConfig } from "./FireConfig/FireConfig";
 import { AppRoutingModule } from './app.routing';
-// import { ComponentsModule } from './components/components.module';
+import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -48,6 +48,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
+<<<<<<< HEAD
 import { SkillPipe } from './skill.pipe';
 
 import { FooterComponent } from 'app/components/footer/footer.component';
@@ -58,6 +59,8 @@ import { ApplicantDetailsComponent } from "app/ApplicantDetails/ApplicantDetails
 import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
 import { InterviewSummeryComponent } from "app/interview-summery/interview-summery.component";
 // import { SidebarComponent } from './sidebar/sidebar.component';
+=======
+>>>>>>> parent of 466fa8aa... Stam Pull
 
 @NgModule({
   declarations: [
@@ -84,13 +87,7 @@ import { InterviewSummeryComponent } from "app/interview-summery/interview-summe
     UploadFormComponent,
     FileDropDirective,
     NewComponent,
-    SearchFilterPipe,
-    RecruiterComponent,
-    ApplicantDetailsComponent,
-    JobDetailsComponent,
-    SidebarComponent,
-    NavbarComponent,
-    InterviewSummeryComponent
+    RecruiterComponent
 
   ],
   imports: [
@@ -98,8 +95,8 @@ import { InterviewSummeryComponent } from "app/interview-summery/interview-summe
     AngularFireModule.initializeApp(FireConfig),
     FormsModule,
     HttpModule,
-    // ComponentsModule,
-    RouterModule, 
+    ComponentsModule,
+RouterModule,
     AppRoutingModule    ,  
     TabsModule,
     NgxPaginationModule,
@@ -114,7 +111,7 @@ import { InterviewSummeryComponent } from "app/interview-summery/interview-summe
     AngularFireAuth,
     AngularFireDatabase,
     NotificationsService,SearchFilterPipe,
-    SearchService,
+    // providers used to create fake backend
     MockBackend,
     BaseRequestOptions
 ],

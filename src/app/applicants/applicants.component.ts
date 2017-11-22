@@ -3,56 +3,31 @@ import { DbService } from ".././DbService/DbService";
 import {Applicant} from "../ModelService/Applicant"
 import { NotificationsService } from '../notifications/notifications.component';
 import { AuthService } from "app/AuthService/Auth.Service";
-import {SearchFilterPipe} from '../SearchPipe/SearchPipe';
-import { Pipe } from '@angular/core/src/metadata/directives';
-import {SkillPipe} from '../skill.pipe';
-import { Skill } from 'app/ModelService/Skill';
-import { SearchService } from 'app/search.service';
-
 
 @Component({
   selector: 'app-applicants',
   templateUrl: './applicants.component.html',
   styleUrls: ['./applicants.component.css'],
-providers: [DbService,SearchService],
-
+providers: [DbService],
 })
 export class ApplicantsComponent implements OnInit {
   page: number = 1;
   
-  constructor(private Service: DbService , private Notify : NotificationsService, public AuthService : AuthService,private SearchFilter : SearchService) { }
-  AllApplicants: Applicant[];
+  ngOnInit() {
+    this.GetApplicants();
+      }
+
+  constructor(private Service: DbService , private Notify : NotificationsService, public AuthService : AuthService) { }
+  AllApplicants: any[];
   lock:boolean= false;
   AddApplicant=false;
   EditMode : boolean = false;
-  Filter  : any;
-  skillfilter : Skill[] = [];  
-  ApplicantDetailsMode:any;
-
-  ngOnInit() {
-    this.GetApplicants();
-
-
-  }
+  Filter="";
   
-  changenow()
-  {
-    this.SearchFilter.getData().subscribe(data => {
-      this.Filter = data;
-    })
-  
-  }
-
   GetApplicants(){
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
-      this.skillfilter = this.AllApplicants[0].Skills;
-      console.log("Haim" , this.AllApplicants[0]);
-      
-      console.log("filter Skills" ,this.skillfilter);
-      
-
       console.log(this.AllApplicants);
     });
   }
