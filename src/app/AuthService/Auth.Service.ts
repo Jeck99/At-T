@@ -39,6 +39,7 @@ export class AuthService {
       });
   }
 
+<<<<<<< HEAD
    LogOff() {
     //  debugger;
       let SessionToServer = localStorage.getItem('Session');
@@ -61,6 +62,29 @@ export class AuthService {
           console.log(" Error - in deleting Cokies  ");
         });
     }
+=======
+  LogOff() {
+    debugger;
+    let SessionToServer = localStorage.getItem('Session');
+    const Req = this.Service.LogOut("ManagerLogins", SessionToServer);
+    Req.subscribe(res => {
+      window.location.reload();
+      console.log("Finally !!!!!");
+      localStorage.removeItem('Session');
+      localStorage.removeItem('expires_at');
+      localStorage.removeItem('ue');
+      localStorage.removeItem('un');
+      localStorage.removeItem('uid');
+      console.log("Supposed to be loged out");
+      this.RoleCheck();
+      this.router.navigate(['./login']);
+
+    },
+      (err: any) => {
+        console.log(" Error - in deleting Cokies  ");
+      });
+  }
+>>>>>>> 4633b4885c9d0ba38af3f05d37d93a16ab520bc6
 }
 
 
