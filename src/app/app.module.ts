@@ -49,6 +49,7 @@ import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
 import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
+import { InterviewSummeryComponent } from './interview-summery/interview-summery.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
     NewComponent,
     RecruiterComponent,
     ApplicantDetailsComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    InterviewSummeryComponent
 
   ],
   imports: [
