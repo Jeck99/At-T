@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { FireConfig } from "./FireConfig/FireConfig";
 import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
+// import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -47,10 +47,17 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
-import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
-import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
-import { InterviewSummeryComponent } from './interview-summery/interview-summery.component';
+import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
+import { SkillPipe } from './skill.pipe';
 
+import { FooterComponent } from 'app/components/footer/footer.component';
+import { NavbarComponent } from 'app/components/navbar/navbar.component';
+import { SidebarComponent } from 'app/components/sidebar/sidebar.component';
+import { SearchService } from 'app/search.service';
+import { ApplicantDetailsComponent } from "app/ApplicantDetails/ApplicantDetails.component";
+import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
+import { InterviewSummeryComponent } from "app/interview-summery/interview-summery.component";
+// import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +84,7 @@ import { InterviewSummeryComponent } from './interview-summery/interview-summery
     UploadFormComponent,
     FileDropDirective,
     NewComponent,
+    SearchFilterPipe,
     RecruiterComponent,
     ApplicantDetailsComponent,
     JobDetailsComponent,
@@ -88,8 +96,8 @@ import { InterviewSummeryComponent } from './interview-summery/interview-summery
     AngularFireModule.initializeApp(FireConfig),
     FormsModule,
     HttpModule,
-    ComponentsModule,
-RouterModule,
+    // ComponentsModule,
+    RouterModule, 
     AppRoutingModule    ,  
     TabsModule,
     NgxPaginationModule,
@@ -103,8 +111,8 @@ RouterModule,
     UploadService,
     AngularFireAuth,
     AngularFireDatabase,
-    NotificationsService,
-    // providers used to create fake backend
+    NotificationsService,SearchFilterPipe,
+    SearchService,
     MockBackend,
     BaseRequestOptions
 ],
