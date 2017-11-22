@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { NgDatepickerModule } from 'ng2-datepicker';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
@@ -27,7 +27,7 @@ import { JobsComponent } from './jobs/jobs.component';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
+AppRoutingModule
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
@@ -36,6 +36,7 @@ import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
 import { AddApplicantComponent } from './add-applicant/add-applicant.component';
+import { InterViewComponent } from './inter-view/inter-view.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AddApplicantComponent } from './add-applicant/add-applicant.component';
     LoginComponent,
     JobPostComponent,
     AddApplicantComponent,
+    InterViewComponent,
 
   ],
   imports: [
@@ -66,8 +68,9 @@ import { AddApplicantComponent } from './add-applicant/add-applicant.component';
     FormsModule,
     HttpModule,
     ComponentsModule,
-RouterModule,
-    AppRoutingModule
+    RouterModule,
+    AppRoutingModule,
+    NgDatepickerModule
   ],
   providers: [
     AuthGuard,
@@ -76,8 +79,8 @@ RouterModule,
     // providers used to create fake backend
     MockBackend,
     BaseRequestOptions
-],
+  ],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule { }

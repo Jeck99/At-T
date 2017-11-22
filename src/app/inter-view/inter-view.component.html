@@ -1,0 +1,27 @@
+<br/>
+<br/>
+<br/>
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <div class="datepicker-container">
+        <b>Pick Date :</b>
+        <ng-datepicker [(ngModel)]="date"></ng-datepicker>
+        <input type="time" [value]="date" [(ngModel)]="time"/>
+      </div>
+    </div>
+    <div class="column is-6 is-offset-3">
+      <div class="datepicker-container">
+        <b> The selected date:</b> {{ date }}
+      </div>
+    </div>
+    <input type="submit" value="Submit" (click)="fun()">
+  </div>
+</div>
+<h1>hello</h1>
+<p>The time is {{time | date:'shortTime'}}</p>
+<!-- <mat-form-field class="example-full-width">
+  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field> -->

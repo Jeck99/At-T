@@ -6,10 +6,6 @@ import { User } from "../ModelService/User";
 // import { User } from "../_models/user";
 // import { User } from "app/ModelService/User";
 
-
-
-
-
 export class DbService {
 
     Get1(ctrl: string, UserName: string) {        
@@ -24,7 +20,6 @@ export class DbService {
         console.log(this.url + ctrl);
         return this.http.get(this.url + ctrl+"/?session=" + localStorage.getItem("Session"));
     }
-
 
     Get(ctrl: string) {
         console.log(this.url + ctrl);
