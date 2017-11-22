@@ -8,6 +8,11 @@
         <span> {{Currentuser}} possibilities </span>
     </a>
 
+    <form>
+        
+        <h4 class="search">  </h4> <input type="text" (keyup)="searchassembley($event)" [(ngModel)]="KeyWord" name="KeyWord" placeholder="Search ..">
+      </form>
+
 </div>
 <div class="sidebar-wrapper">
     <div class="nav-container">
@@ -20,6 +25,8 @@
                 </a>
                 </li>
             </ng-container>
+            
         </ul>
     </div>
 </div>
+

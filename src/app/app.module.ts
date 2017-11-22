@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { FireConfig } from "./FireConfig/FireConfig";
 import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
+// import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -48,6 +48,13 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
+import { SkillPipe } from './skill.pipe';
+
+import { FooterComponent } from 'app/components/footer/footer.component';
+import { NavbarComponent } from 'app/components/navbar/navbar.component';
+import { SidebarComponent } from 'app/components/sidebar/sidebar.component';
+import { SearchService } from 'app/search.service';
+// import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +81,13 @@ import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
     UploadFormComponent,
     FileDropDirective,
     NewComponent,
-    RecruiterComponent
+    SearchFilterPipe,
+    RecruiterComponent,
+    SkillPipe,
+    SidebarComponent,
+    NavbarComponent,
+    FooterComponent
+    
 
   ],
   imports: [
@@ -82,8 +95,8 @@ import { SearchFilterPipe } from 'app/SearchPipe/SearchPipe';
     AngularFireModule.initializeApp(FireConfig),
     FormsModule,
     HttpModule,
-    ComponentsModule,
-RouterModule,
+    // ComponentsModule,
+    RouterModule, 
     AppRoutingModule    ,  
     TabsModule,
     NgxPaginationModule,
@@ -98,7 +111,7 @@ RouterModule,
     AngularFireAuth,
     AngularFireDatabase,
     NotificationsService,SearchFilterPipe,
-    // providers used to create fake backend
+    SearchService,
     MockBackend,
     BaseRequestOptions
 ],
