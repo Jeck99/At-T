@@ -1,30 +1,36 @@
-:host /deep/ ng2-smart-table thead {
-    color: rgb(0, 0, 0);
-    text-shadow: 2px 2px 1px #FFFFFF;
-    font-size: x-large;
-    border: 1px solid #000000;
-    background-color: rgba(255, 255, 255, 0.63)
-}
-:host  ng2-smart-table {
+:host /deep/ ng2-smart-table {
     font-size: 18px;
-    color: rgb(0, 0, 0);
-    font-size: x-large;
-    background-color: #000000
+    color: rgba(4, 61, 237, 0.91)
 }
 :host /deep/ ng2-smart-table tbody  { 
 	text-align: left; 
     background-color:rgba(21, 0, 250, 0.17);  
     border-bottom-color:  #111111;
     font-size: 18px;     
-     border: 1px solid #111111;
-     background-color:rgba(255, 255, 255, 0.67);  
+         border: 1px solid #111111;
+         background-color:rgba(255, 255, 255, 0.67);  
          
 }
 :host /deep/ ng2-smart-table tbody>tr>td  { 
       border: 1px solid #111111;
     
 }
-
-.nav-tabs{
-    background-color:rgba(255, 255, 255, 0.58) 
+:host /deep/ ng2-smart-table tbody>tr>td:first-child  { 
+	text-align: left; 
+    background-color:rgba(21, 0, 250, 0.17);  
+    border-bottom-color:  #111111;
+    font-size: 20px;
+    color: #111111;
+    font-weight: bold
+        
+}
+/* tabset{
+    background-color: rgba(100, 18, 240, 0.72)
+}
+#tabDiv{
+    background-color: rgba(210, 192, 240, 0.34)
+} */
+.container{
+    /* background-color: rgba(152, 162, 172, 0.32); */
+    /* color: #DC0F0F */
 }

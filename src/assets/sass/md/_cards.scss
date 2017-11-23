@@ -2,17 +2,15 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    height: 20%;
-    box-sizing:  border-box;
-    // margin: 25px 0;
+    margin: 25px 0;
 
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-    // border-radius: $border-radius-base;
-    // color: $mdb-card-body-text;
-    // background: $mdb-card-body-background;
+    border-radius: $border-radius-base;
+    color: $mdb-card-body-text;
+    background: $mdb-card-body-background;
 
     .card-height-indicator {
-        // margin-top: 100%;
+        margin-top: 100%;
     }
 
     .title{

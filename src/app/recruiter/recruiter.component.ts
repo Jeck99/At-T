@@ -25,11 +25,12 @@ settings = {
   mode: 'inline', // inline|external|click-to-edit
   selectMode: 'single', // single|multi
   hideHeader: false,
-  hideSubHeader: true,
+  hideSubHeader: false,
+
   actions: {
-    edit:false,
-    delete:false,
-    add:false
+    edit: {
+      confirmSave: true
+    },
   },
   pager: {
     display: true,
