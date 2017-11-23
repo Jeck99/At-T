@@ -4,34 +4,34 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>Edit Appliecant</h3>
+        <h3>Edit Product</h3>
         <form #formEditAppliecant="ngForm" (ngSubmit)="onSubmit(param)">
           <div class="form-group">
             <label for="appliecantName">Appliecant Name</label>
             <input type="text" class="form-control" name="appliecantName" [(ngModel)]="ApplicantEdit.Name" required #trvappliecantName="ngModel">
             <div *ngIf="trvappliecantName.errors && (trvappliecantName.dirty || trvappliecantName.touched)" class="alert alert-danger">
-              <div [hidden]="!trvappliecantName.errors.required"> Name is required </div>
+              <div [hidden]="!trvappliecantName.errors.required">Product Name is required </div>
             </div>
           </div>
           <div class="form-group">
             <label for="experience">Experience</label>
             <input type="number" class="form-control" name="experience" [(ngModel)]="ApplicantEdit.Experience" required #trvExperience="ngModel">
             <div *ngIf="trvExperience.errors && (trvExperience.dirty || trvExperience.touched)" class="alert alert-danger">
-              <div [hidden]="!trvExperience.errors.required"> Experience is required </div>
+              <div [hidden]="!trvExperience.errors.required"> Market Price is required </div>
             </div>
           </div>
           <div class="form-group">
             <label for="Email">Email</label>
             <input type="email" class="form-control" name="Email" [(ngModel)]="ApplicantEdit.Email" required #trvEmail="ngModel">
             <div *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)" class="alert alert-danger">
-              <div [hidden]="!trvEmail.errors.required"> Email is required </div>
+              <div [hidden]="!trvEmail.errors.required"> Product Name is required </div>
             </div>
           </div>
           <div class="form-group">
             <label for="Phone">Phone</label>
             <input type="text" class="form-control" name="Phone" [(ngModel)]="ApplicantEdit.Phone" required #trvPhone="ngModel">
             <div *ngIf="Phone.errors && (Phone.dirty || Phone.touched)" class="alert alert-danger">
-              <div [hidden]="!Phone.errors.required"> Phone is required</div>
+              <div [hidden]="!Phone.errors.required"> Picture is required (Insert picture as url)</div>
             </div>
           </div>
           <!-- <div class="form-group">

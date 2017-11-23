@@ -16,6 +16,7 @@ constructor(email : string , title : string , experience :number,name : string ,
         this.Skills = [];
         this.Recruiters = [];
         this.Url ="";
+        this.MatchPrecentage = 0;
 }
 
 
@@ -34,4 +35,5 @@ constructor(email : string , title : string , experience :number,name : string ,
     Title : string;
     Skills : Skill [];
     Recruiters : Manager [];  
+    MatchPrecentage : number;
 }

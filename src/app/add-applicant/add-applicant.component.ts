@@ -74,6 +74,7 @@ export class AddApplicantComponent implements OnInit {
 
 
     PostApplicant() {
+        this.Applicant.Url = localStorage.getItem('DURL');   
         this.Applicant.LockedBy = "Almog";
         console.log(this.Applicant);
         const req = this.Service.post("Applicants", this.Applicant);

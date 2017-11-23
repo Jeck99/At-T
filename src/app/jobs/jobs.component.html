@@ -17,14 +17,14 @@
                   <span *ngIf="Job.Recruiters.length != 0"   >Recruiters:</span>
                   <span  *ngIf="Job.Recruiters.length == 0"  style="font-weight:600;color:red" >Non <br>  <br> </span>
                   <button *ngFor="let rec of Job.Recruiters" type="button" class="btn btn-default btn-sm">
-                      <span class="glyphicon glyphicon-thumbs-up"></span> {{rec.UserName}}
+                      <span class="fa fa-user"></span> {{rec.UserName}}
                     </button>
           </div>
          
           <span style="margin: 1em;"><b> Description  :</b>{{Job.Description}}</span>
         </div>
         <div class="col-sm-2" style="margin-top:7%">
-                     <i  (click)="PrepareForEdit(Job)"  style="margin-right:15%" class="fa fa-pencil" aria-hidden="true"></i>
+                     <i  (click)="PrepareForEdit(Job)" *ngIf="AuthService.Role || CheckRelation(Job)"  style="margin-right:15%" class="fa fa-pencil" aria-hidden="true"></i>
                     <i (click)="DeleteJob(Job.Id)"  class="fa fa-trash" aria-hidden="true"></i>     
         </div>
       </div>

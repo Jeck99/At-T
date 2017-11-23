@@ -28,7 +28,6 @@
                 </div>             
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>
-                        <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
                         <figcaption class="ratings">
                             <p *ngIf="!(ChosenApplicant.LockedBy==UserOn)">{{ChosenApplicant.LockedBy==''? 'Not Locked Yet ..':'Locked By :  '+ChosenApplicant.LockedBy}}
                             </p>
@@ -44,11 +43,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-4 ">
        
-                    <button (click)="SetInterView()" class="btn btn-danger btn-block"><span class="fa fa-user"></span> Back to Applicants </button>
+                    <button (click)="closeCard()" class="btn btn-danger btn-block"><span class="fa fa-user"></span> Back to Applicants </button>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="btn-group dropup btn-block">
-                      <button type="button" class="btn btn-primary" (click)="LockApplicant()"><span class="fa fa-lock"></span>Lock This Applicant For an Interview </button>
+                      <button type="button" *ngIf="!AuthService.Role" class="btn btn-primary" (click)="LockApplicant()"><span class="fa fa-lock"></span>Lock This Applicant For an Interview </button>
                       <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>

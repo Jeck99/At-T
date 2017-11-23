@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { AuthService } from "app/AuthService/Auth.Service";
+import { AuthService } from "./AuthService/Auth.Service";
 
 declare const $: any;
 

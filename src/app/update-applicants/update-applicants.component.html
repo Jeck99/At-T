@@ -86,9 +86,10 @@ Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
                       <div class="row" style="margin:1px;">
 
                         <div id="chinput" class="col-md-3" *ngFor="let item of Skills ">
-                            <input *ngIf="!CheckSkill(item)"(click)="AddSkill(item)"     type="checkbox" ><span *ngIf="!CheckSkill(item)" id="chbox">{{ ' '+item.Name}}</span>
+                            <input *ngIf="!CheckSkill(item)" (click)="ChangeSkill(item)"     type="checkbox" >
 
-                            <input  *ngIf="CheckSkill(item)" checked  (click)="AddSkill(item)"   type="checkbox"  ><span *ngIf="CheckSkill(item)" id="chbox">{{ ' '+item.Name}}</span>
+                            <input  *ngIf="CheckSkill(item)" checked  (click)="ChangeSkill(item)"   type="checkbox"  >
+                            <span  id="chbox">{{ ' '+item.Name}}</span>
                         </div>
                       </div>
                     </div>
@@ -110,9 +111,11 @@ Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
 
                         <div class="col-md-3" style="margin:1px;" id="chbox" *ngFor="let recruiter of Recruiters ">
 
-                          <input type="checkbox" (click)="AddRecruiter(recruiter)"  *ngIf="!CheckRecruiter(recruiter)"><span id="chbox" *ngIf="!CheckRecruiter(recruiter)" >{{ ' '+recruiter.UserName}}</span>
+                          <input type="checkbox" (click)="ChangeRecruiter(recruiter)"  *ngIf="!CheckRecruiter(recruiter)">
 
-                          <input type="checkbox" (click)="AddRecruiter(recruiter)"  checked  *ngIf="CheckRecruiter(recruiter)"><span id="chbox" *ngIf="CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
+                          <input type="checkbox" (click)="ChangeRecruiter(recruiter)"  checked  *ngIf="CheckRecruiter(recruiter)">
+                          
+                          <span id="chbox" *ngIf="CheckRecruiter(recruiter)">{{ ' '+recruiter.UserName}}</span>
                         </div>
 
 
