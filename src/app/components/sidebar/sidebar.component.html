@@ -3,7 +3,11 @@
         <div class="logo-img">
             <img src="/assets/img/at&t_logo2.png" />
         </div>
+        AT&T Israel
+        <h6>AT&T Recruiting Tool</h6>
+        <span> {{Currentuser}} possibilities </span>
     </a>
+<<<<<<< HEAD
     <form>
         
         <h4 class="search">  </h4> <input type="text" (keyup)="searchassembley($event)" [(ngModel)]="KeyWord" name="KeyWord" placeholder="Search ..">
@@ -16,17 +20,15 @@
 >>>>>>> 47c63a31ef1caccb2d0f8e470fbff44201987b88
 =======
 >>>>>>> parent of 466fa8aa... Stam Pull
+=======
+
+>>>>>>> parent of e3d7bcd5... After pull1
 </div>
 <div class="sidebar-wrapper">
     <div class="nav-container">
         <ul class="nav">
-            <li>
-                <h5 id="logOut" *ngIf="AuthService.IsLogged" (click)="AuthService.LogOff()" [routerLink]="['/login']">
-                    Log out
-                </h5>
-            </li>
             <ng-container *ngFor="let menuItem of menuItems">
-                <li routerLinkActive="active" class="{{menuItem.class}}">
+                <li  routerLinkActive="active" class="{{menuItem.class}}">
                     <a [routerLink]="[menuItem.path]">
                     <i  class="material-icons">{{menuItem.icon}}</i>
                     <h5>{{menuItem.title}}</h5>

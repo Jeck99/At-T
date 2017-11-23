@@ -64,8 +64,11 @@ export class HomeComponent implements OnInit {
     this.currentUserId = +localStorage.getItem("uid");
     this.AuthService.RoleCheck();
   }
+<<<<<<< HEAD
 
   UseNotifyService() {
     this.Notify.showNotification('bottom', 'left', 'Notify Control', 2);
   }
+=======
+>>>>>>> parent of e3d7bcd5... After pull1
 }

@@ -4,29 +4,37 @@
 <div class="container">
   <h1><strong>Welcome admin</strong><br/> Please select the action you want to perform</h1>
   <div id="tabDiv" class="container">
-    <tabset>
+    <tabset style="background-color: deepskyblue">
       <tab >
+<<<<<<< HEAD
         <span *tabHeading>
                        <b >Applicants list</b> 
                     </span>
         <div class="container">
           <br/>
             <ng2-smart-table [settings]="settingsApp" [source]="AllApplicants"  (custom)="onCustomApp($event)"></ng2-smart-table>
+=======
+                     <span *tabHeading>
+                       <b >Applicants list</b>                       
+                    </span>
+        <div class="container">
+            <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
+            <ng2-smart-table [settings]="settingsApp" [source]="AllApplicants"   (custom)="onCustomApp($event)"></ng2-smart-table>
+>>>>>>> parent of e3d7bcd5... After pull1
         </div>
       </tab>
       <tab>
                   <span *tabHeading>
                       <b >Jobs list</b>
                   </span>
+        <div class="container">
+        </div>
+        <div >
             <div class="container">
-<<<<<<< HEAD
                 <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
                 <ng2-smart-table [settings]="settingsJob" [source]="Jobs" (edit)="onEditJobs()"  (update)="onCustomJob($event)"> ></ng2-smart-table>
-=======
-                <br/>                
-                <ng2-smart-table [settings]="settingsJob" (edit)="onEdit()" [source]="Jobs" (custom)="onCustomJob($event)"> ></ng2-smart-table>
->>>>>>> 0ed51f4e69f64aef8b41729fd9e49d509761bc62
             </div>
+        </div>
       </tab>
     </tabset>
   </div>
