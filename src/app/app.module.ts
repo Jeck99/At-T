@@ -25,7 +25,6 @@ import { JobsComponent } from './jobs/jobs.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 // used to create fake backend
-import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
@@ -48,7 +47,9 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
-import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
+import { JobDetailsComponent } from "./JobDetails/JobDetails.component";
+import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
+import { ArraySortPipe } from "./Pipes/sort.pipe";
 
 
 @NgModule({
@@ -78,7 +79,9 @@ import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
     NewComponent,
     RecruiterComponent,
     ApplicantDetailsComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    InterviewSummeryComponent,
+    
 
   ],
   imports: [
@@ -87,13 +90,13 @@ import { JobDetailsComponent } from "app/JobDetails/JobDetails.component";
     FormsModule,
     HttpModule,
     ComponentsModule,
-RouterModule,
-    AppRoutingModule    ,  
+    RouterModule,
+    AppRoutingModule ,  
     TabsModule,
     NgxPaginationModule,
     Ng2TableModule,
     Ng2CompleterModule,
-    Ng2SmartTableModule,
+    Ng2SmartTableModule
   ],
   providers: [
     AuthGuard,
@@ -102,11 +105,10 @@ RouterModule,
     AngularFireAuth,
     AngularFireDatabase,
     NotificationsService,
-    // providers used to create fake backend
-    MockBackend,
-    BaseRequestOptions
+    ArraySortPipe
+    
 ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent ],
   
 })
 export class AppModule  { 

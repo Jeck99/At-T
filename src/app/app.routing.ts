@@ -23,9 +23,9 @@ import { UpdateJobComponent } from './update-job/update-job.component';
 import { UpdateApplicantsComponent } from './update-applicants/update-applicants.component';
 import { ApplicantsComponent } from "./applicants/applicants.component";
 import { AddApplicantComponent } from './add-applicant/add-applicant.component';
-import { AuthGuard } from 'app/_guards/auth.guard';
-import { ArchivesComponent } from 'app/archives/archives.component';
-import { RecruiterComponent } from "app/recruiter/recruiter.component";
+import { AuthGuard } from './_guards/auth.guard';
+import { ArchivesComponent } from './archives/archives.component';
+import { RecruiterComponent } from "./recruiter/recruiter.component";
 // import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 
 
@@ -44,7 +44,7 @@ const routes: Routes =[
                                                              //מסכים נדרשים על פי איפיון
     { path: 'app-recruiter',component: RecruiterComponent, canActivate : [AuthGuard]  },
     { path: 'add-job',        component: AddJobComponent , canActivate : [AuthGuard]  },
-    { path: 'applicants',    component: ApplicantsComponent , canActivate : [AuthGuard]  },
+    { path: 'applicants',    component: ApplicantsComponent , canActivate : [AuthGuard]},
     { path: 'home',           component: HomeComponent , canActivate : [AuthGuard]  },
     { path: 'jobs',           component: JobsComponent , canActivate : [AuthGuard]  },
     { path: 'update-job',     component: UpdateJobComponent , canActivate : [AuthGuard]  },

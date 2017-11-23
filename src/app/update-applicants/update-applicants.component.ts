@@ -88,27 +88,9 @@ handleDrop(fileList: FileList) {
 
   AppRecruiter: ApplicantRecruiter[] = [];
   
-    PostApplicantRecruiters() {
-      this.ApplicantToUpdate.Recruiters.forEach(element => {
-        this.AppRecruiter.push(new ApplicantRecruiter(this.ApplicantToUpdate.Id, element.Id));
-      });
-      const req = this.Service.EditCollection("ApplicantRecruiters", this.AppRecruiter, this.ApplicantToUpdate.Id);
-      req.subscribe(res => {
-        console.log("Job Recruiter Id's Edit Succesfully");
-        console.log(res);
-        this.AppRecruiter =[];
-        
-      },
-        (err: any) => {
-          console.log("error in Recruiter Id's Edit : " + err);
-          console.log(err.json());
-          this.AppRecruiter =[];
-          
-        });
-    }
 
   SkillSet: ApplicantSkillset [] = [];
-  ApplicantSkillPost() {
+  UpdateApplicantSkill() {
     this.ApplicantToUpdate.Skills.forEach(element => {
       this.SkillSet.push(new ApplicantSkillset(this.ApplicantToUpdate.Id, element.Id));
     });  
@@ -128,15 +110,41 @@ handleDrop(fileList: FileList) {
   }
 
 
+      UpdateApplicantRecruiters() {
+      console.log("Wtf");
+      this.ApplicantToUpdate.Recruiters.forEach(element => {
+        this.AppRecruiter.push(new ApplicantRecruiter(this.ApplicantToUpdate.Id, element.Id));
+      });
+      const req = this.Service.EditCollection("ApplicantRecruiters", this.AppRecruiter, this.ApplicantToUpdate.Id);
+      req.subscribe(res => {
+        console.log("Job Recruiter Id's Edit Succesfully");
+        console.log(res);
+        this.AppRecruiter =[];
+        
+      },
+        (err: any) => {
+          console.log("error in Recruiter Id's Edit : " + err);
+          console.log(err.json());
+          this.AppRecruiter =[];        
+        });
+      console.log("Hello");
+
+    }
+
+
   PostApplicantToUpdate() {
     this.ApplicantToUpdate.Url = localStorage.getItem('DURL');   
     console.log(this.ApplicantToUpdate);
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {
+      debugger
       console.log("My Update Applicant Action");
-      this.ApplicantSkillPost(); 
-      this.PostApplicantRecruiters();
+      this.UpdateApplicantRecruiters();
+      this.UpdateApplicantSkill();
       this.Appearance.emit("success");
+
+    
+
       localStorage.removeItem('DURL');
       
     }, (err) => {

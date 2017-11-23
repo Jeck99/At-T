@@ -24,7 +24,7 @@
           <span style="margin: 1em;"><b> Description  :</b>{{Job.Description}}</span>
         </div>
         <div class="col-sm-2" style="margin-top:7%">
-                     <i  (click)="PrepareForEdit(Job)"  style="margin-right:15%" class="fa fa-pencil" aria-hidden="true"></i>
+                     <i  (click)="PrepareForEdit(Job)" *ngIf="AuthService.Role || CheckRelation(Job)"  style="margin-right:15%" class="fa fa-pencil" aria-hidden="true"></i>
                     <i (click)="DeleteJob(Job.Id)"  class="fa fa-trash" aria-hidden="true"></i>     
         </div>
       </div>

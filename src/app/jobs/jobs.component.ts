@@ -29,6 +29,18 @@ export class JobsComponent implements OnInit {
 
   JobToView : Job;
 
+
+  CheckRelation(job : Job)
+  {
+    if(job.Recruiters.find(Jr=>Jr.UserName == this.UserOn))
+      {
+        return true;
+      }
+     else
+    {
+          return false;
+    }
+   }
    ViewJobDetails(Jobview : Job)
   {   
     console.log(Jobview);
