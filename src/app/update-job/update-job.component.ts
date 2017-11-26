@@ -46,9 +46,11 @@ export class UpdateJobComponent implements OnInit {
 
   JobRecruiter: JobRecruiter[] = [];
 
-  SkillRecruiterId(jobId: number) {
+  SkillRecruiterId() {
+    console.log("JobRecruiters Edit Succesfully");
+    
     this.JobToUpdate.Recruiters.forEach(element => {
-      this.JobRecruiter.push(new JobRecruiter(jobId, element.Id));
+      this.JobRecruiter.push(new JobRecruiter(this.JobToUpdate.Id , element.Id));
     });
     const req = this.Service.EditCollection("JobRecruiters", this.JobRecruiter, this.JobToUpdate.Id);
     req.subscribe(res => {
@@ -63,14 +65,8 @@ export class UpdateJobComponent implements OnInit {
 
 CloseForm()
 {
-  this.Appearance.emit(false);
-  
+  this.Appearance.emit(false); 
 }
-
-
-
-
-
 
   PostJobToUpdate() {
     console.log(this.JobToUpdate);
@@ -79,20 +75,13 @@ CloseForm()
     req.subscribe(res => {
       console.log("My Update Job Action");
       this.SkillPost(); 
+      this.SkillRecruiterId();
       this.Appearance.emit(false);
          }, (err) => {
         console.log("Editing Problem");
       });
     
   }
-
-
-
-
-
-
-
-
   Skills: Skill[];
   Recruiters: Manager[];
 

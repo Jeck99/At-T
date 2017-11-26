@@ -9,12 +9,8 @@
             <div class="card-content">
               <div class="card-header-blue">
                 <div class="row">
-<<<<<<< HEAD
-                    <div class="col-sm-2"><i style="font-size:120%;" (click)="ApplicantDetailsMode==true" [title]="Applicant.LockedBy!=''?'Locked By :'+Applicant.LockedBy:'' " (click)="ViewUserDetails(Applicant)"  [class]="Applicant.LockedBy!='' ?'fa fa-lock':'fa fa-unlock-alt'" aria-hidden="true" ></i></div>
-=======
                   
                     <div class="col-sm-2"><i style="font-size:120%;" [title]="Applicant.LockedBy!=''?'Locked By :'+Applicant.LockedBy:'' "  [class]="Applicant.LockedBy!='' ?'fa fa-lock':'fa fa-unlock-alt'" aria-hidden="true" ></i></div>
->>>>>>> c8f3fe3fcf11ece6134471034bd8f234c99fb4d8
                     <div class="col-sm-6" ></div>
                   <div  class="col-sm-1"><i *ngIf="AuthService.Role" (click)="PrepareForEdit(Applicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true"></i></div>
                   <div class="col-sm-1"><i *ngIf="AuthService.Role" (click)="DeleteApplicant(Applicant.Id)" style="font-size:120%;" class="fa fa-trash-o" aria-hidden="true"></i></div>   
