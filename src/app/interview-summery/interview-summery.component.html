@@ -14,34 +14,34 @@
           <form>
             <div class="panel-body">
               <div class="row">
-                <span class="col-sm-6"><i class="fa fa-user blue">    Name </i></span>
-                <span class="col-sm-6"><i class="glyphicon glyphicon-envelope blue">    Email</i></span>
+                <span class="col-sm-6"><i class="fa fa-user blue">    Name {{ApplicantToUpdate.Name}} </i></span>
+                <span class="col-sm-6"><i class="glyphicon glyphicon-envelope blue">    Email {{ApplicantToUpdate.Email}}</i></span>
               </div>
 
               <div class="row">
-                <span class="col-sm-6"><i class="fa fa-phone blue">   Title</i></span>
-                <span class="col-sm-6"><i class="fa fa-phone blue">   Position</i></span>
+                <span class="col-sm-6"><i class="fa fa-phone blue">   Title {{ApplicantToUpdate.Title}}</i></span>
+                <span class="col-sm-6"><i class="fa fa-phone blue">   Position  {{ApplicantToUpdate.Position}}</i></span>
               </div>
               <hr/>
 
               <div class="row">
                 <div class="col-sm-8">
                   <span><i class="fa fa-pencil blue">Summary</i></span>
-                  <textarea name="InputMessage" class="form-control" type="text" required></textarea>
+                  <textarea name="review.Content" [(ngModel)]="review.Content" class="form-control" type="text" required>{{review.Content}}</textarea>
        
                 </div>
                 <div class="col-sm-2">
                   <div class="row"> 
-                      <button class="col-sm-12" class="btn"> Fail </button>
-                      <button class="col-sm-12" class="btn"> Pass </button>
-                      <button class="col-sm-12" class="btn"> N/A </button>
-                  </div>
+                      <button class="col-sm-12" class="btn btn-danger"> Fail </button>
+                      <button class="col-sm-12" class="btn btn-success"> Pass </button>
+                      <button class="col-sm-12" class="btn btn-warning"> N/A </button>
+                    </div>
                     
                   </div>
 
               </div>
               <div class="">
-                <button type="submit" class="btn btn-info pull-right">Send <span class="fa fa-send"></span></button>
+                <button type="submit" class="btn btn-info pull-right" (click)="PostApplicant(ApplicantToUpdate.Id)">Send <span class="fa fa-send"></span></button>
               </div>
             </div>
           </form>

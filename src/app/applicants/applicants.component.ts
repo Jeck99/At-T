@@ -85,4 +85,5 @@ export class ApplicantsComponent implements OnInit {
   {
       return Math.floor(MatchePrecentage*100);
   }
+
 }

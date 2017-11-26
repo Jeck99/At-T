@@ -17,16 +17,13 @@ import { Review } from "../ModelService/Review";
 export class ApplicantDetailsComponent implements OnInit {
 
   constructor(private Service: DbService,private router: Router, private route: ActivatedRoute ,public AuthService : AuthService) {
-
-     
-
    }
   
-  review : Review =new Review();
+  review : Review= new Review();
 
   LockApplicant()
   {
-    debugger;
+    // debugger;
   
     this.review.ManagerId = Number(localStorage.getItem('uid'));
     this.review.ApplicantId = this.ChosenApplicant.Id;
@@ -54,15 +51,19 @@ closeCard()
 {
     this.ApplicantDetailsAppearance.emit(false);   
 }
+summaryApplicant: Applicant = new Applicant("", "", 0, "", "");
 
 resume()
 {
 this.Resume = !this.Resume;
 }
+summaryMode=false;
 
+ApplicantToView: Applicant = new Applicant("", "", 0, "", "");
 
-
-
-
-
+summary(Applicant: Applicant) {
+    this.ApplicantToView = Applicant;
+    this.review.ApplicantId = this.ApplicantToView.Id; 
+    this.summaryMode = true;
+  }
 }
