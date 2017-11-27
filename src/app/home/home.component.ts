@@ -8,6 +8,7 @@ import { NotificationsService } from "../notifications/notifications.component";
 // import { User } from "app/ModelService/User";
 import { Job } from "../ModelService/Job";
 import { DbService } from "../DbService/DbService";
+import { Applicant } from "../ModelService/Applicant";
 
 @Component({
   moduleId: module.id,  
@@ -20,65 +21,63 @@ export class HomeComponent implements OnInit {
   currentUser  :  string = "";
   currentUserId  :  number = null;
   attachedApplicant : string [];
-  JobRecruiters : any [] = [];
-  Jobs : any [] = [];
-  JobsByRecruiter : Job [] = [];
-  constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute, private Service: DbService) {
-  // debugger;
-    if(localStorage.getItem('AfterLogin'))
-    {
-      this.Notify.showNotification('top','right','You have logged successfully', 2);      
-    }
+  LockedApplicant : Applicant [] = [];
 
-    setTimeout(()=>{    //<<<---    using ()=> syntax
-      localStorage.removeItem('AfterLogin')
-     },3000);
-    
-    // this.GetAttachedApplicant();
-    // this.GetJobRecruiters();
-  }
-
-
-  
-//   GetAttachedApplicant() {
-//   let req = this.Service.Get("Applicants")
-//   req.subscribe(rsp => {
-//     this.attachedApplicant = rsp.json().filter(Applicant=>Applicant.LockedBy===this.currentUser);
-//     console.log(this.attachedApplicant);
-//   });
-// }
-
-
-// GetJobRecruiters() {
-//   let req = this.Service.Get("JobRecruiters")
-//   req.subscribe(rsp => {
-//     this.JobRecruiters = rsp.json().filter(Recruiter=>Recruiter.RecruiterId===this.currentUserId);
-//           let req = this.Service.Get("Jobs")
-//           req.subscribe(rsp => {
-//             this.Jobs = rsp.json();
-          
-//           this.JobRecruiters.forEach(element => {
-//             this.JobsByRecruiter.push(this.Jobs.find(x=>x.Id=== element.JobId));
-      
-//     });
-//     console.log(this.JobsByRecruiter);
-//     });
-//   }
-//   )}
-
-
-
+  ApplicantToSummary : Applicant;
+SummaryMode : boolean  = false;
 
   ngOnInit() {
+
+      if(localStorage.getItem('AfterLogin'))
+      this.Notify.showNotification('top','right','You have logged successfully', 2);      
+
+    setTimeout(()=>{    
+      localStorage.removeItem('AfterLogin')
+     },3000);
       console.log(localStorage.getItem("un"));
       this.currentUser = localStorage.getItem("un");
-      // this.currentUserId = localStorage.getItem("uid");
-      this.AuthService.RoleCheck();
+      this.getLockedUsers();
+      
   }
 
-  UseNotifyService()
-  {
-    this.Notify.showNotification('bottom','left','Notify Control',2);
+
+
+  constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute, private Service: DbService) {
   }
+
+
+
+
+getLockedUsers() {
+  let req = this.Service.Get("Reviews");
+  req.subscribe(rsp => {
+    this.LockedApplicant = rsp.json();  
+    console.log(this.LockedApplicant);  
+    });
+  }
+
+  ToSummary(applicant : Applicant)
+  {
+  this.ApplicantToSummary = applicant;
+  console.log("to Sum",this.ApplicantToSummary);
+  this.SummaryMode=true;
+  }
+
+  onAppearance(actionMode : string)
+  {
+     this.SummaryMode=false;
+
+     if(actionMode == "success")
+     this.Notify.showNotification('top','right','Summary Action is successfull', 2);
+
+     this.ngOnInit();
+
+  }
+
+
+
+
+
+
 
 }

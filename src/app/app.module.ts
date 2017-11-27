@@ -43,9 +43,9 @@ import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
 import { JobDetailsComponent } from "./JobDetails/JobDetails.component";
-import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
 import { ArraySortPipe } from "./Pipes/sort.pipe";
 import { LoginAuthGuard } from "./_guards/login.guard";
+import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
 
 
 @NgModule({

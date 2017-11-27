@@ -63,14 +63,8 @@ export class UpdateJobComponent implements OnInit {
 
 CloseForm()
 {
-  this.Appearance.emit(false);
-  
+  this.Appearance.emit(false); 
 }
-
-
-
-
-
 
   PostJobToUpdate() {
     console.log(this.JobToUpdate);
@@ -79,20 +73,13 @@ CloseForm()
     req.subscribe(res => {
       console.log("My Update Job Action");
       this.SkillPost(); 
+      this.SkillRecruiterId();
       this.Appearance.emit(false);
          }, (err) => {
         console.log("Editing Problem");
       });
     
   }
-
-
-
-
-
-
-
-
   Skills: Skill[];
   Recruiters: Manager[];
 

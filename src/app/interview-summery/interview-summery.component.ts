@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Upload } from "../upload";
+import { DbService } from "../DbService/DbService";
+import { UploadService } from "../upload.service";
+import { Applicant } from "../ModelService/Applicant";
+import { Skill } from "../ModelService/Skill";
+import { Manager } from "../ModelService/Manager";
+import { ApplicantRecruiter } from "../ModelService/\u200F\u200FApplicantRecruiter";
+import { Review } from "../ModelService/Review";
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from "../AuthService/Auth.Service";
 
 @Component({
   selector: 'app-interview-summery',
@@ -6,10 +16,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interview-summery.component.css']
 })
 export class InterviewSummeryComponent implements OnInit {
+  lock: boolean;
+  review: Review = new Review();
 
-  constructor() { }
+  constructor(private Service: DbService, private router: Router, private route: ActivatedRoute, public AuthService: AuthService) {
+
+  }
+
+  @Input() Applicant : Applicant;
+  @Output() Appearance = new EventEmitter<string>();
+  AppRecruiter: ApplicantRecruiter[] = [];
+
 
   ngOnInit() {
+  
+ this.review.ManagerId = Number.parseInt(localStorage.getItem('uid'));
+ this.review.ApplicantId = this.Applicant.Id;
+ this.review.Status='';
+ console.log(this.review);
   }
+
+  closeForm() {
+    this.Appearance.emit("");
+  }
+
+  StatusError : boolean= false;
+
+  PostSummary(){
+    if(this.review.Status == "")
+      this.StatusError = true
+    else{
+    console.log(this.review);
+    const req = this.Service.Edit("Reviews", this.review);
+    req.map(res => <any>res.json()).
+      subscribe(res => {
+        console.log("Post Applicant Summary Succesfully");
+        this.Appearance.emit("success");
+      },
+      (err: any) => {
+        console.log("error : " + err);
+      });
+    }
+  }
+
+
 
 }

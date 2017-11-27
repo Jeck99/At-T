@@ -26,6 +26,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { ArchivesComponent } from './archives/archives.component';
 import { RecruiterComponent } from "./recruiter/recruiter.component";
 import { LoginAuthGuard } from "./_guards/login.guard";
+import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
 // import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 
 
@@ -52,6 +53,7 @@ const routes: Routes =[
     { path: 'login',        component: LoginComponent   , canActivate : [LoginAuthGuard]  },
     { path: 'add-applicant',        component: AddApplicantComponent , canActivate : [AuthGuard]  },
     { path: 'app-archives',        component: ArchivesComponent , canActivate : [AuthGuard]  },
+    { path: 'app-interview-summery', component: InterviewSummeryComponent , canActivate : [AuthGuard]  },
     
       { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

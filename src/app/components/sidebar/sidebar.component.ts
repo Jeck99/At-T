@@ -10,10 +10,9 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: 'home', title: 'Dashboard', icon: 'dashboard', class: '', Role: true },
-    { path: 'applicants', title: 'applicants', icon: 'content_paste', class: '', Role: true },
-    { path: 'jobs', title: 'jobs', icon: 'library_books', class: '', Role: true },
-    // { path: 'app-recruiter', title: 'Recruiters',  icon:'notifications', class: '', Role: true  },
-    // { path: 'user-profile', title: 'User Profile', icon: 'person', class: '', Role: true },
+    { path: 'applicants', title: 'applicants', icon: 'person', class: '', Role: true },
+    { path: 'jobs', title: 'jobs', icon: 'work', class: '', Role: true },
+
     { path: 'app-archives', title: 'Archive', icon: 'folder open', class: '', Role: false },
 ];
 
@@ -33,13 +32,6 @@ export class SidebarComponent implements OnInit {
     ngOnInit() {
         this.Currentuser = localStorage.getItem("un");
         this.menuItems = ROUTES.filter(menuItem => menuItem);
-        console.log('this.AuthService.Role:', this.AuthService.Role)   
-        
-    //         if (this.AuthService.Role) {
-    //             this.menuItems.forEach((item: RouteInfo) => {
-    //                 item.Role = true;
-    //             })      
-    // }
     }
     isMobileMenu() {
         if ($(window).width() > 991) {

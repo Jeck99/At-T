@@ -11,5 +11,5 @@ li:active{
     user-select: none; /* Standard syntax */
     font-weight: bolder;
     cursor:pointer;
-    
+box-sizing: border-box    
 }

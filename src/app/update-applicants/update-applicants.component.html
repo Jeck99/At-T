@@ -52,7 +52,7 @@
       <div class="col-md-6">
                      <div class="form-group form-black">
                      <label class="control-label">Email</label>
-                     <input type="text"  #trvEmail="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="ApplicantToUpdate.Email" [(ngModel)]="ApplicantToUpdate.Email" class="form-control" >
+                     <input type="text"  #trvEmail="ngModel" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$" name="ApplicantToUpdate.Email" [(ngModel)]="ApplicantToUpdate.Email" class="form-control" >
                     </div>
                       <div  *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)"  >
              <div class="NotValid" [hidden]="!trvEmail.errors.required">
@@ -81,7 +81,7 @@
                  <div class="col-md-6">
                               <div class="form-group form-black   ">
                                   <label class="control-label">Phone 265</label>
-                                  <input  #trvPhone="ngModel" required maxlength="10" type="phone" pattern="^[0-9][1-9]{9}$" name="ApplicantToUpdate.Phone" [(ngModel)]="ApplicantToUpdate.Phone" class="form-control" >
+                                  <input  #trvPhone="ngModel" required maxlength="10" type="phone" pattern="^\+?(972|0)(\-)?0?(([23489]{1}\d{7})|[5]{1}\d{8})$" name="ApplicantToUpdate.Phone" [(ngModel)]="ApplicantToUpdate.Phone" class="form-control" >
                               </div>
                                  <div  *ngIf="trvPhone.errors && (trvPhone.dirty || trvPhone.touched)" >
  <div [hidden]="!trvPhone.errors.required">
