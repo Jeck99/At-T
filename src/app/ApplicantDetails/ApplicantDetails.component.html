@@ -48,7 +48,8 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="btn-group dropup btn-block">
                       <button type="button" *ngIf="!AuthService.Role" class="btn btn-primary" (click)="LockApplicant()"><span class="fa fa-lock"></span>Lock This Applicant For an Interview </button>
-                      <div  class="col-sm-1"><i  *ngIf="AuthService.Role"  (click)="summary(ChosenApplicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true" ></i></div>
+                      <!-- <div  class="col-sm-1"><i  *ngIf="AuthService.Role"  (click)="summary(ChosenApplicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true" ></i></div> -->
+                      <button class="col-sm-12" class="btn btn-warning" *ngIf="AuthService.Role" (click)="summary(ChosenApplicant)"><i style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true" >interview-summery</i> </button>
                       
                       <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
