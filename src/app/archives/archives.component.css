@@ -34,3 +34,9 @@
     /* background-color: rgba(152, 162, 172, 0.32); */
     /* color: #DC0F0F */
 }
+:host /deep/ ul.ng2-smart-pagination {
+    align-items: center;
+    margin-left: 200%;
+    margin-right: 50%;
+    
+}

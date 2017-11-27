@@ -26,21 +26,12 @@ export class ArchivesComponent implements OnInit {
     mode: 'inline', // inline|external|click-to-edit
     selectMode: 'single', // single|multi
     hideHeader: false,
-    hideSubHeader: false,
+    hideSubHeader: true,
 
     actions: {
       delete: false,
       add: false,
-      edit: {
-        confirmSave: true
-      },
-      custom: [
-        {
-          name: 'view',
-          title: 'Edit ',
-        },
-      ]
-
+      edit: false
     },
     pager: {
       display: true,
@@ -80,22 +71,12 @@ export class ArchivesComponent implements OnInit {
     mode: 'inline', // inline|external|click-to-edit
     selectMode: 'single', // single|multi
     hideHeader: false,
-    hideSubHeader: false,
+    hideSubHeader: true,
 
     actions: {
       delete: false,
       add: false,
-      edit: {
-        confirmSave: true
-      },
-      custom: [
-        {
-          name: 'view',
-          title: 'Sava Changes',
-          confirmSave: true
-        },
-      ]
-
+      edit: false
     },
     pager: {
       display: true,
