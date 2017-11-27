@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { DbService } from "../DbService/DbService";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { Job } from "../ModelService/Job";
 import { Skill } from "../ModelService/Skill";
 import { Manager } from "../ModelService/Manager";
-import { NotificationsService } from 'app/notifications/notifications.component';
+import { NotificationsService } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-job-post',
@@ -23,18 +23,19 @@ this.GetSkills();
 this.GetRecruiters()
   }
 
+@Output() Appearance = new EventEmitter<string>();
 
 SkillSet : JobSkillset[] = [];
 JobRecruiter : JobRecruiter [] = [];
+Skills : Skill [];
+Recruiters : Manager [];
 
-saving : boolean = false;
 
  NewJob : Job = new Job ("","","");
 
 
  PostNewJob() {   
    console.log(this.NewJob);  
-   this.saving = true;
             let req = this.Service.post("Jobs",this.NewJob);
             req.map(res => <any>res.json()).
             subscribe(res => {
@@ -44,14 +45,14 @@ saving : boolean = false;
                 this.SkillPost(res);
                 if(this.NewJob.Recruiters!=[])
                 this.SkillRecruiterId(res);
-                   this.saving = false;
+
+                this.Appearance.emit("success");
+                   
 
                 },
             (err : any) => {
             console.log("error : " + err);
             this.Notify.showNotification('bottom','right','Error in posting the job', 4);      
-            
-
             console.log(err.json());
 
             });
@@ -102,8 +103,7 @@ this.JobRecruiter.push(new JobRecruiter( jobId , element.Id));
             });
 }
 
-Skills : Skill [];
-Recruiters : Manager [];
+
   GetSkills(){
     let req = this.Service.Get("JobSkillsets")
     req.subscribe(rsp => {
@@ -137,6 +137,9 @@ Recruiters : Manager [];
         console.log(this.NewJob.Recruiters);     
       } 
      }
+
+
+
 
   AddSkill(Skil : Skill)
   {

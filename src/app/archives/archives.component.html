@@ -6,21 +6,12 @@
   <div id="tabDiv" class="container">
     <tabset style="background-color: deepskyblue">
       <tab >
-<<<<<<< HEAD
         <span *tabHeading>
                        <b >Applicants list</b> 
                     </span>
         <div class="container">
           <br/>
             <ng2-smart-table [settings]="settingsApp" [source]="AllApplicants"  (custom)="onCustomApp($event)"></ng2-smart-table>
-=======
-                     <span *tabHeading>
-                       <b >Applicants list</b>                       
-                    </span>
-        <div class="container">
-            <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
-            <ng2-smart-table [settings]="settingsApp" [source]="AllApplicants"   (custom)="onCustomApp($event)"></ng2-smart-table>
->>>>>>> parent of e3d7bcd5... After pull1
         </div>
       </tab>
       <tab>
@@ -31,7 +22,6 @@
         </div>
         <div >
             <div class="container">
-                <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
                 <ng2-smart-table [settings]="settingsJob" [source]="Jobs" (edit)="onEditJobs()"  (update)="onCustomJob($event)"> ></ng2-smart-table>
             </div>
         </div>

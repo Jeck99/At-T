@@ -52,6 +52,14 @@ export class ApplicantsComponent implements OnInit {
     this.EditMode = false;
     if (CloseForm == 'success')
       this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
+   
+  }
+
+  onAddApplicant(CloseForm : string)
+  {
+    this.AddApplicant=false;
+      if (CloseForm == 'success')
+      this.Notify.showNotification('top', 'right', 'Applicant Added Succesfully', 2);
   }
 
   OnAppearanceDetails(CloseForm: boolean) {
@@ -78,7 +86,6 @@ export class ApplicantsComponent implements OnInit {
 
   AddApplicantForm() {
     this.AddApplicant = !this.AddApplicant;
-    this.EditMode = !this.EditMode;
   }
 
   PrecetageHandle(MatchePrecentage : number)

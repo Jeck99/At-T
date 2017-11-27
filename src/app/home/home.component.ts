@@ -7,7 +7,7 @@ import { NotificationsService } from "../notifications/notifications.component";
 // import { AuthService } from "app/AuthService/Auth.Service";
 // import { User } from "app/ModelService/User";
 import { Job } from "../ModelService/Job";
-import { DbService } from "app/DbService/DbService";
+import { DbService } from "../DbService/DbService";
 
 @Component({
   moduleId: module.id,  
@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
     {
       this.Notify.showNotification('top','right','You have logged successfully', 2);      
     }
+
+    setTimeout(()=>{    //<<<---    using ()=> syntax
+      localStorage.removeItem('AfterLogin')
+     },3000);
     
     // this.GetAttachedApplicant();
     // this.GetJobRecruiters();

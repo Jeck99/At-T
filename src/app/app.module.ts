@@ -14,24 +14,19 @@ import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
-// import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
-// import { AddApplicantComponent } from "./add-applicant/add-applicant.component";
 import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
-import { AddJobComponent } from './add-job/add-job.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-// used to create fake backend
 import { BaseRequestOptions } from '@angular/http';
 import { JobPostComponent } from "./job-post-try/job-post.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { DbService } from "./DbService/DbService";
 import { ApplicantsComponent } from "./applicants/applicants.component";
 import { AddApplicantComponent } from './add-applicant/add-applicant.component';
-// import {UploadService} from '../upload.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { UploadService } from './upload.service';
 import { AngularFireAuth } from "angularfire2/auth";
@@ -41,7 +36,7 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
 import { FileDropDirective } from './file-drop.directive';
 import { TabsModule } from 'ngx-tabs';
 import { Ng2TableModule } from 'ngx-datatable';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination';
 import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewComponent } from './new/new.component';
@@ -50,6 +45,7 @@ import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.c
 import { JobDetailsComponent } from "./JobDetails/JobDetails.component";
 import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
 import { ArraySortPipe } from "./Pipes/sort.pipe";
+import { LoginAuthGuard } from "./_guards/login.guard";
 
 
 @NgModule({
@@ -64,10 +60,8 @@ import { ArraySortPipe } from "./Pipes/sort.pipe";
     UpgradeComponent,
     HomeComponent,
     ApplicantsComponent,
-    // AddApplicantComponent,
     UpdateApplicantsComponent,
     UpdateJobComponent,
-    AddJobComponent,
     JobsComponent,
     RegisterComponent,
     LoginComponent,
@@ -105,7 +99,8 @@ import { ArraySortPipe } from "./Pipes/sort.pipe";
     AngularFireAuth,
     AngularFireDatabase,
     NotificationsService,
-    ArraySortPipe
+    ArraySortPipe,
+    LoginAuthGuard
     
 ],
   bootstrap: [AppComponent ],

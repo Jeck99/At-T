@@ -5,21 +5,33 @@ height: 50%;
 }
 .dropzone{
     height: 50px;
+    border:2px   dashed  black ;
 }
 .active{
     border : 2px solid #70d2ce;
-    color :#70d2ce;
-    
 }
-.notactive{
-    border : 2px dashed black;
-    color: black;
+
+.redcloud{
+    color: red;
 }
-#cloud{
-    margin-left: 45%;
-    font-size: 350%;
+#uploadcloud{
+    padding-left: 45%;
+    font-size:300%; 
+    margin-top: 2%;
 }
-a{
-    color:white;
+
+.formbotton
+{
+    height: 85px;
 }
+
+.NotValid{
+    color : red;
+}
+#Note{
+margin-left :  29%;
+color: grey;
+}
+
+
 

@@ -81,7 +81,7 @@
 {
 
 }
-.div2 {
+/* .div2 {
     display: flex;
     align-items: center;
     width: 300px;
@@ -89,4 +89,16 @@
     padding: 50px;
     border: 1px solid red;
     box-sizing: border-box;
+} */
+
+
+
+#boxing{
+min-height: 200px;
+margin-top:-3%
+
+}
+
+#paging{
+    margin-left: 36%;
 }
