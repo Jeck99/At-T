@@ -33,6 +33,8 @@
                             </p>
                             <p *ngIf="ChosenApplicant.LockedBy==UserOn"> Locked By You   </p>
                         </figcaption>
+
+                        <input type="date">
                     </figure>
                 </div>
             </div>     
@@ -72,5 +74,5 @@
         </div>
         
     </div>
-    <app-interview-summery (Appearance)="OnAppearance($event)"  *ngIf=" summaryMode && !AddApplicant" [ApplicantToUpdate]="ApplicantToView"></app-interview-summery>
+    <app-interview-summery (Appearance)="OnAppearance($event)"  *ngIf=" summaryMode && !AddApplicant" [Applicant]="ApplicantToView"></app-interview-summery>
     

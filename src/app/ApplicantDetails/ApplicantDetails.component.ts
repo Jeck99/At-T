@@ -23,14 +23,13 @@ export class ApplicantDetailsComponent implements OnInit {
 
   LockApplicant()
   {
-    // debugger;
-  
     this.review.ManagerId = Number(localStorage.getItem('uid'));
     this.review.ApplicantId = this.ChosenApplicant.Id;
     let req = this.Service.post("Reviews",this.review);
     req.map(res => <any>res.json()).
             subscribe(res => {
-                console.log("Lock successed");                         
+                console.log("Lock successed");  
+                this.ApplicantDetailsAppearance.emit(true);                       
                 },
             (err : any) => {            
             console.log("Lock Error" ,err.json());

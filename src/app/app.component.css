@@ -3,7 +3,7 @@
     background-blend-mode:lighten;
 backface-visibility: 60% ;
 background-repeat: no-repeat;
-background-size: cover
+background-size: cover;
 /* filter:opacity(30%); */   
 }
 .wrapper:after {

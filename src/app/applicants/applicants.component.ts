@@ -15,6 +15,7 @@ export class ApplicantsComponent implements OnInit {
 
   ngOnInit() {
     this.GetApplicants();
+
   }
 
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
@@ -33,31 +34,44 @@ export class ApplicantsComponent implements OnInit {
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
+      console.log("dscs",rsp.json());
       this.AllApplicants = rsp.json().sort((applicant1, applicant2) => {
         if (applicant1.MatchPrecentage < applicant2.MatchPrecentage) {
           return 1;
         }
 
-        if (applicant1.MatchPrecentage > applicant2.MatchPrecentage
+        else if (applicant1.MatchPrecentage > applicant2.MatchPrecentage
         ) {
           return -1;
         }
-
         return 0;
       });
-      console.log("Applicants : ", this.AllApplicants);
-    });
+    },
+            (err : any) => {  
+            console.log("Error" ,err.json());
+            });        
+
   }
   OnAppearance(CloseForm: string) {
     this.EditMode = false;
     if (CloseForm == 'success')
       this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
+   
+  }
+
+  onAddApplicant(CloseForm : string)
+  {
+    this.AddApplicant=false;
+      if (CloseForm == 'success')
+      this.Notify.showNotification('top', 'right', 'Applicant Added Succesfully', 2);
   }
 
   OnAppearanceDetails(CloseForm: boolean) {
-    this.ApplicantDetailsMode = CloseForm;
-    //  If Interview we Set Up interview
-    //    this.Notify.showNotification('top','right','Set Interview Succesfully', 2);    
+    this.ApplicantDetailsMode = false;
+    if(CloseForm)
+  this.Notify.showNotification('top','right','Set Interview Succesfully', 2);    
+
+    this.ngOnInit();
   }
 
   Lock() {
@@ -78,7 +92,6 @@ export class ApplicantsComponent implements OnInit {
 
   AddApplicantForm() {
     this.AddApplicant = !this.AddApplicant;
-    this.EditMode = !this.EditMode;
   }
 
   PrecetageHandle(MatchePrecentage : number)

@@ -1,14 +1,14 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Upload } from "app/upload";
-import { DbService } from "app/DbService/DbService";
-import { UploadService } from "app/upload.service";
-import { Applicant } from "app/ModelService/Applicant";
-import { Skill } from "app/ModelService/Skill";
-import { Manager } from "app/ModelService/Manager";
-import { ApplicantRecruiter } from "app/ModelService/\u200F\u200FApplicantRecruiter";
-import { Review } from "app/ModelService/Review";
+import { Upload } from "../upload";
+import { DbService } from "../DbService/DbService";
+import { UploadService } from "../upload.service";
+import { Applicant } from "../ModelService/Applicant";
+import { Skill } from "../ModelService/Skill";
+import { Manager } from "../ModelService/Manager";
+import { ApplicantRecruiter } from "../ModelService/\u200F\u200FApplicantRecruiter";
+import { Review } from "../ModelService/Review";
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from "app/AuthService/Auth.Service";
+import { AuthService } from "../AuthService/Auth.Service";
 
 @Component({
   selector: 'app-interview-summery',
@@ -23,39 +23,42 @@ export class InterviewSummeryComponent implements OnInit {
 
   }
 
-  @Input() ApplicantToUpdate: Applicant;
+  @Input() Applicant : Applicant;
   @Output() Appearance = new EventEmitter<string>();
   AppRecruiter: ApplicantRecruiter[] = [];
 
-  Skills: Skill[];
-  Recruiters: Manager[];
+
   ngOnInit() {
-    console.log("Applicant To Update", this.ApplicantToUpdate)
+  
+ this.review.ManagerId = Number.parseInt(localStorage.getItem('uid'));
+ this.review.ApplicantId = this.Applicant.Id;
+ this.review.Status='';
+ console.log(this.review);
   }
 
-  CloseForm() {
+  closeForm() {
     this.Appearance.emit("");
   }
 
-  Lock() {
-    this.lock = !this.lock;
-    if (this.lock) {
+  StatusError : boolean= false;
+
+  PostSummary(){
+    if(this.review.Status == "")
+      this.StatusError = true
+    else{
+    console.log(this.review);
+    const req = this.Service.Edit("Reviews", this.review);
+    req.map(res => <any>res.json()).
+      subscribe(res => {
+        console.log("Post Applicant Summary Succesfully");
+        this.Appearance.emit("success");
+      },
+      (err: any) => {
+        console.log("error : " + err);
+      });
     }
   }
-  PostApplicant(id:number) {
-    this.review.ApplicantId=id;
-    console.log(this.review);
-    const req = this.Service.post("Review", this.review);
-    req.map(res => <any>res.json()).
-        subscribe(res => {
-            console.log("Post Applicant Review Succesfully");
-},
-        (err: any) => {
-            console.log("error : " + err);
 
-            console.log(err.json());
 
-        });
 
-}
 }

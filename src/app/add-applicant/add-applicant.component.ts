@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output ,EventEmitter } from '@angular/core';
 import { DbService } from "../DbService/DbService";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
@@ -27,6 +27,13 @@ export class AddApplicantComponent implements OnInit {
         this.GetSkills();
         this.GetRecruiters();
     }
+
+
+
+
+
+  @Output() Appearance = new EventEmitter<string>();
+
     currentUpload: Upload;
     dropzoneActive:boolean = false;
     Recruiuter: number[];
@@ -70,7 +77,7 @@ export class AddApplicantComponent implements OnInit {
     }
 
 
-    Applicant: Applicant = new Applicant("", "", 5, "", "");
+    Applicant: Applicant = new Applicant("", "", 0, "", "");
 
 
     PostApplicant() {
@@ -82,12 +89,11 @@ export class AddApplicantComponent implements OnInit {
             subscribe(res => {
                 console.log("Post Applicant Succesfully");
                 this.SkillPost(res);
-                this.SkillRecruiterId(res);},
+                this.SkillRecruiterId(res);
+            this.Appearance.emit("success");
+            },
             (err: any) => {
                 console.log("error : " + err);
-
-                console.log(err.json());
-
             });
 
     }
@@ -101,11 +107,9 @@ export class AddApplicantComponent implements OnInit {
         const req = this.Service.post("ApplicantSkillsets", this.SkillSet);
         req.subscribe(res => {
             console.log("applicant SkillSet Added Succesfully  ApplicantSkillsets Controller");
-            console.log(res);
         },
             (err: any) => {
                 console.log("error in skillset Post : " + err);
-                console.log(err.json());
             });
     }
 
@@ -120,25 +124,33 @@ export class AddApplicantComponent implements OnInit {
         const req = this.Service.post("ApplicantRecruiters", this.JobRecruiter);
         req.subscribe(res => {
             console.log("Job Recruiter Id's Added Succesfully  ApplicantRecruiters Controller");
-            console.log(res);
         },
             (err: any) => {
                 console.log("error in Recruiter Id's Post : " + err);
-                console.log(err.json());
             });
     }
+
+
+     // <a href="mailto:someone@example.com?
+  // cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&
+  // subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" 
+  // target="_top">Send mail!</a>
+
+   mail = "mailto:"
 
 
 
     AddRecruiter(recruiter: Manager) {
         if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
             this.Applicant.Recruiters.push(recruiter);
-            console.log(this.Applicant.Recruiters);
+            // console.log(this.Applicant.Recruiters);
+            // this.mail+= "cc="+recruiter.Email+"&";
+            // console.log(this.mail);
         }
         else {
             let RecruiterIndex = this.Applicant.Recruiters.indexOf(recruiter)
             this.Applicant.Recruiters.splice(RecruiterIndex, 1);
-            console.log(this.Applicant.Recruiters);
+            this.mail.replace("cc="+recruiter.Email+"&",'');
         }
     }
 
@@ -151,7 +163,12 @@ export class AddApplicantComponent implements OnInit {
             let SkilIndex = this.Applicant.Skills.indexOf(Skil)
             this.Applicant.Skills.splice(SkilIndex, 1);
         }
-        console.log(this.Applicant.Skills);
+    }
+
+
+    CloseForm()
+    {
+        this.Appearance.emit("");
     }
 
 

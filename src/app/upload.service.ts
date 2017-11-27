@@ -5,6 +5,8 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UploadService {
   constructor(private db: AngularFireDatabase) { }
+
+  
   pushUpload(upload: Upload) {
     let url;
     let storageRef = firebase.storage().ref();

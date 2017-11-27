@@ -41,6 +41,11 @@
    {
        margin-bottom:0;
        }
+
+.NotValid{
+           color : red;
+           margin-left: 26%;
+}
    span.tagskil 
    {
        background: #1abc9c;
@@ -97,4 +102,11 @@
            height: 20%;
            width: 90%;
            text-align: center
+       }
+
+       textarea{
+           min-height: 162px;
+           min-width: 735px;
+           max-width: 742px;
+           max-height: 162px;
        }
