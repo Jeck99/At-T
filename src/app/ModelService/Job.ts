@@ -10,9 +10,8 @@ export class Job
 
         this.Experience = 0;
         this.Title = title;     
-           this.Position = position;
+        this.Position = position;
         this.Description = description;     
-           this.Active = true;
         this.Published = true;
         this.Skills = [];
         this.Recruiters = [];
@@ -22,7 +21,6 @@ export class Job
     Title:string;
     Position : string;
     Description:string;
-    Active:boolean;
     Published:boolean;
     Skills : Skill [];
     Recruiters : Manager [];

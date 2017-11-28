@@ -1,5 +1,4 @@
 <div class="container" style="margin-top:11%;">
-
     <div class="row">
         <div *ngIf="!SummaryMode" class="col-md-10 col-md-offset-1">
             <div class="panel panel-default panel-table">
@@ -17,6 +16,7 @@
                         </thead>
                         <tbody>
                         <tr  *ngFor="let Applicant of LockedApplicant">
+
                             <td class="hidden-xs">{{Applicant.Name}}</td>
                             <td>{{Applicant.Title}}</td>
                             <td>{{Applicant.Email}}</td>
