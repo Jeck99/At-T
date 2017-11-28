@@ -5,4 +5,12 @@
         ManagerId : number;
         Status :  string;
         Content : string;
+        InterviewDate : Date;
+
+        /**
+         *
+         */
+        constructor() {
+            this.InterviewDate = new Date();               
+        }
     }
