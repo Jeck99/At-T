@@ -28,11 +28,9 @@ export class ApplicantDetailsComponent implements OnInit {
     let req = this.Service.post("Reviews",this.review);
     req.map(res => <any>res.json()).
             subscribe(res => {
-                console.log("Lock successed");  
                 this.ApplicantDetailsAppearance.emit(true);                       
                 },
             (err : any) => {            
-            console.log("Lock Error" ,err.json());
             });
   }
 

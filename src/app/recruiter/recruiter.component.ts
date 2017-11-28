@@ -11,43 +11,38 @@ import { Manager } from '../ModelService/Manager';
 })
 export class RecruiterComponent implements OnInit {
   p: number = 1;
-Recruiters: Manager[];
-  
-  constructor(private Service: DbService , private router : Router, public AuthService : AuthService) { }
+  Recruiters: Manager[];
+
+  constructor(private Service: DbService, private router: Router, public AuthService: AuthService) { }
   ngOnInit() {
     let req = this.Service.Get("Managers")
     req.subscribe(rsp => {
-        this.Recruiters = rsp.json();
-        console.log(this.Recruiters);
+      this.Recruiters = rsp.json();
     });
-}
-settings = {
-  mode: 'inline', // inline|external|click-to-edit
-  selectMode: 'single', // single|multi
-  hideHeader: false,
-  hideSubHeader: false,
-
-  actions: {
-    edit: {
-      confirmSave: true
-    },
-  },
-  pager: {
-    display: true,
-    perPage: 3,
-  },
-  columns: {
-    // Id: {
-    //   title: 'ID',
-    // },
-    UserName: {
-      title: 'Name',
-      filter: true
-    },
-    Email: {
-      title: 'Email',
-      filter: true
-    },
   }
-};
+  settings = {
+    mode: 'inline',
+    selectMode: 'single',
+    hideHeader: false,
+    hideSubHeader: false,
+    actions: {
+      edit: {
+        confirmSave: true
+      },
+    },
+    pager: {
+      display: true,
+      perPage: 3,
+    },
+    columns: {
+      UserName: {
+        title: 'Name',
+        filter: true
+      },
+      Email: {
+        title: 'Email',
+        filter: true
+      },
+    }
+  };
 }

@@ -32,7 +32,6 @@ export class UpdateApplicantsComponent implements OnInit {
   ngOnInit() {
     this.GetSkills();
     this.GetRecruiters();
-    console.log("Applicant To Update", this.ApplicantToUpdate)
   }
   FileOver() {
     this.OnOver = !this.OnOver;
@@ -45,9 +44,7 @@ export class UpdateApplicantsComponent implements OnInit {
   handleDrop(fileList: FileList) {
     let filesIndex = _.range(fileList.length)
     _.each(filesIndex, (idx) => {
-      console.log("idx", idx);
       this.currentUpload = new Upload(fileList[idx]);
-      console.log("current Upload :", this.currentUpload);
       this.upSvc.pushUpload(this.currentUpload);
     }
     )
@@ -63,7 +60,6 @@ export class UpdateApplicantsComponent implements OnInit {
     let req = this.Service.Get("JobSkillsets")
     req.subscribe(rsp => {
       this.Skills = rsp.json();
-      console.log(this.Skills);
     });
   }
 
@@ -72,7 +68,6 @@ export class UpdateApplicantsComponent implements OnInit {
     let req = this.Service.Get("Managers")
     req.subscribe(rsp => {
       this.Recruiters = rsp.json();
-      console.log(this.Recruiters);
     });
   }
 
@@ -85,51 +80,38 @@ export class UpdateApplicantsComponent implements OnInit {
     this.ApplicantToUpdate.Skills.forEach(element => {
       this.SkillSet.push(new ApplicantSkillset(this.ApplicantToUpdate.Id, element.Id));
     });
-    console.log(this.SkillSet);
     const req = this.Service.EditCollection("ApplicantSkillsets", this.SkillSet, this.ApplicantToUpdate.Id);
-
     req.subscribe(res => {
-      console.log("applicant SkillSet Edit Succesfully");
-      console.log(res);
       this.SkillSet = [];
     },
       (err: any) => {
-        console.log("error in Applicant skillset Edit : " + err);
-        console.log(err.json());
         this.SkillSet = [];
       });
   }
   UpdateApplicantRecruiters() {
-    console.log("Wtf");
     this.ApplicantToUpdate.Recruiters.forEach(element => {
       this.AppRecruiter.push(new ApplicantRecruiter(this.ApplicantToUpdate.Id, element.Id));
     });
     const req = this.Service.EditCollection("ApplicantRecruiters", this.AppRecruiter, this.ApplicantToUpdate.Id);
     req.subscribe(res => {
-      console.log("Job Recruiter Id's Edit Succesfully");
-      console.log(res);
+
       this.AppRecruiter = [];
     },
       (err: any) => {
-        console.log("error in Recruiter Id's Edit : " + err);
-        console.log(err.json());
+
         this.AppRecruiter = [];
       });
-    console.log("Hello");
   }
   PostApplicantToUpdate() {
     this.ApplicantToUpdate.Url = localStorage.getItem('DURL');
-    console.log(this.ApplicantToUpdate);
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {
       debugger
-      console.log("My Update Applicant Action");
       this.UpdateApplicantRecruiters();
       this.UpdateApplicantSkill();
       this.Appearance.emit("success");
       localStorage.removeItem('DURL');
     }, (err) => {
-      console.log("Editing Problem");
     });
   }
   CheckSkill(skil: Skill) {
@@ -152,7 +134,6 @@ export class UpdateApplicantsComponent implements OnInit {
     else {
       this.ApplicantToUpdate.Recruiters.push(recruiter);
     }
-    console.log(this.ApplicantToUpdate.Recruiters);
   }
   ChangeSkill(Skil: Skill) {
     if (this.ApplicantToUpdate.Skills.find(Sk => Sk.Id == Skil.Id)) {
@@ -162,6 +143,5 @@ export class UpdateApplicantsComponent implements OnInit {
     else {
       this.ApplicantToUpdate.Skills.push(Skil);
     }
-    console.log(this.ApplicantToUpdate.Skills);
   }
 }

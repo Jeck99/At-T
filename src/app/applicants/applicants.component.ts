@@ -34,7 +34,6 @@ export class ApplicantsComponent implements OnInit {
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
-      console.log("dscs",rsp.json());
       this.AllApplicants = rsp.json().sort((applicant1, applicant2) => {
         if (applicant1.MatchPrecentage < applicant2.MatchPrecentage) {
           return 1;
@@ -48,9 +47,7 @@ export class ApplicantsComponent implements OnInit {
       });
     },
             (err : any) => {  
-            console.log("Error" ,err.json());
             });        
-
   }
   OnAppearance(CloseForm: string) {
     this.EditMode = false;

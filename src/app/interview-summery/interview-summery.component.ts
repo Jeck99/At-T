@@ -23,42 +23,33 @@ export class InterviewSummeryComponent implements OnInit {
 
   }
 
-  @Input() Applicant : Applicant;
+  @Input() Applicant: Applicant;
   @Output() Appearance = new EventEmitter<string>();
   AppRecruiter: ApplicantRecruiter[] = [];
 
-
   ngOnInit() {
-  
- this.review.ManagerId = Number.parseInt(localStorage.getItem('uid'));
- this.review.ApplicantId = this.Applicant.Id;
- this.review.Status='';
- console.log(this.review);
+    this.review.ManagerId = Number.parseInt(localStorage.getItem('uid'));
+    this.review.ApplicantId = this.Applicant.Id;
+    this.review.Status = '';
   }
 
   closeForm() {
     this.Appearance.emit("");
   }
 
-  StatusError : boolean= false;
+  StatusError: boolean = false;
 
-  PostSummary(){
-    if(this.review.Status == "")
+  PostSummary() {
+    if (this.review.Status == "")
       this.StatusError = true
-    else{
-    console.log(this.review);
-    const req = this.Service.Edit("Reviews", this.review);
-    req.map(res => <any>res.json()).
-      subscribe(res => {
-        console.log("Post Applicant Summary Succesfully");
-        this.Appearance.emit("success");
-      },
-      (err: any) => {
-        console.log("error : " + err);
-      });
+    else {
+      const req = this.Service.Edit("Reviews", this.review);
+      req.map(res => <any>res.json()).
+        subscribe(res => {
+          this.Appearance.emit("success");
+        },
+        (err: any) => {
+        });
     }
   }
-
-
-
 }

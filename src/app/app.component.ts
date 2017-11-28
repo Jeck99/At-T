@@ -14,7 +14,6 @@ declare const $: any;
 export class AppComponent implements OnInit {
 
   constructor(public location: Location , public AuthService : AuthService) {
-          console.log("========> " + AuthService.Role); 
           this.AuthService.IsLogged; 
   }
 

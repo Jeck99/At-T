@@ -61,10 +61,6 @@ export class ArchivesComponent implements OnInit {
         title: 'Experience',
         filter: true
       },
-      Active: {
-        title: 'Active',
-        filter: true
-      },
     },
   };
   settingsJob = {
@@ -94,10 +90,6 @@ export class ArchivesComponent implements OnInit {
         title: 'Experience',
         filter: true
       },
-      Active: {
-        title: 'Active',
-        filter: true
-      },
       Position: {
         title: 'Position',
         filter: true
@@ -109,10 +101,8 @@ export class ArchivesComponent implements OnInit {
     },
   };
   onCustomApp(event) {
-    console.log(event.data)
     event.data.Active = true;
     this.AllApplicants.Active = event.data.Active;
-    console.log(this.AllApplicants.Active)
     let req = this.Service.Edit("Applicants", event.data)
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
@@ -121,17 +111,7 @@ export class ArchivesComponent implements OnInit {
   }
   
   onCustomJob(event) {
-    console.log(event.data);
-    // event.data.Active = true;
-    // this.AllApplicants.Active = event.data.Active;
-    // console.log(this.AllApplicants.Active)
-    // let req = this.Service.Edit("Applicants", event.data)
-    // req.subscribe(rsp => {
-    //   this.AllApplicants = rsp.json();
-    // });
-    // window.location.reload();
     this.Jobs.Published = event.data.Published;
-    console.log(this.Jobs)
     let req = this.Service.Edit("Jobs", event.data)
     req.subscribe(rsp => {
       this.Jobs = rsp.json();
@@ -139,19 +119,11 @@ export class ArchivesComponent implements OnInit {
   this.ngOnInit();
   }
 
-  onEditJobs(event) {
-    console.log("On edit",event.data);
-
-  }
-
-
-  ///////////////////////////////////////////////////////////////////////
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
-      console.log(this.AllApplicants);
     });
   }
   OnAppearance(CloseForm: string) {
@@ -163,7 +135,6 @@ export class ArchivesComponent implements OnInit {
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
       this.Jobs = rsp.json();
-      console.log(this.Jobs);
     });
   }
 }

@@ -28,13 +28,9 @@ export class AuthService {
     const req = this.Service.GetUserState('ManagerLogins');
     req.map(res => <any>res.json()).
       subscribe(res => {
-        console.log("Is Manager Loged ?");
-        console.log(res);
         this.Role = res;
       },
       (err: any) => {
-        console.log("Error !");
-        console.log(err.json());
         this.Role = false;
       });
   }
@@ -45,19 +41,16 @@ export class AuthService {
     const Req = this.Service.LogOut("ManagerLogins", SessionToServer);
     Req.subscribe(res => {
       window.location.reload();
-      console.log("Finally !!!!!");
       localStorage.removeItem('Session');
       localStorage.removeItem('expires_at');
       localStorage.removeItem('ue');
       localStorage.removeItem('un');
       localStorage.removeItem('uid');
-      console.log("Supposed to be loged out");
       this.RoleCheck();
       this.router.navigate(['./login']);
 
     },
       (err: any) => {
-        console.log(" Error - in deleting Cokies  ");
       });
   }
 }

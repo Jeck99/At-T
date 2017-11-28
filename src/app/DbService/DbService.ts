@@ -3,27 +3,17 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { Inject } from '@angular/core';
 import { User } from "../ModelService/User";
-// import { User } from "../_models/user";
-// import { User } from "app/ModelService/User";
 
 export class DbService {
 
-    Get1(ctrl: string, UserName: string) {        
-        return this.http.get(this.url + ctrl + '?email=' + UserName ,
-         { headers: this.header} );
-    }
     private url: string;
     private header = new Headers();
 
-
     GetUserState(ctrl: string) {
-        console.log(this.url + ctrl);
         return this.http.get(this.url + ctrl+"/?session=" + localStorage.getItem("Session"));
     }
 
-
     Get(ctrl: string) {
-        console.log(this.url + ctrl);
         return this.http.get(this.url + ctrl, { headers: this.header });
     }
 
