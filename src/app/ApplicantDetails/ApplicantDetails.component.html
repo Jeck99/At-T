@@ -33,8 +33,6 @@
                             </p>
                             <p *ngIf="ChosenApplicant.LockedBy==UserOn"> Locked By You   </p>
                         </figcaption>
-
-                        <input type="date">
                     </figure>
                 </div>
             </div>     
@@ -49,22 +47,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="btn-group dropup btn-block">
-                      <button type="button" *ngIf="!AuthService.Role" class="btn btn-primary" (click)="LockApplicant()"><span class="fa fa-lock"></span>Lock This Applicant For an Interview </button>
-                      <!-- <div  class="col-sm-1"><i  *ngIf="AuthService.Role"  (click)="summary(ChosenApplicant)" style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true" ></i></div> -->
-                      <button class="col-sm-12" class="btn btn-warning" *ngIf="AuthService.Role" (click)="summary(ChosenApplicant)"><i style="font-size:120%;text-align:center" class="fa fa-pencil" aria-hidden="true" >interview-summery</i> </button>
-                      
-                      <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button> -->
-                      <!-- <ul class="dropdown-menu text-left" role="menu">
-                        <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
-                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
-                      </ul> -->
+                      <button type="button" *ngIf="!AuthService.Role &&  !(ChosenApplicant.LockedBy==UserOn)" class="btn btn-primary" (click)="LockApplicant()"><span class="fa fa-lock"></span>Lock This Applicant For an Interview </button>
+
                     </div>
                 </div>
             </div> 

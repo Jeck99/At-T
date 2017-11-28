@@ -66,7 +66,7 @@ export class ApplicantsComponent implements OnInit {
   OnAppearanceDetails(CloseForm: boolean) {
     this.ApplicantDetailsMode = false;
     if(CloseForm)
-  this.Notify.showNotification('top','right','Set Interview Succesfully', 2);    
+  this.Notify.showNotification('top','right','Set Interview Succesfully. Go To Dashboard For View your Further Interviews', 2);    
 
     this.ngOnInit();
   }

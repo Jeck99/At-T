@@ -35,16 +35,20 @@
         //background-color: $white-color;
     }
     .logo-img{
-        width: 30px;
-        display: inline-block;
-        max-height: 30px;
-        margin-left: 10px;
-        margin-right: 15px;
+        display: block;
+        height: 100%;
+        width: 100%;
+            position: absolute;
+
+        // margin-left: 10px;
+        // margin-right: 15px;
+        // width: 30px;
+        
+
 
         img{
-            width: 35px;
-            top: 16px;
-            position: absolute;
+            width: 60%;
+            top: 60%;
         }
     }
 
@@ -135,7 +139,7 @@
     .logo{
         position: relative;
         padding: $padding-base $padding-base;
-        z-index: 4;
+        // z-index: 4;
 
         &:after{
             content: '';

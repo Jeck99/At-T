@@ -46,6 +46,7 @@ import { JobDetailsComponent } from "./JobDetails/JobDetails.component";
 import { ArraySortPipe } from "./Pipes/sort.pipe";
 import { LoginAuthGuard } from "./_guards/login.guard";
 import { InterviewSummeryComponent } from "./interview-summery/interview-summery.component";
+import { AdminAuthGuard } from "./_guards/administrator.guard";
 
 
 @NgModule({
@@ -75,8 +76,6 @@ import { InterviewSummeryComponent } from "./interview-summery/interview-summery
     ApplicantDetailsComponent,
     JobDetailsComponent,
     InterviewSummeryComponent,
-    
-
   ],
   imports: [
     BrowserModule,
@@ -100,7 +99,8 @@ import { InterviewSummeryComponent } from "./interview-summery/interview-summery
     AngularFireDatabase,
     NotificationsService,
     ArraySortPipe,
-    LoginAuthGuard
+    LoginAuthGuard,
+    AdminAuthGuard
     
 ],
   bootstrap: [AppComponent ],

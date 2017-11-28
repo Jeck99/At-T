@@ -5,7 +5,7 @@
 
 <div *ngIf="!AddApplicant && !EditMode && !ApplicantDetailsMode" style="margin-top:110px" class="container-fluid">
     <div class="row" >
-  <div *ngFor="let Applicant of AllApplicants | paginate: { itemsPerPage: 6, currentPage: page } " class="col-md-4">
+  <div *ngFor="let Applicant of AllApplicants | paginate: { itemsPerPage: 9, currentPage: page } " class="col-md-4">
     <div class="card"  (click)="ViewUserDetails(Applicant)">
             <div class="card-content">
               <div class="card-header-blue">
@@ -37,7 +37,7 @@
 
 
   
-  <div style="margin-top:220px">
+  <div style="margin-top:115px">
 
 
 

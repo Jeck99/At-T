@@ -35,12 +35,10 @@ export class ArchivesComponent implements OnInit {
     },
     pager: {
       display: true,
-      perPage: 4,
+      perPage: 7,
     },
     columns: {
-      // Id: {
-      //   title: 'ID',
-      // },
+
       Name: {
         title: 'Name',
         filter: true
@@ -90,6 +88,10 @@ export class ArchivesComponent implements OnInit {
         title: 'Experience',
         filter: true
       },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
       Position: {
         title: 'Position',
         filter: true
@@ -107,10 +109,10 @@ export class ArchivesComponent implements OnInit {
     req.subscribe(rsp => {
       this.AllApplicants = rsp.json();
     });
-    window.location.reload();
   }
   
   onCustomJob(event) {
+<<<<<<< HEAD
     this.Jobs.Published = event.data.Published;
     let req = this.Service.Edit("Jobs", event.data)
     req.subscribe(rsp => {
@@ -119,11 +121,35 @@ export class ArchivesComponent implements OnInit {
   this.ngOnInit();
   }
 
+=======
+  //   console.log(event.data);
+  //   this.Jobs.Published = event.data.Published;
+  //   console.log(this.Jobs)
+  //   let req = this.Service.Edit("Jobs", event.data)
+  //   req.subscribe(rsp => {
+  //     this.Jobs = rsp.json();
+  //   });
+  // this.ngOnInit();
+  // }
+
+  // onEditJobs(event) {
+  //   console.log("On edit",event.data);
+
+  }
+
+
+  ///////////////////////////////////////////////////////////////////////
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
   constructor(private Service: DbService, private Notify: NotificationsService, public AuthService: AuthService) { }
   GetApplicants() {
     let req = this.Service.Get("Applicants")
     req.subscribe(rsp => {
+<<<<<<< HEAD
       this.AllApplicants = rsp.json();
+=======
+      this.AllApplicants = rsp.json().filter(App => App.Active == false);
+      console.log("Not Active",this.AllApplicants);
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
     });
   }
   OnAppearance(CloseForm: string) {
@@ -134,7 +160,12 @@ export class ArchivesComponent implements OnInit {
     this.Skills = [];
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
+<<<<<<< HEAD
       this.Jobs = rsp.json();
+=======
+      this.Jobs = rsp.json().filter(job => job.Published == false);
+      console.log(this.Jobs);
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
     });
   }
 }

@@ -6,16 +6,22 @@ import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { NotificationsService } from "../notifications/notifications.component";
 @Component({
   selector: 'app-update-job',
   templateUrl: './update-job.component.html',
   styleUrls: ['./update-job.component.css']
 })
 export class UpdateJobComponent implements OnInit {
+<<<<<<< HEAD
   JobRecruiter: JobRecruiter[] = [];
   Skills: Skill[];
   Recruiters: Manager[];
   constructor(private Service: DbService, private router: Router, private route: ActivatedRoute) { }
+=======
+
+  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute ) { }
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
 
   ngOnInit() {
     this.GetSkills();
@@ -56,9 +62,17 @@ export class UpdateJobComponent implements OnInit {
     req.subscribe(res => {
       this.SkillPost();
       this.SkillRecruiterId();
+<<<<<<< HEAD
       this.Appearance.emit(false);
     }, (err) => {
     });
+=======
+      this.Appearance.emit(true);
+         }, (err) => {
+        console.log("Editing Problem");
+      });
+    
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
   }
 
   GetSkills() {

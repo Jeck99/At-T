@@ -57,7 +57,30 @@ export class JobsComponent implements OnInit {
   PrepareForEdit(job: Job) {
     this.EditMode = true;
     this.JobToEdit = job;
+<<<<<<< HEAD
   }
+=======
+}
+  
+onAppearance(CloseForm:boolean)
+{
+  debugger;
+  this.EditMode=false;
+     if(CloseForm)
+     this.Notify.showNotification('top', 'right', 'Job Update Succesfully', 2);
+}
+
+onAppearanceDetails(event){
+  this.JobDetailsMode = false;
+}
+
+onPostingJob( CloseForm : string)
+{
+  this.AddJob=false;
+   if(CloseForm == 'success')
+     this.Notify.showNotification('top', 'right', 'Aplicant Published Succesfully', 2);
+}
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
 
   onAppearance(CloseForm: boolean) {
     this.EditMode = CloseForm;

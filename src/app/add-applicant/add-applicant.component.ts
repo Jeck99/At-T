@@ -11,6 +11,7 @@ import { Manager } from '../ModelService/Manager';
 import { UploadService } from '../upload.service';
 import { Upload } from '../Upload';
 import * as _ from "lodash";
+import { MailBuild } from "../ModelService/MailBuild";
 
 @Component({
     selector: 'add-applicant',
@@ -83,7 +84,9 @@ export class AddApplicantComponent implements OnInit {
             subscribe(res => {
                 this.SkillPost(res);
                 this.SkillRecruiterId(res);
-            this.Appearance.emit("success");
+                this.MailingRecruiters();
+                this.Appearance.emit("success");
+
             },
             (err: any) => {
             });
@@ -118,9 +121,47 @@ export class AddApplicantComponent implements OnInit {
             });
     }
 
+<<<<<<< HEAD
     AddRecruiter(recruiter: Manager) {
         if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
             this.Applicant.Recruiters.push(recruiter);
+=======
+
+
+   MailingRecruiters()
+   {
+
+    this.Applicant.Recruiters.forEach(rec => {
+       this.PrepareMassage(rec)
+       const req = this.Service.post("MailService", this.Mail);
+        req.subscribe(res => {
+            console.log( "Mail Success",res); },
+            (err: any) => {
+            console.log( "Mail Error",err);
+            });
+    });
+   }
+
+   Mail : MailBuild = new MailBuild();
+
+
+   PrepareMassage( recruiter : Manager)
+   {
+    this.Mail.To = recruiter.Email;
+    this.Mail.Subject = "New Applicant";
+    this.Mail.Body = "Hi "+recruiter.UserName + " A new Applicant Attached To Your By "+localStorage.getItem('un')+" U better Check If He Worth The Aplicant Name Is "+this.Applicant.Name
+   }
+
+
+
+
+
+
+    AddRecruiter(recruiter: Manager) {
+        if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
+            this.Applicant.Recruiters.push(recruiter);
+
+>>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
         }
         else {
             let RecruiterIndex = this.Applicant.Recruiters.indexOf(recruiter)
