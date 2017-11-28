@@ -6,6 +6,7 @@ import { Skill } from "../ModelService/Skill";
 import { JobSkillset } from "../ModelService/JobSkillset";
 import { JobRecruiter } from "../ModelService/JobRecruiter";
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { NotificationsService } from "../notifications/notifications.component";
 @Component({
   selector: 'app-update-job',
   templateUrl: './update-job.component.html',
@@ -13,7 +14,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 })
 export class UpdateJobComponent implements OnInit {
 
-  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute) { }
+  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute ) { }
 
   ngOnInit() {
     this.GetSkills();
@@ -74,7 +75,7 @@ CloseForm()
       console.log("My Update Job Action");
       this.SkillPost(); 
       this.SkillRecruiterId();
-      this.Appearance.emit(false);
+      this.Appearance.emit(true);
          }, (err) => {
         console.log("Editing Problem");
       });

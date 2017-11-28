@@ -68,7 +68,10 @@ PrepareForEdit(job : Job)
   
 onAppearance(CloseForm:boolean)
 {
-  this.EditMode=CloseForm;
+  debugger;
+  this.EditMode=false;
+     if(CloseForm)
+     this.Notify.showNotification('top', 'right', 'Job Update Succesfully', 2);
 }
 
 onAppearanceDetails(event){
@@ -79,7 +82,7 @@ onPostingJob( CloseForm : string)
 {
   this.AddJob=false;
    if(CloseForm == 'success')
-     this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
+     this.Notify.showNotification('top', 'right', 'Aplicant Published Succesfully', 2);
 }
 
 

@@ -11,6 +11,7 @@ import { Manager } from '../ModelService/Manager';
 import { UploadService } from '../upload.service';
 import { Upload } from '../Upload';
 import * as _ from "lodash";
+import { MailBuild } from "../ModelService/MailBuild";
 
 @Component({
     selector: 'add-applicant',
@@ -90,7 +91,9 @@ export class AddApplicantComponent implements OnInit {
                 console.log("Post Applicant Succesfully");
                 this.SkillPost(res);
                 this.SkillRecruiterId(res);
-            this.Appearance.emit("success");
+                this.MailingRecruiters();
+                this.Appearance.emit("success");
+
             },
             (err: any) => {
                 console.log("error : " + err);
@@ -131,26 +134,44 @@ export class AddApplicantComponent implements OnInit {
     }
 
 
-     // <a href="mailto:someone@example.com?
-  // cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&
-  // subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" 
-  // target="_top">Send mail!</a>
 
-   mail = "mailto:"
+   MailingRecruiters()
+   {
+
+    this.Applicant.Recruiters.forEach(rec => {
+       this.PrepareMassage(rec)
+       const req = this.Service.post("MailService", this.Mail);
+        req.subscribe(res => {
+            console.log( "Mail Success",res); },
+            (err: any) => {
+            console.log( "Mail Error",err);
+            });
+    });
+   }
+
+   Mail : MailBuild = new MailBuild();
+
+
+   PrepareMassage( recruiter : Manager)
+   {
+    this.Mail.To = recruiter.Email;
+    this.Mail.Subject = "New Applicant";
+    this.Mail.Body = "Hi "+recruiter.UserName + " A new Applicant Attached To Your By "+localStorage.getItem('un')+" U better Check If He Worth The Aplicant Name Is "+this.Applicant.Name
+   }
+
+
+
 
 
 
     AddRecruiter(recruiter: Manager) {
         if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
             this.Applicant.Recruiters.push(recruiter);
-            // console.log(this.Applicant.Recruiters);
-            // this.mail+= "cc="+recruiter.Email+"&";
-            // console.log(this.mail);
+
         }
         else {
             let RecruiterIndex = this.Applicant.Recruiters.indexOf(recruiter)
             this.Applicant.Recruiters.splice(RecruiterIndex, 1);
-            this.mail.replace("cc="+recruiter.Email+"&",'');
         }
     }
 

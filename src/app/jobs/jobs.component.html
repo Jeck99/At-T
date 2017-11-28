@@ -4,7 +4,7 @@
 <h2 *ngIf="!AuthService.Role" style="text-align:center;margin-top:75px"> Jobs </h2>
 <div *ngIf="!EditMode && !AddJob && !JobDetailsMode"  class="container-fluid">
     <div class="row"  >
-  <div class="div2" *ngFor="let Job of Jobs| paginate: { itemsPerPage: 6, currentPage: p } ; let i = index" class="col-sm-4">
+  <div  *ngFor="let Job of Jobs| paginate: { itemsPerPage: 9, currentPage: p } ; let i = index" id="marCard" class="col-sm-4">
     <div class="card row"  (click)="ViewJobDetails(Job)">
             <div id="boxing"  class="card-content col-sm-11">
               <div class="card-header-blue">

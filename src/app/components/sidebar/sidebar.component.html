@@ -1,14 +1,16 @@
 <div class="logo">
+    <div class="pic">
     <a href="https://www.corp.att.com/worldwide/att-you-israel.html" class="simple-text">
         <div class="logo-img">
-            <img src="/assets/img/at&t_logo2.png" />
+            <img id="log" src="/assets/img/at&t_logo2.png" />
         </div>
-    </a>
-    AT&T Israel
-    <h6>AT&T Recruiting Tool</h6>
-    <span> {{Currentuser}}</span>
+    </a></div>
+  
 </div>
-<div class="sidebar-wrapper">
+<div> <h6> AT&T Israel</h6>
+    <h6>AT&T Recruiting Tool</h6>
+    <span> {{Currentuser}}</span></div>
+<div class="sidebar-wrapper" style="margin-top: 22%">
     <div class="nav-container">
         <ul class="nav">
             <!-- <li>
@@ -17,7 +19,7 @@
                 </h5>
             </li> -->
             <ng-container *ngFor="let menuItem of menuItems">
-                <li routerLinkActive="active" class="{{menuItem.class}}">
+                <li *ngIf="menuItem.Role || AuthService.Role" routerLinkActive="active" class="{{menuItem.class}}">
                     <a [routerLink]="[menuItem.path]">
                     <i  class="material-icons">{{menuItem.icon}}</i>
                     <h5>{{menuItem.title}}</h5>

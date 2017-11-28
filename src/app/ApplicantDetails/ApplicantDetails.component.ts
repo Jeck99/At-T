@@ -9,6 +9,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Applicant } from "../ModelService/Applicant";
 import { AuthService } from "../AuthService/Auth.Service";
 import { Review } from "../ModelService/Review";
+import { MailBuild } from "../ModelService/MailBuild";
 @Component({
   selector: 'applicant-details',
   templateUrl: './ApplicantDetails.component.html',
@@ -20,28 +21,32 @@ export class ApplicantDetailsComponent implements OnInit {
    }
   
   review : Review= new Review();
+  summaryMode : boolean =false;
+
 
   LockApplicant()
   {
-    this.review.ManagerId = Number(localStorage.getItem('uid'));
-    this.review.ApplicantId = this.ChosenApplicant.Id;
-    let req = this.Service.post("Reviews",this.review);
-    req.map(res => <any>res.json()).
+     this.review.ManagerId = Number(localStorage.getItem('uid'));
+     this.review.ApplicantId = this.ChosenApplicant.Id;
+      console.log(this.review);
+
+     let req = this.Service.post("Reviews",this.review);
+     req.map(res => <any>res.json()).
             subscribe(res => {
                 console.log("Lock successed");  
-                this.ApplicantDetailsAppearance.emit(true);                       
+                this.MailingRecruiters();
+                 this.ApplicantDetailsAppearance.emit(true);                       
                 },
             (err : any) => {            
             console.log("Lock Error" ,err.json());
             });
   }
-
   UserOn : string = "";
   ngOnInit()
   {
      this.UserOn = localStorage.getItem("un");
+
   }
-Resume : boolean = false;
 
   @Input() ChosenApplicant : Applicant;
   @Output() ApplicantDetailsAppearance = new EventEmitter<boolean>();
@@ -50,19 +55,34 @@ closeCard()
 {
     this.ApplicantDetailsAppearance.emit(false);   
 }
-summaryApplicant: Applicant = new Applicant("", "", 0, "", "");
 
-resume()
-{
-this.Resume = !this.Resume;
-}
-summaryMode=false;
 
 ApplicantToView: Applicant = new Applicant("", "", 0, "", "");
 
-summary(Applicant: Applicant) {
-    this.ApplicantToView = Applicant;
-    this.review.ApplicantId = this.ApplicantToView.Id; 
-    this.summaryMode = true;
-  }
+
+
+
+     MailingRecruiters()
+   {
+       this.PrepareMassage()
+       const req = this.Service.post("MailService", this.Mail);
+        req.subscribe(res => {
+            console.log( "Mail Success",res); },
+            (err: any) => {
+            console.log( "Mail Error",err);
+            });
+   }
+
+   Mail : MailBuild = new MailBuild();
+
+
+   PrepareMassage()
+   {
+    this.Mail.To = this.ChosenApplicant.Email;
+    this.Mail.Subject = "Interview Invite - At&t";
+    this.Mail.Body = "Hi "+this.ApplicantToView.Name + " You Invited To an Interview In Our Company ";
+   }
+
+
+
 }

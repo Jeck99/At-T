@@ -12,7 +12,6 @@ constructor(email : string , title : string , experience :number,name : string ,
         this.Email = email;
         this.LockedBy = "";
         this.Phone = phone;
-        this.Status = "";
         this.Skills = [];
         this.Recruiters = [];
         this.Url ="";
@@ -26,7 +25,6 @@ constructor(email : string , title : string , experience :number,name : string ,
     Experience : number;
     Email:string;
     Phone : string;
-    Status:string;
     Url : string;
 
     Active:boolean;

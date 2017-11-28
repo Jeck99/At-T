@@ -87,10 +87,17 @@
 
 #boxing{
 min-height: 200px;
-margin-top:-3%
+margin-top:-3%;
+padding-bottom : 0px;
 
 }
 
 #paging{
     margin-left: 36%;
+}
+.div2{
+    padding-bottom: 0px;
+}
+#marCard{
+        margin-top: -50px;
 }

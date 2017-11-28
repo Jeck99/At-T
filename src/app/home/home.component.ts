@@ -25,9 +25,10 @@ export class HomeComponent implements OnInit {
 
   ApplicantToSummary : Applicant;
 SummaryMode : boolean  = false;
+AfterInterview : Date = new Date();
 
   ngOnInit() {
-
+this.AfterInterview =new Date();
       if(localStorage.getItem('AfterLogin'))
       this.Notify.showNotification('top','right','You have logged successfully', 2);      
 
@@ -44,7 +45,6 @@ SummaryMode : boolean  = false;
 
   constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute, private Service: DbService) {
   }
-
 
 
 
@@ -68,7 +68,7 @@ getLockedUsers() {
      this.SummaryMode=false;
 
      if(actionMode == "success")
-     this.Notify.showNotification('top','right','Summary Action is successfull', 2);
+     this.Notify.showNotification('top','right','Summary Posted successfull', 2);
 
      this.ngOnInit();
 
