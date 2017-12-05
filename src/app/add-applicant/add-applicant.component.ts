@@ -28,19 +28,13 @@ export class AddApplicantComponent implements OnInit {
         this.GetRecruiters();
     }
 
-
-
-
-
   @Output() Appearance = new EventEmitter<string>();
-
     currentUpload: Upload;
     dropzoneActive:boolean = false;
     Recruiuter: number[];
     SkillsetId: number[];
     SkillSet: ApplicantSkillset[] = [];
     JobRecruiter: ApplicantRecruiter[] = [];
-
     Skills: Skill[];
     Recruiters: Manager[];
 
@@ -51,7 +45,6 @@ export class AddApplicantComponent implements OnInit {
         let filesIndex = _.range(fileList.length)
         _.each(filesIndex, (idx) => {
           this.currentUpload = new Upload(fileList[idx]);
-         
          this.upSvc.pushUpload(this.currentUpload);
       }   
         )
@@ -60,10 +53,7 @@ export class AddApplicantComponent implements OnInit {
     GetSkills() {
         let req = this.Service.Get("JobSkillsets")
         req.subscribe(rsp => {
-            this.Skills = rsp.json();
-
-        });
-    }
+            this.Skills = rsp.json();});}
 
     GetRecruiters() {
         let req = this.Service.Get("Managers")
@@ -72,9 +62,7 @@ export class AddApplicantComponent implements OnInit {
         });
     }
 
-
-    Applicant: Applicant = new Applicant("", "", 0, "", "");
-
+ Applicant: Applicant = new Applicant("", "", 0, "", "");
 
     PostApplicant() {
         this.Applicant.Url = localStorage.getItem('DURL');   
@@ -86,14 +74,10 @@ export class AddApplicantComponent implements OnInit {
                 this.SkillRecruiterId(res);
                 this.MailingRecruiters();
                 this.Appearance.emit("success");
-
             },
             (err: any) => {
             });
-
     }
-
-
 
     SkillPost(appId: number) {
         this.Applicant.Skills.forEach(element => {
@@ -106,11 +90,8 @@ export class AddApplicantComponent implements OnInit {
             });
     }
 
-
-
     SkillRecruiterId(jobId: number) {
         this.Applicant.Recruiters.forEach(rec => {
-
             this.JobRecruiter.push(new ApplicantRecruiter(jobId, rec.Id));
 
         });
@@ -121,29 +102,18 @@ export class AddApplicantComponent implements OnInit {
             });
     }
 
-<<<<<<< HEAD
-    AddRecruiter(recruiter: Manager) {
-        if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
-            this.Applicant.Recruiters.push(recruiter);
-=======
-
-
    MailingRecruiters()
    {
-
     this.Applicant.Recruiters.forEach(rec => {
        this.PrepareMassage(rec)
        const req = this.Service.post("MailService", this.Mail);
-        req.subscribe(res => {
-            console.log( "Mail Success",res); },
+        req.subscribe(res => { },
             (err: any) => {
-            console.log( "Mail Error",err);
             });
     });
    }
 
    Mail : MailBuild = new MailBuild();
-
 
    PrepareMassage( recruiter : Manager)
    {
@@ -152,16 +122,9 @@ export class AddApplicantComponent implements OnInit {
     this.Mail.Body = "Hi "+recruiter.UserName + " A new Applicant Attached To Your By "+localStorage.getItem('un')+" U better Check If He Worth The Aplicant Name Is "+this.Applicant.Name
    }
 
-
-
-
-
-
     AddRecruiter(recruiter: Manager) {
         if (this.Applicant.Recruiters.indexOf(recruiter) == -1) {
             this.Applicant.Recruiters.push(recruiter);
-
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
         }
         else {
             let RecruiterIndex = this.Applicant.Recruiters.indexOf(recruiter)
@@ -173,19 +136,14 @@ export class AddApplicantComponent implements OnInit {
         if (this.Applicant.Skills.indexOf(Skil) == -1) {
             this.Applicant.Skills.push(Skil);
         }
-
         else {
             let SkilIndex = this.Applicant.Skills.indexOf(Skil)
             this.Applicant.Skills.splice(SkilIndex, 1);
         }
     }
 
-
     CloseForm()
     {
         this.Appearance.emit("");
     }
-
-
-
 }

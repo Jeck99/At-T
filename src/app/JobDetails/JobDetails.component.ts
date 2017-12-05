@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Job } from "../ModelService/Job";
 import { DbService } from "../DbService/DbService";
 import { Manager } from "../ModelService/Manager";
@@ -15,31 +15,18 @@ import { AuthService } from "../AuthService/Auth.Service";
 })
 export class JobDetailsComponent implements OnInit {
 
-  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute ,public AuthService : AuthService) {
+  constructor(private Service: DbService, private router: Router, private route: ActivatedRoute, public AuthService: AuthService) { }
 
-     
-
-
-   }
-
-  UserOn : string = "";
-  ngOnInit()
-  {
-     this.UserOn = localStorage.getItem("un");
+  UserOn: string = "";
+  ngOnInit() {
+    this.UserOn = localStorage.getItem("un");
   }
 
-
-
-  @Input() ChosenJob : Applicant;
+  @Input() ChosenJob: Applicant;
   @Output() JobDetailsAppearance = new EventEmitter<boolean>();
 
-CloseCard()
-{
-    this.JobDetailsAppearance.emit(false); 
-    this.ngOnInit();  
-}
-
-
-
-
+  CloseCard() {
+    this.JobDetailsAppearance.emit(false);
+    this.ngOnInit();
+  }
 }

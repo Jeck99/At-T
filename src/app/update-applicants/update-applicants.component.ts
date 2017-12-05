@@ -63,7 +63,6 @@ export class UpdateApplicantsComponent implements OnInit {
     });
   }
 
-
   GetRecruiters() {
     let req = this.Service.Get("Managers")
     req.subscribe(rsp => {
@@ -102,7 +101,7 @@ export class UpdateApplicantsComponent implements OnInit {
         this.AppRecruiter = [];
       });
   }
-  PostApplicantToUpdate() {
+  UpdateApplicant() {
     this.ApplicantToUpdate.Url = localStorage.getItem('DURL');
     let req = this.Service.Edit("Applicants", this.ApplicantToUpdate);
     req.subscribe(res => {

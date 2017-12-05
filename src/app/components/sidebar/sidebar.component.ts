@@ -12,7 +12,6 @@ export const ROUTES: RouteInfo[] = [
     { path: 'home', title: 'Dashboard', icon: 'dashboard', class: '', Role: true },
     { path: 'applicants', title: 'applicants', icon: 'person', class: '', Role: true },
     { path: 'jobs', title: 'jobs', icon: 'work', class: '', Role: true },
-
     { path: 'app-archives', title: 'Archive', icon: 'folder open', class: '', Role: false },
 ];
 
@@ -25,10 +24,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItems: any[];
     Currentuser = "";
-    bool;
-    constructor(private AuthService: AuthService ) {
-        this.ngOnInit();
-    }
+    constructor(private AuthService: AuthService ) { }
     ngOnInit() {
         this.Currentuser = localStorage.getItem("un");
         this.menuItems = ROUTES.filter(menuItem => menuItem);

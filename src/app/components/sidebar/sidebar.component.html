@@ -1,23 +1,21 @@
-<div class="logo">
-    <div class="pic">
-    <a href="https://www.corp.att.com/worldwide/att-you-israel.html" class="simple-text">
-        <div class="logo-img">
-            <img id="log" src="/assets/img/at&t_logo2.png" />
-        </div>
-    </a></div>
-  
+<div >
+    <div >
+            <div class="logo-img container">
+                <img id="log" src="/assets/img/at&t_logo2.png" />
+            </div>
+    </div>
 </div>
-<div> <h6> AT&T Israel</h6>
-    <h6>AT&T Recruiting Tool</h6>
-    <span> {{Currentuser}}</span></div>
-<div class="sidebar-wrapper" style="margin-top: 22%">
+<hr>
+<br/>
+
+<div class="sidebar-wrapper" style="margin-top: 60%">
+        <div id="textName">
+                <div id="textName">
+                        <b> AT&T Israel</b> <br>
+                        <b>AT&T Recruiting Tool</b> <br>
+                        <b> {{Currentuser}}</b></div>
     <div class="nav-container">
         <ul class="nav">
-            <!-- <li>
-                <h5 id="logOut" *ngIf="AuthService.IsLogged" (click)="AuthService.LogOff()" [routerLink]="['/login']">
-                    Log out
-                </h5>
-            </li> -->
             <ng-container *ngFor="let menuItem of menuItems">
                 <li *ngIf="menuItem.Role || AuthService.Role" routerLinkActive="active" class="{{menuItem.class}}">
                     <a [routerLink]="[menuItem.path]">

@@ -8,13 +8,6 @@ import { FireConfig } from "./FireConfig/FireConfig";
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HomeComponent } from './home/home.component';
 import { UpdateApplicantsComponent } from "./update-applicants/update-applicants.component";
 import { UpdateJobComponent } from './update-job/update-job.component';
@@ -39,7 +32,6 @@ import { Ng2TableModule } from 'ngx-datatable';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Ng2CompleterModule } from "ng2-completer";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { NewComponent } from './new/new.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { ApplicantDetailsComponent } from "./ApplicantDetails/ApplicantDetails.component";
 import { JobDetailsComponent } from "./JobDetails/JobDetails.component";
@@ -52,13 +44,6 @@ import { AdminAuthGuard } from "./_guards/administrator.guard";
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UserProfileComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
-    UpgradeComponent,
     HomeComponent,
     ApplicantsComponent,
     UpdateApplicantsComponent,
@@ -71,7 +56,6 @@ import { AdminAuthGuard } from "./_guards/administrator.guard";
     ArchivesComponent,
     UploadFormComponent,
     FileDropDirective,
-    NewComponent,
     RecruiterComponent,
     ApplicantDetailsComponent,
     JobDetailsComponent,

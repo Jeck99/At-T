@@ -44,7 +44,7 @@ export class JobsComponent implements OnInit {
     this.Skills = [];
     let req = this.Service.Get("Jobs")
     req.subscribe(rsp => {
-      this.Jobs = rsp.json();
+      this.Jobs = rsp.json().filter(jb => jb.Published);
     });
   }
 
@@ -57,33 +57,13 @@ export class JobsComponent implements OnInit {
   PrepareForEdit(job: Job) {
     this.EditMode = true;
     this.JobToEdit = job;
-<<<<<<< HEAD
   }
-=======
-}
-  
-onAppearance(CloseForm:boolean)
-{
-  debugger;
-  this.EditMode=false;
-     if(CloseForm)
-     this.Notify.showNotification('top', 'right', 'Job Update Succesfully', 2);
-}
-
-onAppearanceDetails(event){
-  this.JobDetailsMode = false;
-}
-
-onPostingJob( CloseForm : string)
-{
-  this.AddJob=false;
-   if(CloseForm == 'success')
-     this.Notify.showNotification('top', 'right', 'Aplicant Published Succesfully', 2);
-}
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
 
   onAppearance(CloseForm: boolean) {
-    this.EditMode = CloseForm;
+    debugger;
+    this.EditMode = false;
+    if (CloseForm)
+      this.Notify.showNotification('top', 'right', 'Job Update Succesfully', 2);
   }
 
   onAppearanceDetails(event) {
@@ -93,6 +73,21 @@ onPostingJob( CloseForm : string)
   onPostingJob(CloseForm: string) {
     this.AddJob = false;
     if (CloseForm == 'success')
-      this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
+      this.Notify.showNotification('top', 'right', 'Aplicant Published Succesfully', 2);
   }
+
+
+  archiveJob(jobToArchive : Job){
+    jobToArchive.Published = false;
+    let req = this.Service.Edit("Jobs", jobToArchive);
+    req.subscribe(res => {
+      this.Notify.showNotification('bottom', 'right', 'Sent To Archive', 3);
+      this.ngOnInit();
+      console.log(res);
+    }, (err) => {
+      console.log(err);     
+    });
+
+  }
+
 }

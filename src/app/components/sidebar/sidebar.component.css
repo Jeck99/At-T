@@ -1,36 +1,31 @@
 h5{
     color: floralwhite;
     font-weight: bold;
-    user-select: none; /* Standard syntax */
-    
+    user-select: none;    
 }
 li:active{
     background-color: #000000
 }
 #logOut:hover{
-    user-select: none; /* Standard syntax */
+    user-select: none; 
     font-weight: bolder;
     cursor:pointer;
 box-sizing: border-box;    
 }
 
-/* 
-#log{
-    width: 80%;
-    height: 17%;
-}  */
-/* .logo-img{
-        width: 80%;
-    height: 17%;
-} */
 .sidebar .logo-img img,
 .off-canvas-sidebar .logo-img img {
   width: 100%;
   top: 100%;
   display: block
 }
-
 h5{
     color: rgba(0,0,0,0.5);
+}
+#textName{
+    text-align: center;
+}
 
+#log{
+    margin-left: 9%;
 }

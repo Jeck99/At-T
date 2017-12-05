@@ -18,15 +18,12 @@ constructor(email : string , title : string , experience :number,name : string ,
         this.MatchPrecentage = 0;      
 }
 
-
-
     Id :number;
     Name:string;
     Experience : number;
     Email:string;
     Phone : string;
     Url : string;
-
     Active:boolean;
     LockedBy:string;
     Date : Date;
@@ -36,6 +33,3 @@ constructor(email : string , title : string , experience :number,name : string ,
     MatchPrecentage : number;
     Position : string;
 }
-
-
-

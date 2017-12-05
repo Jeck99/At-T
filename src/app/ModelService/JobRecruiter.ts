@@ -1,15 +1,10 @@
-export class JobRecruiter
-{
-        constructor(jobid: number , recruiterId: number) {
-
+export class JobRecruiter {
+    constructor(jobid: number, recruiterId: number) {
         this.JobId = jobid;
-        this.RecruiterId = recruiterId;     
+        this.RecruiterId = recruiterId;
 
     }
-
-
-    Id :number;
-    JobId :number;
-    RecruiterId :number;
-
+    Id: number;
+    JobId: number;
+    RecruiterId: number;
 }

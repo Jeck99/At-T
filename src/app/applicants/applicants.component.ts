@@ -38,36 +38,34 @@ export class ApplicantsComponent implements OnInit {
         if (applicant1.MatchPrecentage < applicant2.MatchPrecentage) {
           return 1;
         }
-
         else if (applicant1.MatchPrecentage > applicant2.MatchPrecentage
         ) {
           return -1;
         }
         return 0;
       });
+
+      this.AllApplicants = this.AllApplicants.filter(app=> app.Active);
     },
-            (err : any) => {  
-            });        
+      (err: any) => {
+      });
   }
   OnAppearance(CloseForm: string) {
     this.EditMode = false;
     if (CloseForm == 'success')
       this.Notify.showNotification('top', 'right', 'Aplicant Update Succesfully', 2);
-   
   }
 
-  onAddApplicant(CloseForm : string)
-  {
-    this.AddApplicant=false;
-      if (CloseForm == 'success')
+  onAddApplicant(CloseForm: string) {
+    this.AddApplicant = false;
+    if (CloseForm == 'success')
       this.Notify.showNotification('top', 'right', 'Applicant Added Succesfully', 2);
   }
 
   OnAppearanceDetails(CloseForm: boolean) {
     this.ApplicantDetailsMode = false;
-    if(CloseForm)
-  this.Notify.showNotification('top','right','Set Interview Succesfully. Go To Dashboard For View your Further Interviews', 2);    
-
+    if (CloseForm)
+      this.Notify.showNotification('top', 'right', 'Set Interview Succesfully. Go To Dashboard For View your Further Interviews', 2);
     this.ngOnInit();
   }
 
@@ -78,22 +76,27 @@ export class ApplicantsComponent implements OnInit {
   }
   ApplicantToEdit: Applicant = new Applicant("", "", 0, "", "");
 
+  toArchive(ApplicantToUpdate : Applicant)
+  {
+    ApplicantToUpdate.Active = false;
+    let req = this.Service.Edit("Applicants", ApplicantToUpdate);
+    req.subscribe(res => {
+      this.Notify.showNotification('bottom', 'right', 'Sent To Archive', 4);
+      this.ngOnInit();
+    }, (err) => {
+    });
+  }
+
   PrepareForEdit(Applicant: Applicant) {
     this.EditMode = true;
     this.ApplicantToEdit = Applicant;
-  }
-
-  DeleteApplicant(id: number) {
-    // Should Be Update
   }
 
   AddApplicantForm() {
     this.AddApplicant = !this.AddApplicant;
   }
 
-  PrecetageHandle(MatchePrecentage : number)
-  {
-      return Math.floor(MatchePrecentage*100);
+  PrecetageHandle(MatchePrecentage: number) {
+    return Math.floor(MatchePrecentage * 100);
   }
-
 }

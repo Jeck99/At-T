@@ -3,7 +3,10 @@ declare var $: any;
 Injectable()
 export class NotificationsService implements OnInit {
 
+    ngOnInit() { }
+
     constructor() { }
+
     showNotification(from, align, messagecontent, messagetype) {
         const type = ['', 'info', 'success', 'warning', 'danger'];
         $.notify({
@@ -18,5 +21,4 @@ export class NotificationsService implements OnInit {
                 }
             });
     }
-    ngOnInit() { }
 }

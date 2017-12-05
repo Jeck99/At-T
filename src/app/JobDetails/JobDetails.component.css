@@ -90,3 +90,6 @@ span.tagskil
     margin-left: -10px;
     z-index: 10;
     }
+    i{
+        float: right;
+    }

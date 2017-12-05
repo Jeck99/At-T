@@ -19,30 +19,15 @@ export class HomeComponent implements OnInit {
   currentUserId: number = null;
   attachedApplicant: string[];
   LockedApplicant: Applicant[] = [];
-
-<<<<<<< HEAD
   ApplicantToSummary: Applicant;
   SummaryMode: boolean = false;
+  AfterInterview: Date = new Date();
 
+  LockedApplicantLenght : number = 0;
   ngOnInit() {
-
+    this.AfterInterview = new Date();
     if (localStorage.getItem('AfterLogin'))
       this.Notify.showNotification('top', 'right', 'You have logged successfully', 2);
-=======
-  currentUser  :  string = "";
-  currentUserId  :  number = null;
-  attachedApplicant : string [];
-  LockedApplicant : Applicant [] = [];
-
-  ApplicantToSummary : Applicant;
-SummaryMode : boolean  = false;
-AfterInterview : Date = new Date();
-
-  ngOnInit() {
-this.AfterInterview =new Date();
-      if(localStorage.getItem('AfterLogin'))
-      this.Notify.showNotification('top','right','You have logged successfully', 2);      
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
 
     setTimeout(() => {
       localStorage.removeItem('AfterLogin')
@@ -51,25 +36,11 @@ this.AfterInterview =new Date();
     this.getLockedUsers();
   }
 
-<<<<<<< HEAD
   getLockedUsers() {
     let req = this.Service.Get("Reviews");
     req.subscribe(rsp => {
       this.LockedApplicant = rsp.json();
-=======
-
-
-  constructor(public AuthService : AuthService , private Notify : NotificationsService ,private  route : ActivatedRoute, private Service: DbService) {
-  }
-
-
-
-getLockedUsers() {
-  let req = this.Service.Get("Reviews");
-  req.subscribe(rsp => {
-    this.LockedApplicant = rsp.json();  
-    console.log(this.LockedApplicant);  
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
+      this.LockedApplicantLenght = this.LockedApplicant.length;
     });
   }
 
@@ -78,21 +49,10 @@ getLockedUsers() {
     this.SummaryMode = true;
   }
 
-<<<<<<< HEAD
   onAppearance(actionMode: string) {
     this.SummaryMode = false;
     if (actionMode == "success")
-      this.Notify.showNotification('top', 'right', 'Summary Action is successfull', 2);
-=======
-  onAppearance(actionMode : string)
-  {
-     this.SummaryMode=false;
-
-     if(actionMode == "success")
-     this.Notify.showNotification('top','right','Summary Posted successfull', 2);
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
-
+      this.Notify.showNotification('top', 'right', 'Summary Posted successfull', 2);
     this.ngOnInit();
-
   }
 }

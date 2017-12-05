@@ -4,13 +4,11 @@ import { Skill } from "./Skill";
 export class Job
 {
     constructor(
-         title: string, description: string ,
-
-            position : string) {
-
+        title: string, description: string ,
+         position : string) {
         this.Experience = 0;
         this.Title = title;     
-        this.Position = position;
+        this.Position = "Programmer";
         this.Description = description;     
         this.Published = true;
         this.Skills = [];
@@ -25,5 +23,3 @@ export class Job
     Skills : Skill [];
     Recruiters : Manager [];
 }
-        
-    

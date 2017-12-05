@@ -5,5 +5,4 @@
         Email: string;
         Password: string;
         Role: string ;
-
     }

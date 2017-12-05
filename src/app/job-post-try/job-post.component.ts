@@ -34,7 +34,6 @@ export class JobPostComponent implements OnInit {
     let req = this.Service.post("Jobs", this.NewJob);
     req.map(res => <any>res.json()).
       subscribe(res => {
-        this.Notify.showNotification('top', 'right', 'Post Job Succesfully', 2);
         if (this.NewJob.Skills != [])
           this.SkillPost(res);
         if (this.NewJob.Recruiters != [])
@@ -44,6 +43,11 @@ export class JobPostComponent implements OnInit {
       (err: any) => {
         this.Notify.showNotification('bottom', 'right', 'Error in posting the job', 4);
       });
+  }
+
+  CloseForm()
+  {
+    this.Appearance.emit("");   
   }
 
   SkillPost(jobId: number) {
@@ -81,7 +85,6 @@ export class JobPostComponent implements OnInit {
       this.Recruiters = rsp.json();
     });
   }
-
 
   AddRecruiter(recruiter: Manager) {
     if (this.NewJob.Recruiters.indexOf(recruiter) == -1) {

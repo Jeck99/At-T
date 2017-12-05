@@ -13,9 +13,9 @@ import { AuthService } from "../AuthService/Auth.Service";
 
 export class LoginComponent implements OnInit {
   model: any = {};
-  loading = false;
-  returnUrl: string;
 
+  ErrorMess : string = "" ;
+  
   constructor(private route: ActivatedRoute, private router: Router,
     private Service: DbService, private AuthService: AuthService) { }
 
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['./home']);
       },
       (err: any) => {
+        this.ErrorMess = err.json();
       });
   }
 }

@@ -13,15 +13,10 @@ import { NotificationsService } from "../notifications/notifications.component";
   styleUrls: ['./update-job.component.css']
 })
 export class UpdateJobComponent implements OnInit {
-<<<<<<< HEAD
   JobRecruiter: JobRecruiter[] = [];
   Skills: Skill[];
   Recruiters: Manager[];
   constructor(private Service: DbService, private router: Router, private route: ActivatedRoute) { }
-=======
-
-  constructor(private Service: DbService,private router: Router, private route: ActivatedRoute ) { }
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
 
   ngOnInit() {
     this.GetSkills();
@@ -62,17 +57,9 @@ export class UpdateJobComponent implements OnInit {
     req.subscribe(res => {
       this.SkillPost();
       this.SkillRecruiterId();
-<<<<<<< HEAD
-      this.Appearance.emit(false);
+      this.Appearance.emit(true);
     }, (err) => {
     });
-=======
-      this.Appearance.emit(true);
-         }, (err) => {
-        console.log("Editing Problem");
-      });
-    
->>>>>>> 0bce0f5dfd43e004bbc88ea6f8181f678fe272cb
   }
 
   GetSkills() {
